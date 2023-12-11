@@ -20,3 +20,8 @@
 .buttonData {
   @apply bg-background-dark text-on-surface-dark
 }
+
+#image {
+  background-position: center;
+  background-size: cover;
+}

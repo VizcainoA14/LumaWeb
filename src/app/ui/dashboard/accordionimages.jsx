@@ -1,4 +1,4 @@
-import { SunImage } from "@/app/ui/dashboard/sunimage";
+import SunImage from "@/app/ui/dashboard/sunimage";
 import {
   Accordion,
   AccordionContent,
@@ -19,13 +19,8 @@ export function AccordionImages(props) {
           <div className="w-full flex gap-2 justify-between">
             <div id="eitContainer" className="flex gap-2">
               <SunImage />
-              <SunImage />
-              <SunImage />
-              <SunImage />
             </div>
             <div id="hmiContainer" className="flex gap-2">
-              <SunImage />
-              <SunImage />
             </div>
           </div>
         </AccordionContent>
