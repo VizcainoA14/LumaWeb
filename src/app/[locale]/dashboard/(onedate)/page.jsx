@@ -4,7 +4,7 @@ import { DatePicker } from '@/app/ui/dashboard/datepicker';
 import { AccordionImages } from '@/app/ui/dashboard/accordionimages';
 import { DetailsPanel } from '@/app/ui/dashboard/detailspanel';
 
-const page = () => {
+const Page = () => {
   const t = useTranslations('Dash');
   return (
     <div className='w-full h-screen flex flex-col md:p-2'>
@@ -22,4 +22,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
