@@ -18,9 +18,14 @@ export function AccordionImages(props) {
         <AccordionContent>
           <div className="w-full flex gap-2 justify-between">
             <div id="eitContainer" className="flex gap-2">
-              <SunImage />
+              <SunImage table='eit171'/>
+              <SunImage table='eit195'/>
+              <SunImage table='eit284'/>
+              <SunImage table='eit304'/>
             </div>
             <div id="hmiContainer" className="flex gap-2">
+              <SunImage table='hmiigr'/>
+              <SunImage table='hmimag'/>
             </div>
           </div>
         </AccordionContent>
