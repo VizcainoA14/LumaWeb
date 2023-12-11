@@ -18,7 +18,6 @@ export default async function SunImage(props){
 
     const data = await petitions[props.table];
     let link = data.rows[0].url;
-    console.log(link);
     return(
         <div className="w-44 h-64">
             <div id="imageContainer" className="w-fit h-fit">
