@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import DataOverview from "./dataoverview";
 
@@ -27,7 +26,7 @@ export function DetailsPanel() {
           >
             {t("titleDetails")}
           </h>
-          <div className="pl-2 flex gap-2" style={{ fontFamily: "clash" }}>
+          <div className="pl-4 flex gap-2" style={{ fontFamily: "clash" }}>
             <chip
               className={
                 buttonActive === "over" ? "buttonActive" : "buttonData"
