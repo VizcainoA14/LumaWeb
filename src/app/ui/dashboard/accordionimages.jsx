@@ -1,3 +1,4 @@
+
 import SunImage from "@/app/ui/dashboard/sunimage";
 import {
   Accordion,
@@ -10,20 +11,20 @@ export function AccordionImages(props) {
   return (
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
-        <AccordionTrigger>
+        <AccordionTrigger className="p-0">
           <span className="text-secondary/60" style={{ fontFamily: "clash" }}>
             {props.title}
           </span>
         </AccordionTrigger>
         <AccordionContent>
-          <div className="w-full flex gap-2 justify-between">
-            <div id="eitContainer" className="flex gap-2">
-              <SunImage table='eit171'/>
+          <div className="w-full flex gap-2 justify-between pt-4 border-t-2 border-outline">
+            <div id="eitContainer" className="flex gap-4">
+              <SunImage table='eit171' date='2020-01-01'/>
               <SunImage table='eit195'/>
               <SunImage table='eit284'/>
               <SunImage table='eit304'/>
             </div>
-            <div id="hmiContainer" className="flex gap-2">
+            <div id="hmiContainer" className="flex gap-4">
               <SunImage table='hmiigr'/>
               <SunImage table='hmimag'/>
             </div>

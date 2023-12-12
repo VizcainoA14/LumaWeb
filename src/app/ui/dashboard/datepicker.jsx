@@ -13,16 +13,15 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function DatePicker() {
+export function DatePicker({onDateChange}) {
   const [date, setDate] = React.useState(null); // Aquí se ha eliminado <Date>
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={"outline"}
           className={cn(
-            "w-[130px] justify-centert text-left font-normal bg-on-background",
+            "w-[130px] justify-centert text-left font-normal bg-on-background rounded-full",
             !date && "text-muted-foreground"
           )}
         >

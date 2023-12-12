@@ -1,23 +1,57 @@
-import {useTranslations} from 'next-intl';
-import { Button } from "@/components/ui/button"
+"use client";
+import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import DataOverview from "./dataoverview";
 
-export function DetailsPanel(){
-    const t = useTranslations('Dash');
-    return(
-        <div className="w-full h-96 mt-4 flex flex-col p-2 border-2 border-surface rounded-md">
-            <div className="w-full h-1/3">
-                <div className='h-8 flex flex-row'>
-                    <h4 className="text-xl text-secondary" style={{fontFamily: 'clash'}}>{t('titleDetails')}</h4>
-                    <div className='pl-2 flex gap-4'>
-                        <Button className='bg-on-background h-full'>{t("buttonOverview")}</Button>
-                        <Button className='h-full' variant="outline">{t("buttonDetails")}</Button>
-                    </div>
-                </div>
-                <div className='border-1 border-surface'>
+export function DetailsPanel() {
+  const t = useTranslations("Dash");
 
-                </div>
-            </div>
-            <div className="w-full h-2/3"></div>
+  const [buttonActive, setButtonActive] = useState("over");
+
+  const handleButtonOver = () => {
+    setButtonActive("over");
+  };
+
+  const handleButtonInactive = () => {
+    setButtonActive("deta");
+  };
+
+  return (
+    <div className="w-full h-96 mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface rounded-md">
+      <div className="w-full h-1/3">
+        <div className="h-8 flex flex-row items-center">
+          <h
+            className="text-xl text-secondary"
+            style={{ fontFamily: "clash" }}
+          >
+            {t("titleDetails")}
+          </h>
+          <div className="pl-2 flex gap-2" style={{ fontFamily: "clash" }}>
+            <chip
+              className={
+                buttonActive === "over" ? "buttonActive" : "buttonData"
+              }
+              onClick={handleButtonOver}
+            >
+              {t("buttonOverview")}
+            </chip>
+            <chip
+              className={
+                buttonActive === "deta" ? "buttonActive" : "buttonData"
+              }
+              onClick={handleButtonInactive}
+            >
+              {t("buttonDetails")}
+            </chip>
+          </div>
         </div>
-    )
+      </div>
+      <div className="w-full h-2/3">
+        <div className="w-full h-2/3">
+          {buttonActive === "over" ? <DataOverview /> : <h1>Details</h1>}
+        </div>
+      </div>
+    </div>
+  );
 }

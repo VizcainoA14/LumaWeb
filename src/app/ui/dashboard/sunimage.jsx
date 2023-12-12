@@ -1,31 +1,15 @@
-import { sql } from "@vercel/postgres";
+
 import Image from "next/image"
 
-export default async function SunImage(props){
-    let petitions = {
-        'eit171': sql`SELECT url FROM eit171 WHERE date(date) = '2019-01-01'`,
-        'eit195': sql`SELECT url FROM eit195 WHERE date(date) = '2019-01-01'`,
-        'eit284': sql`SELECT url FROM eit284 WHERE date(date) = '2019-01-01'`,
-        'eit304': sql`SELECT url FROM eit304 WHERE date(date) = '2019-01-01'`,
-        'hmiigr': sql`SELECT url FROM hmiigr WHERE date(date) = '2019-01-01'`,
-        'hmimag': sql`SELECT url FROM hmimag WHERE date(date) = '2019-01-01'`,
-    };
-
-    // Asegúrate de que props.table es una clave válida en petitions
-    if (!petitions.hasOwnProperty(props.table)) {
-        throw new Error('Invalid table name');
-    }
-
-    const data = await petitions[props.table];
-    let link = data.rows[0].url;
+export default function SunImage(props){
     return(
         <div className="w-44 h-64">
             <div id="imageContainer" className="w-fit h-fit">
                 <Image
-                    src={link}
+                    src={'https://soho.nascom.nasa.gov/data/synoptic/sunspots/sunspots_1024_20231201.jpg'}
                     alt="Sun image"
-                    width={176}
-                    height={176}
+                    width={1024}
+                    height={1024}
                     className="w-44 h-44 rounded-md"
                 />
             </div>

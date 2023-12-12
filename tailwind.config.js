@@ -10,56 +10,56 @@ module.exports = {
   theme: {
     colors: {
       'primary': {
-        DEFAULT: '#0053da',
-        dark: '#b4c5ff',
+        DEFAULT: '#006686',
+        dark: '#70d2ff',
       },
       'on-primary': {
         DEFAULT: '#ffffff',
-        dark: '#002a78',
+        dark: '#003547',
       },
       'primary-container': {
-        DEFAULT: '#dbe1ff',
-        dark: '#003ea8',
+        DEFAULT: '#c0e8ff',
+        dark: '#004d66',
       },
       'on-primary-container': {
-        DEFAULT: '#00174b',
-        dark: '#dbe1ff',
+        DEFAULT: '#001e2b',
+        dark: '#c0e8ff',
       },
       'secondary': {
-        DEFAULT: '#595e72',
-        dark: '#c1c5dd',
+        DEFAULT: '#4d616c',
+        dark: '#b4cad6',
       },
       'on-secondary': {
         DEFAULT: '#ffffff',
-        dark: '#2a3042',
+        dark: '#1f333d',
       },
       'secondary-container': {
-        DEFAULT: '#dde1f9',
-        dark: '#414659',
+        DEFAULT: '#d0e6f3',
+        dark: '#364954',
       },
       'on-secondary-container': {
-        DEFAULT: '#161b2c',
-        dark: '#dde1f9',
+        DEFAULT: '#091e27',
+        dark: '#d0e6f3',
       },
       'background': {
-        DEFAULT: '#fefbff',
-        dark: '#1b1b1f',
+        DEFAULT: '#fbfcfe',
+        dark: '#191c1e',
       },
       'on-background': {
-        DEFAULT: '#1b1b1f',
-        dark: '#e4e2e6',
+        DEFAULT: '#191c1e',
+        dark: '#e1e2e5',
       },
       'surface': {
-        DEFAULT: '#e2e2ec',
-        dark: '#1b1b1f',
+        DEFAULT: '#dce3e9',
+        dark: '#40484c',
       },
       'on-surface': {
-        DEFAULT: '#1b1b1f',
-        dark: '#e4e2e6',
+        DEFAULT: '#40484c',
+        dark: '#c0c7cd',
       },
       'outline': {
-        DEFAULT: '#757680',
-        dark: '#8f909a',
+        DEFAULT: '#71787d',
+        dark: '#8a9297',
       },
     },
     container: {
