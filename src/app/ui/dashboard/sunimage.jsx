@@ -12,10 +12,10 @@ export default function SunImage(props){
                     alt="Sun image"
                     width={1024}
                     height={1024}
-                    className="w-44 h-44 rounded-md"
+                    className="w-44 h-44 rounded-md dark:border-2 border-surface-dark"
                 />
             </div>
-            <div id="nameContainer" className="w-full border-2 border-surface text-secondary/80 flex p-2 rounded-md mt-2 place-center">
+            <div id="nameContainer" className="w-full border-2 border-surface dark:border-surface-dark text-secondary dark:text-secondary-dark flex p-2 rounded-md mt-2 place-center">
                 <h4 className="" style={{fontFamily: 'clash'}}>{props.table.toUpperCase()}</h4>
             </div>
         </div>

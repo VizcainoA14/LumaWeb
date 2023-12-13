@@ -12,7 +12,7 @@ export function AccordionImages(props) {
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger className="p-0">
-          <span className="text-secondary/60" style={{ fontFamily: "clash" }}>
+          <span className="text-secondary/60 dark:text-secondary-dark/60" style={{ fontFamily: "clash" }}>
             {props.title}
           </span>
         </AccordionTrigger>

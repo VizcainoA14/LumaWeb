@@ -17,11 +17,11 @@ export function DetailsPanel() {
   };
 
   return (
-    <div className="w-full h-96 mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface rounded-md">
+    <div className="w-full h-96 mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface dark:border-surface-dark rounded-md">
       <div className="w-full h-1/3">
         <div className="h-8 flex flex-col md:flex-row md:items-center">
           <h
-            className="text-xl text-secondary"
+            className="text-xl text-secondary dark:text-secondary-dark"
             style={{ fontFamily: "clash" }}
           >
             {t("titleDetails")}

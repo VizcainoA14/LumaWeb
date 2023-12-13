@@ -12,9 +12,9 @@ const Page = () => {
     <div className='w-full h-screen flex flex-col md:p-2'>
         <div id="nav" className="w-full h-fit flex flex-col mb-4 md:flex-row md:justify-between md:items-center">
             <div id="titleContainer">
-                <h1 id='titleOneDate' className='text-3xl text-on-background'>{t('title')}</h1>
+                <h1 id='titleOneDate' className='text-3xl text-on-background dark:text-on-background-dark'>{t('title')}</h1>
             </div>
-            <div id="dateContainer" className='mt-2 md:mt-0'>
+            <div id="dateContainer" className='flex mt-2 md:mt-0'>
                 <DatePicker/>
             </div>
         </div>

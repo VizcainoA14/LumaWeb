@@ -22,11 +22,11 @@ chip {
 }
 
 .buttonData {
-  @apply text-sm text-secondary/60 border border-surface;
+  @apply text-sm text-secondary/60 dark:text-secondary-dark border border-surface dark:border-surface-dark;
 }
 
 .buttonActive {
-  @apply text-sm bg-on-background text-background;
+  @apply text-sm bg-on-background dark:bg-secondary-dark text-background dark:text-on-secondary-dark;
 }
 
 #image {

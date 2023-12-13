@@ -11,7 +11,7 @@ import {
 export default function DataOverview() {
   return (
     <div>
-      <Table className="bg-secondary-container rounded-md text-on-secondary-container" style={{fontFamily: 'clash'}}>
+      <Table className="bg-secondary-container dark:bg-secondary-dark rounded-md text-on-secondary-container dark:text-on-secondary-dark" style={{fontFamily: 'clash'}}>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Parameter</TableHead>
