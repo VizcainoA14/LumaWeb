@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import { notFound } from "next/navigation";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Can be imported from a shared config
 const locales = ["en", "es"];
@@ -16,6 +17,7 @@ export default function LocaleLayout({ children, params: { locale } }) {
     <html lang={locale}>
       <body>
           {children}
+          <SpeedInsights />
       </body>
     </html>
   );
