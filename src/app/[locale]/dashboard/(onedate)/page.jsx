@@ -6,8 +6,10 @@ import { AccordionImages } from '@/app/ui/dashboard/accordionimages';
 import { DetailsPanel } from '@/app/ui/dashboard/detailspanel';
 
 const Page = () => {
+  // Important for translations
   const t = useTranslations('Dash');
   const messages = useMessages();
+
   return (
     <div className='w-full h-screen flex flex-col md:p-2'>
         <div id="nav" className="w-full h-fit flex flex-col mb-4 md:flex-row md:justify-between md:items-center">

@@ -1,9 +1,6 @@
 
 import Image from "next/image"
 export default function SunImage(props){
-
-
-
     return(
         <div className="w-44 h-64">
             <div id="imageContainer" className="w-fit h-fit">

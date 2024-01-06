@@ -12,10 +12,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import DateContext from "@/context/DateContext";
 
 export function DatePicker({onDateChange}) {
-  const [date, setDate] = React.useState(null); // Aquí se ha eliminado <Date>
-
+  const {date, setDate} = React.useContext(DateContext);
+  
   return (
     <Popover>
       <PopoverTrigger asChild>
