@@ -12,7 +12,6 @@ import { useContext } from "react";
 export function AccordionImages(props) {
 
   const { date } = useContext(DateContext)
-
   return (
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">

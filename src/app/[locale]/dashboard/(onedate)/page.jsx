@@ -1,14 +1,17 @@
 import pick from 'lodash/pick';
-import {NextIntlClientProvider, useMessages} from 'next-intl';
-import {useTranslations} from 'next-intl';
+import {NextIntlClientProvider} from 'next-intl';
+import {getTranslations, getMessages} from 'next-intl/server';
 import { DatePicker } from '@/app/ui/dashboard/datepicker';
 import { AccordionImages } from '@/app/ui/dashboard/accordionimages';
 import { DetailsPanel } from '@/app/ui/dashboard/detailspanel';
+import fetchPictures171 from "@/lib/data"
 
-const Page = () => {
+const Page = async () => {
   // Important for translations
-  const t = useTranslations('Dash');
-  const messages = useMessages();
+  const t = await getTranslations('Dash');
+  const messages = await getMessages();
+  
+  let pictures171 = await fetchPictures171('2011-01-01')
 
   return (
     <div className='w-full h-screen flex flex-col md:p-2'>
