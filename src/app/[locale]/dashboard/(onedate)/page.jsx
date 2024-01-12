@@ -4,15 +4,15 @@ import {getTranslations, getMessages} from 'next-intl/server';
 import { DatePicker } from '@/app/ui/dashboard/datepicker';
 import { AccordionImages } from '@/app/ui/dashboard/accordionimages';
 import { DetailsPanel } from '@/app/ui/dashboard/detailspanel';
-import fetchPictures171 from "@/lib/data"
+import fetchPictures from '@/lib/data';
+
 
 const Page = async () => {
   // Important for translations
   const t = await getTranslations('Dash');
   const messages = await getMessages();
   
-  let pictures171 = await fetchPictures171('2011-01-01')
-
+  
   return (
     <div className='w-full h-screen flex flex-col md:p-2'>
         <div id="nav" className="w-full h-fit flex flex-col mb-4 md:flex-row md:justify-between md:items-center">

@@ -41,6 +41,22 @@ module.exports = {
         DEFAULT: '#091e27',
         dark: '#d0e6f3',
       },
+      'tertiary': {
+        DEFAULT: '#5e5a7d',
+        dark: '#c8c2ea',
+      },
+      'on-tertiary': {
+        DEFAULT: '#ffffff',
+        dark: '#302c4c',
+      },
+      'tertiary-container': {
+        DEFAULT: '#e4dfff',
+        dark: '#464364',
+      },
+      'on-tertiary-container': {
+        DEFAULT: '#1c172b',
+        dark: '#e4dfff',
+      },
       'background': {
         DEFAULT: '#fbfcfe',
         dark: '#191c1e',

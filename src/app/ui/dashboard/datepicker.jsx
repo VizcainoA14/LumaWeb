@@ -21,16 +21,17 @@ export function DatePicker({onDateChange}) {
     <Popover>
       <PopoverTrigger asChild>
         <Button
+          style={{fontFamily: 'clash'}}
           className={cn(
-            "w-[130px] justify-centert text-left font-normal bg-on-background rounded-full dark:bg-primary-dark",
+            "w-fit justify-centert text-left font-normal bg-tertiary-container text-on-tertiary-container rounded-full dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark",
             !date && "text-muted-foreground"
           )}
         >
-          <CalendarIcon className="mr-2 h-4 w-4 text-background dark:text-on-primary-dark" />
-          {date ? format(date, "PPP") : <span className="text-background dark:text-background-dark" style={{fontFamily: 'clash'}}>Pick a date</span>}
+          <CalendarIcon className="mr-2 h-4 w-4 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
+          {date ? format(date, "PPP") : <span className="text-on-tertiary-container dark:text-on-tertiary-container-dark" style={{fontFamily: 'clash'}}>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0 bg-secondary text-on-secondary dark:bg-secondary-dark dark:text-on-secondary-dark mr-10">
+      <PopoverContent className="w-auto p-0 bg-surface text-on-surface dark:bg-surface-dark dark:text-on-surface-dark mt-1 mx-4 md:mx-10">
         <Calendar
           mode="single"
           selected={date}
