@@ -4,7 +4,6 @@ import {getTranslations, getMessages} from 'next-intl/server';
 import { DatePicker } from '@/app/ui/dashboard/datepicker';
 import { AccordionImages } from '@/app/ui/dashboard/accordionimages';
 import { DetailsPanel } from '@/app/ui/dashboard/detailspanel';
-import fetchPictures from '@/lib/data';
 
 
 const Page = async () => {

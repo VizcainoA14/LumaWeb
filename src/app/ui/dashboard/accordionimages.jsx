@@ -24,7 +24,7 @@ export function AccordionImages(props) {
         <AccordionContent>
           <div className="w-full flex gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll md:overflow-hidden">
             <div id="eitContainer" className="flex gap-4">
-              <SunImage table='eit171' date='2020-01-01'/>
+              <SunImage table='171' date='2020-01-01'/>
               <SunImage table='eit195'/>
               <SunImage table='eit284'/>
               <SunImage table='eit304'/>
