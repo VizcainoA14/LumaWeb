@@ -1,6 +1,6 @@
 "use client";
 import pick from "lodash/pick";
-import { NextIntlClientProvider } from "next-intl";
+import { useTranslations } from "next-intl";
 import { getTranslations, getMessages } from "next-intl/server";
 import { DatePicker } from "@/app/ui/dashboard/datepicker";
 import { AccordionImages } from "@/app/ui/dashboard/accordionimages";
@@ -11,6 +11,7 @@ import { useState, useEffect} from "react";
 const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [images, setImages] = useState(null);
+  const t = useTranslations("Dash");
 
   // Defining a date handler
   const handleDateChange = date => {
@@ -61,7 +62,7 @@ const Page = () => {
           <h1
             id="titleOneDate"
             className="text-3xl text-on-background dark:text-on-background-dark"
-          />
+          >{t('title')}</h1>
         </div>
         <div id="dateContainer" className="flex mt-2 md:mt-0">
           <DatePicker onDateChange={handleDateChange} />
