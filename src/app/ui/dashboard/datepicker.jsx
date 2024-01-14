@@ -16,6 +16,11 @@ import DateContext from "@/context/DateContext";
 
 export function DatePicker({onDateChange}) {
   const {date, setDate} = React.useContext(DateContext);
+
+  const handleDateChange = (date) => {
+    setDate(date);
+    onDateChange(date);
+  }
   
   return (
     <Popover>
@@ -31,11 +36,11 @@ export function DatePicker({onDateChange}) {
           {date ? format(date, "PPP") : <span className="text-on-tertiary-container dark:text-on-tertiary-container-dark" style={{fontFamily: 'clash'}}>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0 bg-surface text-on-surface dark:bg-surface-dark dark:text-on-surface-dark mt-1 mx-4 md:mx-10">
+      <PopoverContent className="w-auto p-0 bg-tertiary-container text-on-tertiary-container dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark mt-1 mx-4 md:mx-10">
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={handleDateChange}
           initialFocus
         />
       </PopoverContent>

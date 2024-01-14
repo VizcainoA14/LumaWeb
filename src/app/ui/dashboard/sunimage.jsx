@@ -1,8 +1,6 @@
-import fetchPictures from "@/lib/data"
+
 import Image from "next/image"
-
-
-export default async function SunImage(props){
+export default function SunImage(props){
 
     return(
         <div className="w-44 h-64">
