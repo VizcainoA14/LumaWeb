@@ -2,14 +2,30 @@
 import Image from "next/image"
 export default function SunImage(props){
 
+    let url
+
+    if(props.table === 'eit171'){
+        url = props.images?.pictures171?.rows[0].url
+    } else if(props.table === 'eit195'){
+        url = props.images?.pictures195?.rows[0].url
+    } else if(props.table === 'eit284'){
+        url = props.images?.pictures284?.rows[0].url
+    } else if(props.table === 'eit304'){
+        url = props.images?.pictures304?.rows[0].url
+    } else if(props.table === 'hmiigr'){
+        url = props.images?.pictureshmiigr?.rows[0].url
+    } else if(props.table === 'hmimag'){
+        url = props.images?.pictureshmimag?.rows[0].url
+    }
+
     return(
         <div className="w-44 h-64">
             <div id="imageContainer" className="w-fit h-fit">
                 <Image
-                    src={'https://soho.nascom.nasa.gov/data/REPROCESSING/Completed/2023/eit171/20231212/20231212_0100_eit171_1024.jpg'}
+                    src={url}
                     alt="Sun image"
-                    width={1024}
-                    height={1024}
+                    width={256}
+                    height={256}
                     className="w-44 h-44 rounded-md dark:border-2 border-surface-dark"
                 />
             </div>

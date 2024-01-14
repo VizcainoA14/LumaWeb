@@ -10,7 +10,7 @@ import { useState, useEffect} from "react";
 
 const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState(null);
 
   // Defining a date handler
   const handleDateChange = date => {
@@ -38,7 +38,7 @@ const Page = () => {
     fetch(`/api/get-pictures?date=${fixedDate}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        setImages(data);
       })
       .catch(err => console.log(err))
       .finally(() => {});
@@ -69,14 +69,15 @@ const Page = () => {
       </div>
       <div className="w-full flex gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll md:overflow-hidden">
         <div id="eitContainer" className="flex gap-4">
-          <SunImage table="eit171" date="2020-01-01" />
-          <SunImage table="eit195" date="2020-01-01" />
-          <SunImage table="eit284" date="2020-01-01" />
-          <SunImage table="eit304" date="2020-01-01" />
+          <SunImage table="eit171" images={images} />
+          <SunImage table="eit195" images={images} />
+          <SunImage table="eit284" images={images} />
+          <SunImage table="eit304" images={images} />
         </div>
         <div id="hmiContainer" className="flex gap-4">
-          <SunImage table="hmiigr" date="2020-01-01" />
-          <SunImage table="hmimag" date="2020-01-01" />
+          <SunImage table="hmiigr" images={images} />
+          <SunImage table="hmimag" images={images} />
+
         </div>
       </div>
     </div>
