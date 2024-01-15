@@ -1,16 +1,14 @@
 "use client";
-import pick from "lodash/pick";
 import { useTranslations } from "next-intl";
 import { getTranslations, getMessages } from "next-intl/server";
 import { DatePicker } from "@/app/ui/dashboard/datepicker";
-import { AccordionImages } from "@/app/ui/dashboard/accordionimages";
 import { DetailsPanel } from "@/app/ui/dashboard/detailspanel";
 import SunImage from "@/app/ui/dashboard/sunimage";
 import { useState, useEffect} from "react";
 
 const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [images, setImages] = useState(null);
+  const [data, setData] = useState(null);
   const t = useTranslations("Dash");
 
   // Defining a date handler
@@ -35,11 +33,12 @@ const Page = () => {
   // Fixing the date to be used in the API
   let fixedDate = selectedDate ? fixDate(selectedDate) : null;
 
-  const getImages = () => {
-    fetch(`/api/get-pictures?date=${fixedDate}`)
+  const getData = () => {
+    fetch(`/api/get-data?date=${fixedDate}`)
       .then(res => res.json())
       .then(data => {
-        setImages(data);
+        setData(data);
+        console.log();
       })
       .catch(err => console.log(err))
       .finally(() => {});
@@ -47,13 +46,14 @@ const Page = () => {
 
   useEffect(
     () => {
-      getImages();
+      getData();
     },
     [selectedDate]
   );
 
   return (
     <div className="w-full h-screen flex flex-col md:p-2">
+      {/* Header here */}
       <div
         id="nav"
         className="w-full h-fit flex flex-col mb-4 md:flex-row md:justify-between md:items-center"
@@ -68,19 +68,23 @@ const Page = () => {
           <DatePicker onDateChange={handleDateChange} />
         </div>
       </div>
+
+      {/* Sun images here */}
       <div className="w-full flex gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll md:overflow-hidden">
         <div id="eitContainer" className="flex gap-4">
-          <SunImage table="eit171" images={images} />
-          <SunImage table="eit195" images={images} />
-          <SunImage table="eit284" images={images} />
-          <SunImage table="eit304" images={images} />
+          <SunImage table="eit171" image={data?.data171?.rows[0]?.url} />
+          <SunImage table="eit195" image={data?.data195?.rows[0]?.url} />
+          <SunImage table="eit284" image={data?.data284?.rows[0]?.url} />
+          <SunImage table="eit304" image={data?.data304?.rows[0]?.url} />
         </div>
         <div id="hmiContainer" className="flex gap-4">
-          <SunImage table="hmiigr" images={images} />
-          <SunImage table="hmimag" images={images} />
-
+          <SunImage table="hmiigr" image={data?.datahmiigr?.rows[0]?.url} />
+          <SunImage table="hmimag" image={data?.datahmimag?.rows[0]?.url} />
         </div>
       </div>
+
+      {/* Details panel here */}
+      <DetailsPanel/>
     </div>
   );
 };
