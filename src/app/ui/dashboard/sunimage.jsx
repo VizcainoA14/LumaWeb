@@ -4,7 +4,7 @@ export default function SunImage(props) {
     <div className="w-44 h-64">
       <div id="imageContainer" className="w-fit h-fit">
         {props.image == null
-          ? <div className="w-44 h-44 bg-surface" />
+          ? <div className="w-44 h-44 bg-secondary-container dark:bg-secondary-container-dark" />
           : <Image
               src={props.image}
               alt="Sun image"

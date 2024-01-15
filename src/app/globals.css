@@ -26,7 +26,7 @@ chip {
 }
 
 .buttonActive {
-  @apply text-sm bg-on-background dark:bg-secondary-dark text-background dark:text-on-secondary-dark;
+  @apply text-sm bg-primary-container dark:bg-primary-container-dark text-on-primary-container dark:text-on-primary-container-dark;
 }
 
 #image {
