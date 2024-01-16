@@ -17,6 +17,19 @@ chip {
 }
 
 /* Dashboard */
+#dashboard::-webkit-scrollbar {
+  @apply w-3;
+}
+
+#dashboard::-webkit-scrollbar-thumb {
+  @apply bg-surface dark:bg-surface-dark;
+}
+
+/* Handle */
+#dashboard::-webkit-scrollbar-thumb {
+  @apply rounded-lg
+}
+
 #titleOneDate {
   font-family: "clash", sans-serif;
 }
@@ -26,7 +39,7 @@ chip {
 }
 
 .buttonActive {
-  @apply text-sm bg-primary-container dark:bg-primary-container-dark text-on-primary-container dark:text-on-primary-container-dark;
+  @apply text-sm bg-tertiary-container dark:bg-tertiary-container-dark text-on-tertiary-container dark:text-on-tertiary-container-dark;
 }
 
 #image {
