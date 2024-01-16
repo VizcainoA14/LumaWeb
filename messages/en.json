@@ -1,6 +1,7 @@
 {
   "Index": {
-    "title": "A new way to study solar activity."
+    "title": "A new way to study solar activity.",
+    "subtitle": "The best way to understand the solar activity x2"
   },
 
   "Dash": {
@@ -9,5 +10,6 @@
       "titleDetails": "Extracted data",
       "buttonOverview": "Overview",
       "buttonDetails": "Details"
+
   }
 }
