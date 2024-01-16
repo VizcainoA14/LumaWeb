@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import DataOverview from "./dataoverview";
 
-export function DetailsPanel() {
+export function DetailsPanel(props) {
   const t = useTranslations("Dash");
 
   const [buttonActive, setButtonActive] = useState("over");
@@ -15,6 +15,8 @@ export function DetailsPanel() {
   const handleButtonInactive = () => {
     setButtonActive("deta");
   };
+
+  let data = props?.data?.data171?.rows[0];
 
   return (
     <div className="w-full h-96 mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface dark:border-surface-dark rounded-md">
@@ -48,7 +50,7 @@ export function DetailsPanel() {
       </div>
       <div className="w-full h-2/3">
         <div className="w-full h-2/3">
-          {buttonActive === "over" ? <DataOverview /> : <h1>Details</h1>}
+          {buttonActive === "over" ? <DataOverview data={data} /> : <h1>Details</h1>}
         </div>
       </div>
     </div>

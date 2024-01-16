@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { getTranslations, getMessages } from "next-intl/server";
 import { DatePicker } from "@/app/ui/dashboard/datepicker";
 import { DetailsPanel } from "@/app/ui/dashboard/detailspanel";
 import SunImage from "@/app/ui/dashboard/sunimage";
@@ -38,7 +37,6 @@ const Page = () => {
       .then(res => res.json())
       .then(data => {
         setData(data);
-        console.log();
       })
       .catch(err => console.log(err))
       .finally(() => {});
@@ -84,7 +82,7 @@ const Page = () => {
       </div>
 
       {/* Details panel here */}
-      <DetailsPanel/>
+      <DetailsPanel data={data}/>
     </div>
   );
 };

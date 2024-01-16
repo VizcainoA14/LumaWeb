@@ -8,10 +8,20 @@ import {
   TableRow
 } from "@/components/ui/table";
 
-export default function DataOverview() {
+export default function DataOverview(props) {
+  let data = props.data
+    ? Object.keys(props.data).map(key => ({
+        name: key,
+        value: props.data[key]
+      }))
+    : [];
+
   return (
     <div>
-      <Table className="bg-secondary-container dark:bg-secondary-dark rounded-md text-on-secondary-container dark:text-on-secondary-dark" style={{fontFamily: 'clash'}}>
+      <Table
+        className="bg-secondary-container dark:bg-secondary-dark rounded-md text-on-secondary-container dark:text-on-secondary-dark"
+        style={{ fontFamily: "clash" }}
+      >
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Parameter</TableHead>
@@ -19,12 +29,17 @@ export default function DataOverview() {
             <TableHead>Description</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody style={{fontFamily: 'archivo'}}>
-          <TableRow>
-            <TableCell className="font-medium">Entropy</TableCell>
-            <TableCell>38.6</TableCell>
-            <TableCell>measure of the degree of randomness in the image.</TableCell>
-          </TableRow>
+        <TableBody style={{ fontFamily: "archivo" }}>
+          {data.map(element =>
+            <TableRow key={element.name}>
+              <TableCell className="font-medium">
+                {element.name}
+              </TableCell>
+              <TableCell>
+                {element.value}
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
     </div>
