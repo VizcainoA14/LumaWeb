@@ -1,9 +1,13 @@
 {
-    "Index": {
-      "title": "A new way to study the sun activity."
-    },
+  "Index": {
+    "title": "A new way to study solar activity."
+  },
 
-    "Dash": {
-      "title": "Dashboard"
-    }
+  "Dash": {
+      "title": "Parameters for a date",
+      "titleImages": "Show images",
+      "titleDetails": "Extracted data",
+      "buttonOverview": "Overview",
+      "buttonDetails": "Details"
+  }
 }
