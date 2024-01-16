@@ -16,6 +16,10 @@ chip {
   @apply h-8 rounded-lg flex items-center justify-center px-4 cursor-pointer;
 }
 
+button{
+  @apply h-10 rounded-full px-6 w-fit
+}
+
 /* Dashboard */
 #dashboard::-webkit-scrollbar {
   @apply w-3;

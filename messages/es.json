@@ -1,7 +1,8 @@
 {
     "Landing": {
-      "title": "Una nueva forma de estudiar la actividad solar."
-      
+      "title": "Una nueva forma de estudiar la actividad solar.",
+      "navbar": "Luma"
+
     },
 
     "Dash": {
