@@ -1,25 +1,81 @@
 import Image from "next/image";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger
+} from "@/components/ui/hover-card";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
+
+// SunImage component
 export default function SunImage(props) {
+  // Determine the color of the dot based on the table prop
+  let dotColor;
+  switch (props.table) {
+    case "eit171":
+      dotColor = "blue";
+      break;
+    case "eit195":
+      dotColor = "green";
+      break;
+    case "eit284":
+      dotColor = "yellow";
+      break;
+    case "eit304":
+      dotColor = "red";
+      break;
+    case "hmiigr":
+      dotColor = "orange";
+      break;
+    case "hmimag":
+      dotColor = "gray";
+      break;
+    default:
+      dotColor = "slate";
+      break;
+  }
+
   return (
-    <div className="w-44 h-64">
+    <div className="relative w-44 h-64">
+      {/* Image container */}
       <div id="imageContainer" className="w-fit h-fit">
         {props.image == null
-          ? <div className="w-44 h-44 animate-pulse bg-secondary-container dark:bg-secondary-container-dark rounded-lg" />
-          : <Image
+          ? <div className="w-44 h-44 relative animate-pulse rounded-lg bg-secondary-container dark:bg-secondary-container-dark" />
+          : <>
+          <Image
               src={props.image}
               alt="Sun image"
               width={256}
               height={256}
               className="w-44 h-44 rounded-md dark:border-2 border-surface-dark"
-            />}
+            />
+          <div
+          id="idDot"
+          className={`w-3 h-3 mx-1 absolute top-2 left-1 grid place-content-center rounded-full bg-${dotColor}-500`}
+          >
+          <div className={`w-3 h-3 rounded-full animate-ping bg-${dotColor}-500`} />
+          </div> 
+        </>
+        }
       </div>
+      {/* Name container */}
       <div
         id="nameContainer"
-        className="w-full border-2 border-surface dark:border-surface-dark text-secondary dark:text-secondary-dark flex p-2 rounded-md mt-2 place-center"
+        className="w-full p-2 mt-2 flex items-center justify-between border-2 border-surface dark:border-surface-dark text-secondary dark:text-secondary-dark rounded-md"
       >
-        <h4 className="" style={{ fontFamily: "clash" }}>
-          {props.table.toUpperCase()}
-        </h4>
+        <div className="flex items-center">
+          <h4 className="" style={{ fontFamily: "clash" }}>
+            {props.table.toUpperCase()}
+          </h4> 
+        </div>
+        {/* Hover card for additional information */}
+        <HoverCard>
+          <HoverCardTrigger>
+            <InfoCircledIcon className="w-5 h-5"/>
+          </HoverCardTrigger>
+          <HoverCardContent>
+            The React Framework – created and maintained by @vercel.
+          </HoverCardContent>
+        </HoverCard>
       </div>
     </div>
   );

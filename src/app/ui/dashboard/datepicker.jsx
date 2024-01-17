@@ -28,7 +28,7 @@ export function DatePicker({onDateChange}) {
         <Button
           style={{fontFamily: 'clash'}}
           className={cn(
-            "w-fit justify-centert text-left font-normal bg-tertiary-container text-on-tertiary-container rounded-full dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark",
+            "w-fit justify-centert text-left font-normal bg-tertiary-container hover:bg-tertiary-container text-on-tertiary-container rounded-full dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark hover:dark:bg-tertiary-container-dark hover:dark:text-on-tertiary-container-dark hover:shadow-sm",
             !date && "text-muted-foreground"
           )}
         >
