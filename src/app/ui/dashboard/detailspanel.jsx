@@ -17,10 +17,10 @@ export function DetailsPanel(props) {
     setButtonActive("deta");
   };
 
-  let data = props?.data?.data171?.rows[0];
+  let data = props?.data;
 
   return (
-    <div className="w-full h-96 mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface dark:border-surface-dark rounded-md">
+    <div className="w-full h-full mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface dark:border-surface-dark rounded-md">
       <div className="w-full">
         <div className="h-10 flex flex-col md:flex-row md:items-center">
           <h
@@ -50,7 +50,7 @@ export function DetailsPanel(props) {
         </div>
       </div>
       <div className="w-full">
-        <div className="w-full h-fit">
+        <div className="w-full h-max">
           {buttonActive === "over" ? <DataOverview data={data} /> : <h1>Details</h1>}
         </div>
       </div>

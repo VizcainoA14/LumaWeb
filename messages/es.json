@@ -1,14 +1,37 @@
 {
-    "Landing": {
-      "title": "Una nueva forma de estudiar la actividad solar."
-      
-    },
+  "Landing": {
+    "title": "Una nueva forma de estudiar la actividad solar."
+  },
 
-    "Dash": {
-        "title": "Parametros para una fecha",
-        "titleImages": "Mostrar imagenes",
-        "titleDetails": "Datos extraidos",
-        "buttonOverview": "Vista general",
-        "buttonDetails": "Detalles"
-    }
+  "Dash": {
+    "title": "Parametros para una fecha",
+    "titleImages": "Mostrar imagenes",
+    "titleDetails": "Datos extraidos",
+    "buttonOverview": "Vista general",
+    "buttonDetails": "Detalles"
+  },
+
+  "OverviewChart": {
+    "entropyTitle": "Entropia",
+    "entropyDescription": "La entropia es una medida de la desorden de un sistema. En este caso, la entropia es calculada a partir de la distribucion de los valores de los pixeles de la imagen. La entropia es alta cuando la distribucion es uniforme, y baja cuando la distribucion es concentrada en un valor.",
+    "meanIntensityTitle": "Intensidad media",
+    "meanIntensityDescription": "La intensidad media es la media de los valores de los pixeles de la imagen.",
+    "standardDeviationTitle": "Desviación Estándar",
+    "standardDeviationDescription": "La desviación estándar es una medida de la cantidad de variación o dispersión de un conjunto de valores.",
+    "fractalDimensionTitle": "Dimensión Fractal",
+    "fractalDimensionDescription": "La dimensión fractal es una medida estadística de la complejidad de un objeto o conjunto de datos.",
+    "asymmetryTitle": "Asimetría",
+    "asymmetryDescription": "La asimetría es una medida de la falta de simetría en la distribución de los valores de los pixeles de la imagen.",
+    "kurtosisTitle": "Kurtosis",
+    "kurtosisDescription": "La kurtosis es una medida de la 'pesadez' de las colas de una distribución.",
+    "uniformityTitle": "Uniformidad",
+    "uniformityDescription": "La uniformidad es una medida de la homogeneidad de los valores de los pixeles de la imagen.",
+    "relativeSmoothnessTitle": "Suavidad Relativa",
+    "relativeSmoothnessDescription": "La suavidad relativa es una medida de la variación en la intensidad de los pixeles de la imagen.",
+    "tamuraContrastTitle": "Contraste Tamura",
+    "tamuraContrastDescription": "El contraste Tamura es una medida de la diferencia en la intensidad de los pixeles adyacentes en la imagen.",
+    "tamuraDirectionalityTitle": "Direccionalidad Tamura",
+    "tamuraDirectionalityDescription": "La direccionalidad Tamura es una medida de la orientación preferida de los pixeles en la imagen."
+  }
+
 }
