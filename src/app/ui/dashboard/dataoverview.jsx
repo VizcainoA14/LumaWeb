@@ -1,3 +1,4 @@
+
 import OverChart from "./Charts/OverviewChart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -6,29 +7,29 @@ function generateDataArray(data, parameter) {
     return [];
   }
 
-  return Object.keys(data)
-    .map(key => {
-      if (data[key].rows && data[key].rows.length > 0) {
-        return {
-          name: key,
-          "Parameter Value": data[key].rows[0][parameter]
-        };
-      } else {
-        return null;
-      }
-    })
-    .filter(item => item !== null);
+  // Crear un objeto para almacenar los valores de cada parámetro
+  let paramValues = {};
+
+  // Recorrer cada tabla de datos
+  Object.keys(data).forEach(key => {
+    if (data[key].rows && data[key].rows.length > 0) {
+      // Añadir el valor del parámetro para esta tabla al objeto paramValues
+      paramValues[key] = data[key].rows[0][parameter];
+    }
+  });
+
+  // Devolver un array que contiene un solo objeto, que tiene una propiedad para cada tabla de datos
+  return [{ name: parameter, ...paramValues }];
 }
+
 
 export default function DataOverview(props) {
   let data = props.data;
 
-  console.log(generateDataArray(data, "entropy"));
-
   return (
     <div className="w-full">
       <Tabs defaultValue="entropy" className="w-full mt-4">
-        <div className="w-full overflow-x-scroll lg:overflow-hidden">
+        <div className="scrollable w-full overflow-x-scroll xl:overflow-hidden">
           <TabsList
             className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
             style={{ fontFamily: "clash" }}

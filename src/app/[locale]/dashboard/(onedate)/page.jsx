@@ -68,14 +68,14 @@ const Page = () => {
       </div>
 
       {/* Sun images here */}
-      <div id="sunImagesContainer" className="w-full flex gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll lg:overflow-hidden">
-        <div id="eitContainer" className="flex gap-4">
+      <div id="sunImagesContainer" className="scrollable w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll xl:overflow-hidden">
+        <div id="eitContainer" className="flex gap-4 xl:gap-2">
           <SunImage table="eit171" image={data?.data171?.rows[0]?.url} />
           <SunImage table="eit195" image={data?.data195?.rows[0]?.url} />
           <SunImage table="eit284" image={data?.data284?.rows[0]?.url} />
           <SunImage table="eit304" image={data?.data304?.rows[0]?.url} />
         </div>
-        <div id="hmiContainer" className="flex gap-4">
+        <div id="hmiContainer" className="flex gap-4 xl:gap-2">
           <SunImage table="hmiigr" image={data?.datahmiigr?.rows[0]?.url} />
           <SunImage table="hmimag" image={data?.datahmimag?.rows[0]?.url} />
         </div>
