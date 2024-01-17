@@ -12,9 +12,9 @@ export default function OverChart(props) {
   const t = useTranslations("OverviewChart");
 
   return (
-    <Card className="w-full rounded-sm bg-background dark:bg-background-dark">
+    <Card className="w-full rounded-sm bg-background dark:bg-background-dark p-2">
       <Title style={{fontFamily: 'Clash'}} >{t(`${props.parameter}Title`)}</Title>
-      <Subtitle style={{fontFamily: 'Archivo'}} className="max-w-[60vw]">
+      <Subtitle style={{fontFamily: 'Archivo'}} className="md:max-w-[60vw]">
         {t(`${props.parameter}Description`)}
       </Subtitle>
       <BarChart

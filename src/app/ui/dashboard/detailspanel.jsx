@@ -21,8 +21,8 @@ export function DetailsPanel(props) {
 
   return (
     <div className="w-full h-full mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface dark:border-surface-dark rounded-md">
-      <div className="w-full">
-        <div className="h-10 flex flex-col md:flex-row md:items-center">
+      <div className="w-full h-fit">
+        <div className="h-fit md:h-10 flex flex-col md:flex-row md:items-center">
           <h
             className="text-xl text-secondary dark:text-secondary-dark"
             style={{ fontFamily: "clash" }}

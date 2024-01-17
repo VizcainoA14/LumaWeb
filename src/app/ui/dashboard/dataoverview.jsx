@@ -27,25 +27,29 @@ export default function DataOverview(props) {
 
   return (
     <div className="w-full">
-      <Tabs defaultValue="entropy" className="w-full mt-3">
-        <TabsList
-          className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
-          style={{ fontFamily: "clash" }}
-        >
-          <TabsTrigger value="entropy">Entropy</TabsTrigger>
-          <TabsTrigger value="mean_intensity">Mean Intensity</TabsTrigger>
-          <TabsTrigger value="standard_deviation">
-            Standard Deviation
-          </TabsTrigger>
-          <TabsTrigger value="fractal_dimension">Fractal Dimension</TabsTrigger>
-          <TabsTrigger value="skewness">Skewness</TabsTrigger>
-          <TabsTrigger value="kurtosis">Kurtosis</TabsTrigger>
-          <TabsTrigger value="uniformity">Uniformity</TabsTrigger>
-          <TabsTrigger value="relative_smoothness">
-            Relative Smoothness
-          </TabsTrigger>
-          <TabsTrigger value="taruma_contrast">Tamura Contrast</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="entropy" className="w-full mt-4">
+        <div className="w-full overflow-x-scroll">
+          <TabsList
+            className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
+            style={{ fontFamily: "clash" }}
+          >
+            <TabsTrigger value="entropy">Entropy</TabsTrigger>
+            <TabsTrigger value="mean_intensity">Mean Intensity</TabsTrigger>
+            <TabsTrigger value="standard_deviation">
+              Standard Deviation
+            </TabsTrigger>
+            <TabsTrigger value="fractal_dimension">
+              Fractal Dimension
+            </TabsTrigger>
+            <TabsTrigger value="skewness">Skewness</TabsTrigger>
+            <TabsTrigger value="kurtosis">Kurtosis</TabsTrigger>
+            <TabsTrigger value="uniformity">Uniformity</TabsTrigger>
+            <TabsTrigger value="relative_smoothness">
+              Relative Smoothness
+            </TabsTrigger>
+            <TabsTrigger value="taruma_contrast">Tamura Contrast</TabsTrigger>
+          </TabsList>
+        </div>
         <TabsContent value="entropy" className="">
           <OverChart
             data={generateDataArray(data, "entropy")}
