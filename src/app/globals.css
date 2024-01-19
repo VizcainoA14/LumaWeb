@@ -16,7 +16,32 @@ chip {
   @apply h-8 rounded-lg flex items-center justify-center px-4 cursor-pointer;
 }
 
+button{
+  @apply h-10 rounded-full px-6 w-fit
+}
+
 /* Dashboard */
+#dashboard::-webkit-scrollbar {
+  @apply w-3;
+}
+
+#dashboard::-webkit-scrollbar-thumb {
+  @apply bg-surface dark:bg-surface-dark;
+}
+
+.scrollable::-webkit-scrollbar {
+  @apply h-3;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  @apply bg-surface dark:bg-surface-dark rounded-full;
+}
+
+/* Handle */
+#dashboard::-webkit-scrollbar-thumb {
+  @apply rounded-lg
+}
+
 #titleOneDate {
   font-family: "clash", sans-serif;
 }
@@ -26,7 +51,7 @@ chip {
 }
 
 .buttonActive {
-  @apply text-sm bg-primary-container dark:bg-primary-container-dark text-on-primary-container dark:text-on-primary-container-dark;
+  @apply text-sm bg-tertiary-container dark:bg-tertiary-container-dark text-on-tertiary-container dark:text-on-tertiary-container-dark;
 }
 
 #image {
