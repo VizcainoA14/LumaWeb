@@ -29,6 +29,14 @@ button{
   @apply bg-surface dark:bg-surface-dark;
 }
 
+.scrollable::-webkit-scrollbar {
+  @apply h-3;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  @apply bg-surface dark:bg-surface-dark rounded-full;
+}
+
 /* Handle */
 #dashboard::-webkit-scrollbar-thumb {
   @apply rounded-lg
