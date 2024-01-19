@@ -6,7 +6,7 @@ export default function Layout({ children }) {
       <div className="w-full lg:w-52 xl:w-64 flex-none select-none">
         <SideNav />
       </div>
-      <div id="dashboard" className="grow 2xl:justify-center p-4 md:overflow-y-auto md:p-4 bg-background dark:bg-background-dark select-none">{children}</div>
+      <div id="dashboard" className="grow 2xl:justify-center p-4 md:overflow-y-auto md:p-4 bg-background dark:bg-background-dark antialiased select-none">{children}</div>
     </div>
   );
 }

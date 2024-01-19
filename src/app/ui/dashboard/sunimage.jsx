@@ -8,8 +8,10 @@ import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 // SunImage component
 export default function SunImage(props) {
-  // Determine the color of the dot based on the table prop
+
+  // Determine the color & description of the dot based on the table prop
   let dotColor;
+
   switch (props.table) {
     case "eit171":
       dotColor = "blue";
@@ -68,12 +70,12 @@ export default function SunImage(props) {
           </h4> 
         </div>
         {/* Hover card for additional information */}
-        <HoverCard>
+        <HoverCard className="cursor-pointer">
           <HoverCardTrigger>
             <InfoCircledIcon className="w-5 h-5"/>
           </HoverCardTrigger>
           <HoverCardContent>
-            The React Framework – created and maintained by @vercel.
+            {props.description}
           </HoverCardContent>
         </HoverCard>
       </div>

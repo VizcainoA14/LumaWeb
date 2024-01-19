@@ -8,7 +8,13 @@
     "titleImages": "Mostrar imagenes",
     "titleDetails": "Datos extraidos",
     "buttonOverview": "Vista general",
-    "buttonDetails": "Detalles"
+    "buttonDetails": "Detalles",
+    "description171": "Captura imágenes del Sol a 1 millón de grados Celsius.",
+    "description195": "Captura imágenes del Sol a 1.5 millones de grados Celsius.",
+    "description284": "Captura imágenes del Sol a x millones de grados Celsius.",
+    "description304": "Revela la cromosfera superior del Sol, a unos 60,000 grados Kelvin.",
+    "descriptionIgr": "Detecta las variaciones de intensidad en la superficie del sol.",
+    "descriptionMag": "Muestra la actividad del campo magnetico en la superficie del Sol."
   },
 
   "OverviewChart": {

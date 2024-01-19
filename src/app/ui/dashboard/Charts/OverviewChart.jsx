@@ -31,7 +31,7 @@ export default function OverChart(props) {
   return (
     <Card className="w-full rounded-sm bg-background dark:bg-background-dark p-2">
       <Title style={{fontFamily: 'Clash'}} >{t(`${props.parameter}Title`)}</Title>
-      <Subtitle style={{fontFamily: 'Archivo'}} className="md:max-w-[60vw]">
+      <Subtitle style={{fontFamily: 'Archivo'}} className="text-on-background/80 dark:text-on-background-dark/80 md:max-w-[60vw]">
         {t(`${props.parameter}Description`)}
       </Subtitle>
       <BarChart
