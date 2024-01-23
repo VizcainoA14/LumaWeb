@@ -1,4 +1,5 @@
 import DarkTheme from "./darktheme";
+import NavLinks from "@/app/ui/dashboard/nav-links";
 
 export default function SideNav() {
   return (
@@ -6,8 +7,8 @@ export default function SideNav() {
       <div className="text-2xl text-on-primary">
         Luma
       </div>
-      <div className="w-full">
-
+      <div className="w-full text-white">
+        <NavLinks />
       </div>
       <DarkTheme />
     </div>
