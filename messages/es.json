@@ -5,7 +5,7 @@
 
     },
 
-  "Dash": {
+  "OneDate": {
     "title": "Parametros para una fecha",
     "titleImages": "Mostrar imagenes",
     "titleDetails": "Datos extraidos",
@@ -17,6 +17,10 @@
     "description304": "Revela la cromosfera superior del Sol, a unos 60,000 grados Kelvin.",
     "descriptionIgr": "Detecta las variaciones de intensidad en la superficie del sol.",
     "descriptionMag": "Muestra la actividad del campo magnetico en la superficie del Sol."
+  },
+
+  "DateRange": {
+    "title": "Parametros para un rango de fechas"
   },
 
   "OverviewChart": {

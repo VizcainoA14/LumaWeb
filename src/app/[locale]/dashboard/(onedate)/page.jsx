@@ -8,7 +8,7 @@ import { useState, useEffect} from "react";
 const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [data, setData] = useState(null);
-  const t = useTranslations("Dash");
+  const t = useTranslations("OneDate");
 
   // Defining a date handler
   const handleDateChange = date => {
