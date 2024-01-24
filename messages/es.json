@@ -44,6 +44,29 @@
     "tamuraContrastDescription": "El contraste Tamura es una medida de la diferencia en la intensidad de los pixeles adyacentes en la imagen.",
     "tamuraDirectionalityTitle": "Direccionalidad Tamura",
     "tamuraDirectionalityDescription": "La direccionalidad Tamura es una medida de la orientación preferida de los pixeles en la imagen."
+  },
+
+  "RangeChart": {
+    "entropyTitle": "Entropia",
+    "entropyDescription": "La entropia es una medida de la desorden de un sistema. En este caso, la entropia es calculada a partir de la distribucion de los valores de los pixeles de la imagen. La entropia es alta cuando la distribucion es uniforme, y baja cuando la distribucion es concentrada en un valor.",
+    "mean_intensityTitle": "Intensidad media",
+    "mean_intensityDescription": "La intensidad media es la media de los valores de los pixeles de la imagen.",
+    "standard_deviationTitle": "Desviación Estándar",
+    "standar_deviationDescription": "La desviación estándar es una medida de la cantidad de variación o dispersión de un conjunto de valores.",
+    "fractal_dimensionTitle": "Dimensión Fractal",
+    "fractal_dimensionDescription": "La dimensión fractal es una medida estadística de la complejidad de un objeto o conjunto de datos.",
+    "asymmetryTitle": "Asimetría",
+    "asymmetryDescription": "La asimetría es una medida de la falta de simetría en la distribución de los valores de los pixeles de la imagen.",
+    "kurtosisTitle": "Kurtosis",
+    "kurtosisDescription": "La kurtosis es una medida de la 'pesadez' de las colas de una distribución.",
+    "uniformityTitle": "Uniformidad",
+    "uniformityDescription": "La uniformidad es una medida de la homogeneidad de los valores de los pixeles de la imagen.",
+    "relative_smoothnessTitle": "Suavidad Relativa",
+    "relative_smoothnessDescription": "La suavidad relativa es una medida de la variación en la intensidad de los pixeles de la imagen.",
+    "tamura_contrastTitle": "Contraste Tamura",
+    "tamura_contrastDescription": "El contraste Tamura es una medida de la diferencia en la intensidad de los pixeles adyacentes en la imagen.",
+    "tamura_directionalityTitle": "Direccionalidad Tamura",
+    "tamura_directionalityDescription": "La direccionalidad Tamura es una medida de la orientación preferida de los pixeles"
   }
 
 }

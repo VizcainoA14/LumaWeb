@@ -4,6 +4,7 @@ import { DateRangePicker } from "@/app/ui/dashboard/daterangepicker";
 import { TablePicker } from "@/app/ui/dashboard/tablepicker";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Page = () => {
   const t = useTranslations("DateRange");
@@ -72,13 +73,105 @@ const Page = () => {
           <DateRangePicker onRangeChange={handleRangeChange} />
         </div>
       </div>
-      {/* Line chart here */}
-      <RangeChart 
-        rawData={rawData}
-        selectedTable={selectedTable}
-        selectedRange={selectedRange}
-        parameter={'entropy'}
-      />
+
+      {/* Line chart selector and Line chart here */}
+      <Tabs defaultValue="entropy" className="w-full mt-4">
+        <div className="scrollable w-full overflow-x-scroll xl:overflow-hidden">
+          <TabsList
+            className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
+            style={{ fontFamily: "clash" }}
+          >
+            <TabsTrigger value="entropy">Entropy</TabsTrigger>
+            <TabsTrigger value="mean_intensity">Mean Intensity</TabsTrigger>
+            <TabsTrigger value="standard_deviation">
+              Standard Deviation
+            </TabsTrigger>
+            <TabsTrigger value="fractal_dimension">
+              Fractal Dimension
+            </TabsTrigger>
+            <TabsTrigger value="skewness">Skewness</TabsTrigger>
+            <TabsTrigger value="kurtosis">Kurtosis</TabsTrigger>
+            <TabsTrigger value="uniformity">Uniformity</TabsTrigger>
+            <TabsTrigger value="relative_smoothness">
+              Relative Smoothness
+            </TabsTrigger>
+            <TabsTrigger value="taruma_contrast">Tamura Contrast</TabsTrigger>
+          </TabsList>
+        </div>
+        <TabsContent value="entropy" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"entropy"}
+          />
+        </TabsContent>
+        <TabsContent value="mean_intensity" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"mean_intensity"}
+          />
+        </TabsContent>
+        <TabsContent value="standard_deviation" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"standard_deviation"}
+          />
+        </TabsContent>
+        <TabsContent value="fractal_dimension" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"fractal_dimension"}
+          />
+        </TabsContent>
+        <TabsContent value="skewness" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"skewness"}
+          />
+        </TabsContent>
+        <TabsContent value="kurtosis" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"kurtosis"}
+          />
+        </TabsContent>
+        <TabsContent value="uniformity" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"uniformity"}
+          />
+        </TabsContent>
+        <TabsContent value="relative_smoothness" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"relative_smoothness"}
+          />
+        </TabsContent>
+        <TabsContent value="taruma_contrast" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            selectedRange={selectedRange}
+            parameter={"taruma_contrast"}
+          />
+        </TabsContent>
+      </Tabs>
+      
     </div>
   );
 };
