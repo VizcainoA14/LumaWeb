@@ -12,6 +12,7 @@ const links = [
 
 export default function NavLinks() {
     const pathname = usePathname();
+    let fixedPathmane = pathname.substring(3, pathname.length);
 
     return (
         <>
@@ -22,9 +23,9 @@ export default function NavLinks() {
                         key={link.name}
                         href={link.href}
                         className={clsx(
-                            'flex h-10 grow gap-2 rounded-full',
+                            'flex h-10 px-4 items-center gap-2 text-on-primary rounded-lg',
                             {
-                                'bg-primary-container-dark text-on-primary-container-dark': pathname === link.href,
+                                'bg-secondary/60 text-on-secondary rounded-md': fixedPathmane === link.href,
                             }
                         )}      
                     >

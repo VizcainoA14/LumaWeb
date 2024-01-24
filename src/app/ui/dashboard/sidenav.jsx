@@ -7,7 +7,7 @@ export default function SideNav() {
       <div className="text-2xl text-on-primary">
         Luma
       </div>
-      <div className="w-40 md:w-full text-white flex flex-row">
+      <div className="w-40 md:w-full text-white flex flex-row md:flex-col">
         <NavLinks />
       </div>
       <DarkTheme />
