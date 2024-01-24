@@ -60,8 +60,8 @@ export function TablePicker({onTableChange}) {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
-          style={{fontFamily: 'Archivo'}}
+          className="w-fit justify-between rounded-full bg-tertiary-container text-on-tertiary-dark hover:bg-tertiary-container hover:text-on-tertiary-container dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark dark:hover:bg-tertiary-container-dark"
+          style={{fontFamily: 'Clash'}}
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
@@ -70,10 +70,10 @@ export function TablePicker({onTableChange}) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
-        <Command style={{fontFamily: 'Archivo'}}>
-          <CommandInput placeholder="Search table..." />
+        <Command className="bg-tertiary-container text-on-tertiary-container dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark" style={{fontFamily: 'Archivo'}}>
+          <CommandInput  placeholder="Search table..." />
           <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
+          <CommandGroup className="bg-tertiary-container text-on-tertiary-container dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark">
             {frameworks.map((framework) => (
               <CommandItem
                 key={framework.value}

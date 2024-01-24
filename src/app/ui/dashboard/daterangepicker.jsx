@@ -32,9 +32,10 @@ export function DateRangePicker({ onRangeChange, className}) {
             id="date"
             variant={"outline"}
             className={cn(
-              "w-[300px] justify-start text-left font-normal",
+              "w-fit justify-start text-left font-normal rounded-full bg-tertiary-container text-on-tertiary-container hover:bg-tertiary-container hover:text-on-tertiary-container dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark dark:hover:bg-tertiary-container-dark",
               !date && "text-muted-foreground"
             )}
+            style={{fontFamily: 'Clash'}}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
             {date?.from ? (
@@ -59,6 +60,7 @@ export function DateRangePicker({ onRangeChange, className}) {
             selected={date}
             onSelect={handleRangeChange}
             numberOfMonths={2}
+            className="bg-tertiary-container text-on-tertiary-container dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark"
           />
         </PopoverContent>
       </Popover>

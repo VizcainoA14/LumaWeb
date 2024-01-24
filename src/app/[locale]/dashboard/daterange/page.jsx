@@ -42,15 +42,15 @@ const Page = () => {
       .then(data => {
         setRawData(data);
       })
-      .catch(err => console.log(err))
       .finally(() => {});
+      // .catch(err => console.log(err))
   }
 
   useEffect(
     () => {
       getData();
     },
-    [selectedRange]
+    [selectedRange, selectedTable]
   );
 
   return (
@@ -68,7 +68,7 @@ const Page = () => {
             {t("title")}
           </h1>
         </div>
-        <div id="dateRangeContainer" className="flex mt-2 md:mt-0">
+        <div id="dateRangeContainer" className="flex mt-2 md:mt-0 gap-2">
           <TablePicker onTableChange={handleTableChange}/>
           <DateRangePicker onRangeChange={handleRangeChange} />
         </div>
