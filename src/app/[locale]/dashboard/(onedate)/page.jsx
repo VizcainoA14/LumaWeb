@@ -9,7 +9,6 @@ const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [data, setData] = useState(null);
   const t = useTranslations("OneDate");
-
   // Defining a date handler
   const handleDateChange = date => {
     setSelectedDate(date);
