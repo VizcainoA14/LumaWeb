@@ -67,7 +67,7 @@ const Page = () => {
       </div>
 
       {/* Sun images here */}
-      <div id="sunImagesContainer" className="scrollable w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll xl:overflow-hidden">
+      <div id="sunImagesContainer" className="scrollable w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll 2xl:overflow-hidden">
         <div id="eitContainer" className="flex gap-4 xl:gap-2">
           <SunImage table="eit171" image={data?.data171?.rows[0]?.url} description={t('description171')}/>
           <SunImage table="eit195" image={data?.data195?.rows[0]?.url} description={t('description195')}/>
