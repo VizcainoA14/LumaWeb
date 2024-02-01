@@ -37,18 +37,18 @@ export default function SunImage(props) {
   }
 
   return (
-    <div className="relative w-44 h-64">
+    <div className="relative w-44 h-64 2xl:w-fit 2xl:h-fit">
       {/* Image container */}
       <div id="imageContainer" className="w-fit h-fit">
         {props.image == null
-          ? <div className="w-44 h-44 relative animate-pulse rounded-lg bg-secondary-container dark:bg-secondary-container-dark" />
+          ? <div className="w-44 h-44 2xl:w-64 2xl:h-64 relative animate-pulse rounded-lg bg-secondary-container dark:bg-secondary-container-dark" />
           : <>
           <Image
               src={props.image}
               alt="Sun image"
               width={256}
               height={256}
-              className="w-44 h-44 rounded-md dark:border-2 border-surface-dark"
+              className="w-44 h-44 2xl:w-64 2xl:h-64 rounded-md dark:border-2 border-surface-dark"
             />
           <div
           id="idDot"
