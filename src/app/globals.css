@@ -30,7 +30,7 @@ button{
 }
 
 .scrollable::-webkit-scrollbar {
-  @apply h-3;
+  @apply h-3 md:h-2;
 }
 
 .scrollable::-webkit-scrollbar-thumb {
