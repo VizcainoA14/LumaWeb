@@ -43,7 +43,7 @@ export default function OverChart(props) {
           yAxisWidth={48}
           enableLegendSlider={true}
         />
-        <div className="w-1/3 border rounded-md"> hola</div>
+        <div className="w-1/3 border rounded-md bg-surface"> hola</div>
       </div>
     </Card>
   );
