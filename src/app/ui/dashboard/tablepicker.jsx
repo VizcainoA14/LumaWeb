@@ -36,11 +36,11 @@ const frameworks = [
     label: "Eit304",
   },
   {
-    value: "hmiigr",
+    value: "datahmiigr",
     label: "HMIIGR",
   },
   {
-    value: "hmimag",
+    value: "datahmimag",
     label: "HMIMAG",
   },
 ]
