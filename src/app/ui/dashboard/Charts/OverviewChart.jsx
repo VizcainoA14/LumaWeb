@@ -26,7 +26,6 @@ export default function OverChart(props) {
   }
   
   let categories = Object.keys(props.data[0]).filter(key => key !== 'name');
-  
 
   return (
     <Card className="w-full rounded-sm bg-background dark:bg-background-dark p-2">
@@ -35,7 +34,7 @@ export default function OverChart(props) {
         {t(`${props.parameter}Description`)}
       </Subtitle>
       <BarChart
-        className="mt-6"
+        className="w-2/3 mt-6 border border-surface dark:border-surface-dark rounded-md"
         data={props.data}
         index="name"
         categories={categories}
@@ -43,6 +42,7 @@ export default function OverChart(props) {
         tickGap={7}
         showAnimation={true}
         yAxisWidth={48}
+        enableLegendSlider={true}
       />
     </Card>
   );
