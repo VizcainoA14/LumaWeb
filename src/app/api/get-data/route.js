@@ -1,10 +1,10 @@
 import { db } from "@vercel/postgres";
-import { NextResponse} from "next/server";
+import { NextResponse } from "next/server";
 
 export async function GET(request) {
   const client = await db.connect();
-  const { searchParams } = new URL(request.url)
-  const date = searchParams.get('date')
+  const { searchParams } = new URL(request.url);
+  const date = searchParams.get("date");
   let data171;
   let data195;
   let data284;
@@ -48,11 +48,16 @@ export async function GET(request) {
         FROM hmimag
         WHERE DATE(Date) = ${date}
     `;
-
   } catch (error) {
-    return NextResponse.json({error});
+    return NextResponse.json({ error });
   }
 
-  return NextResponse.json({data171, data195, data284, data304, datahmiigr, datahmimag})
+  return NextResponse.json({
+    data171,
+    data195,
+    data284,
+    data304,
+    datahmiigr,
+    datahmimag
+  });
 }
-
