@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Page = () => {
-  const t = useTranslations("DateRange");
+  const t = useTranslations("RangeChart");
   const [selectedRange, setSelectedRange] = useState(null);
   const [selectedTable, setSelectedTable] = useState(null);
   const [rawData, setRawData] = useState(null);
@@ -76,26 +76,20 @@ const Page = () => {
 
       {/* Line chart selector and Line chart here */}
       <Tabs defaultValue="entropy" className="w-full mt-4">
-        <div className="scrollable w-full overflow-x-scroll xl:overflow-hidden">
+        <div className="scrollable w-full overflow-x-scroll 2xl:overflow-hidden">
           <TabsList
             className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
             style={{ fontFamily: "clash" }}
           >
-            <TabsTrigger value="entropy">Entropy</TabsTrigger>
-            <TabsTrigger value="mean_intensity">Mean Intensity</TabsTrigger>
-            <TabsTrigger value="standard_deviation">
-              Standard Deviation
-            </TabsTrigger>
-            <TabsTrigger value="fractal_dimension">
-              Fractal Dimension
-            </TabsTrigger>
-            <TabsTrigger value="skewness">Skewness</TabsTrigger>
-            <TabsTrigger value="kurtosis">Kurtosis</TabsTrigger>
-            <TabsTrigger value="uniformity">Uniformity</TabsTrigger>
-            <TabsTrigger value="relative_smoothness">
-              Relative Smoothness
-            </TabsTrigger>
-            <TabsTrigger value="taruma_contrast">Tamura Contrast</TabsTrigger>
+            <TabsTrigger value="entropy">{t('entropyTitle')}</TabsTrigger>
+            <TabsTrigger value="mean_intensity">{t('meanIntensityTitle')}</TabsTrigger>
+            <TabsTrigger value="standard_deviation">{t('standardDeviationTitle')}</TabsTrigger>
+            <TabsTrigger value="fractal_dimension">{t('fractalDimensionTitle')}</TabsTrigger>
+            <TabsTrigger value="skewness">{t('skewnessTitle')}</TabsTrigger>
+            <TabsTrigger value="kurtosis">{t('kurtosisTitle')}</TabsTrigger>
+            <TabsTrigger value="uniformity">{t('uniformityTitle')}</TabsTrigger>
+            <TabsTrigger value="relative_smoothness">{t('relativeSmoothnessTitle')}</TabsTrigger>
+            <TabsTrigger value="tamura_contrast">{t('tamuraContrastTitle')}</TabsTrigger>
           </TabsList>
         </div>
         <TabsContent value="entropy" className="">
@@ -162,7 +156,7 @@ const Page = () => {
             parameter={"relative_smoothness"}
           />
         </TabsContent>
-        <TabsContent value="taruma_contrast" className="">
+        <TabsContent value="tamura_contrast" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
