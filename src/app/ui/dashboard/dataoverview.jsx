@@ -1,6 +1,6 @@
-
 import OverChart from "./Charts/OverviewChart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useTranslations } from "next-intl";
 
 function generateDataArray(data, parameter) {
   if (!data) {
@@ -24,6 +24,7 @@ function generateDataArray(data, parameter) {
 
 
 export default function DataOverview(props) {
+  const t = useTranslations("OverviewChart");
   let data = props.data;
 
   return (
@@ -34,21 +35,21 @@ export default function DataOverview(props) {
             className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
             style={{ fontFamily: "clash" }}
           >
-            <TabsTrigger value="entropy">Entropy</TabsTrigger>
-            <TabsTrigger value="mean_intensity">Mean Intensity</TabsTrigger>
+            <TabsTrigger value="entropy">{t('entropyTitle')}</TabsTrigger>
+            <TabsTrigger value="mean_intensity">{t('meanIntensityTitle')}</TabsTrigger>
             <TabsTrigger value="standard_deviation">
-              Standard Deviation
+              {t('standardDeviationTitle')}
             </TabsTrigger>
             <TabsTrigger value="fractal_dimension">
-              Fractal Dimension
+              {t('fractalDimensionTitle')}
             </TabsTrigger>
-            <TabsTrigger value="skewness">Skewness</TabsTrigger>
-            <TabsTrigger value="kurtosis">Kurtosis</TabsTrigger>
-            <TabsTrigger value="uniformity">Uniformity</TabsTrigger>
+            <TabsTrigger value="skewness">{t('skewness')}</TabsTrigger>
+            <TabsTrigger value="kurtosis">{t('kurtosisTitle')}</TabsTrigger>
+            <TabsTrigger value="uniformity">{t('uniformityTitle')}</TabsTrigger>
             <TabsTrigger value="relative_smoothness">
-              Relative Smoothness
+              {t('relativeSmoothnessTitle')}
             </TabsTrigger>
-            <TabsTrigger value="taruma_contrast">Tamura Contrast</TabsTrigger>
+            <TabsTrigger value="tamura_contrast">{t('tamuraContrastTitle')}</TabsTrigger>
           </TabsList>
         </div>
         <TabsContent value="entropy" className="">
@@ -99,10 +100,10 @@ export default function DataOverview(props) {
             parameter={"relativeSmoothness"}
           />
         </TabsContent>
-        <TabsContent value="taruma_contrast" className="">
+        <TabsContent value="tamura_contrast" className="">
           <OverChart
-            data={generateDataArray(data, "taruma_contrast")}
-            parameter={"tarumaContrast"}
+            data={generateDataArray(data, "tamura_contrast")}
+            parameter={"tamuraContrast"}
           />
         </TabsContent>
       </Tabs>

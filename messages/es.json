@@ -1,9 +1,8 @@
 {
-    "Landing": {
-      "title": "Una nueva forma de estudiar la actividad solar.",
-      "navbar": "Luma"
-
-    },
+  "Landing": {
+    "title": "Una nueva forma de estudiar la actividad solar.",
+    "navbar": "Luma"
+  },
 
   "OneDate": {
     "title": "Parametros para una fecha",
@@ -68,5 +67,4 @@
     "tamura_directionalityTitle": "Direccionalidad Tamura",
     "tamura_directionalityDescription": "La direccionalidad Tamura es una medida de la orientación preferida de los pixeles"
   }
-
 }

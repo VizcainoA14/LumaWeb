@@ -5,7 +5,7 @@ import DataOverview from "./dataoverview";
 
 
 export function DetailsPanel(props) {
-  const t = useTranslations("Dash");
+  const t = useTranslations("OneDate");
 
   const [buttonActive, setButtonActive] = useState("over");
 
