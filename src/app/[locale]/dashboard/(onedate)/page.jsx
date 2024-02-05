@@ -107,7 +107,7 @@ const Page = () => {
 
       {/* Details panel here */}
       <div className="h-fit">
-        <DetailsPanel data={data}/>
+        <DetailsPanel data={data} date={fixedDate}/>
       </div>
     </div>
   );

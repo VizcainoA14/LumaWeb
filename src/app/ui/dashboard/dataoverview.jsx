@@ -2,7 +2,7 @@ import OverChart from "./Charts/OverviewChart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslations } from "next-intl";
 
-function generateDataArray(data, parameter) {
+function generateDataArray(data, parameter, date) {
   if (!data) {
     return [];
   }
@@ -13,8 +13,12 @@ function generateDataArray(data, parameter) {
   // Recorrer cada tabla de datos
   Object.keys(data).forEach(key => {
     if (data[key].rows && data[key].rows.length > 0) {
-      // Añadir el valor del parámetro para esta tabla al objeto paramValues
-      paramValues[key] = data[key].rows[0][parameter];
+      // Buscar la fila con la fecha especificada
+      let row = data[key].rows.find(row => row.date.split(" ")[0] === date);
+      if (row) {
+        // Añadir el valor del parámetro para esta tabla al objeto paramValues
+        paramValues[key] = row[parameter];
+      }
     }
   });
 
@@ -26,6 +30,7 @@ function generateDataArray(data, parameter) {
 export default function DataOverview(props) {
   const t = useTranslations("OverviewChart");
   let data = props.data;
+  let date = props.date;
 
   return (
     <div className="w-full">
@@ -35,74 +40,86 @@ export default function DataOverview(props) {
             className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
             style={{ fontFamily: "clash" }}
           >
-            <TabsTrigger value="entropy">{t('entropyTitle')}</TabsTrigger>
-            <TabsTrigger value="mean_intensity">{t('meanIntensityTitle')}</TabsTrigger>
+            <TabsTrigger value="entropy">
+              {t("entropyTitle")}
+            </TabsTrigger>
+            <TabsTrigger value="mean_intensity">
+              {t("meanIntensityTitle")}
+            </TabsTrigger>
             <TabsTrigger value="standard_deviation">
-              {t('standardDeviationTitle')}
+              {t("standardDeviationTitle")}
             </TabsTrigger>
             <TabsTrigger value="fractal_dimension">
-              {t('fractalDimensionTitle')}
+              {t("fractalDimensionTitle")}
             </TabsTrigger>
-            <TabsTrigger value="skewness">{t('skewness')}</TabsTrigger>
-            <TabsTrigger value="kurtosis">{t('kurtosisTitle')}</TabsTrigger>
-            <TabsTrigger value="uniformity">{t('uniformityTitle')}</TabsTrigger>
+            <TabsTrigger value="skewness">
+              {t("skewness")}
+            </TabsTrigger>
+            <TabsTrigger value="kurtosis">
+              {t("kurtosisTitle")}
+            </TabsTrigger>
+            <TabsTrigger value="uniformity">
+              {t("uniformityTitle")}
+            </TabsTrigger>
             <TabsTrigger value="relative_smoothness">
-              {t('relativeSmoothnessTitle')}
+              {t("relativeSmoothnessTitle")}
             </TabsTrigger>
-            <TabsTrigger value="tamura_contrast">{t('tamuraContrastTitle')}</TabsTrigger>
+            <TabsTrigger value="tamura_contrast">
+              {t("tamuraContrastTitle")}
+            </TabsTrigger>
           </TabsList>
         </div>
         <TabsContent value="entropy" className="">
           <OverChart
-            data={generateDataArray(data, "entropy")}
+            data={generateDataArray(data, "entropy", date)}
             parameter={"entropy"}
           />
         </TabsContent>
         <TabsContent value="mean_intensity" className="">
           <OverChart
-            data={generateDataArray(data, "mean_intensity")}
+            data={generateDataArray(data, "mean_intensity", date)}
             parameter={"meanIntensity"}
           />
         </TabsContent>
         <TabsContent value="standard_deviation" className="">
           <OverChart
-            data={generateDataArray(data, "standard_deviation")}
+            data={generateDataArray(data, "standard_deviation", date)}
             parameter={"standardDeviation"}
           />
         </TabsContent>
         <TabsContent value="fractal_dimension" className="">
           <OverChart
-            data={generateDataArray(data, "fractal_dimension")}
+            data={generateDataArray(data, "fractal_dimension", date)}
             parameter={"fractalDimension"}
           />
         </TabsContent>
         <TabsContent value="skewness" className="">
           <OverChart
-            data={generateDataArray(data, "skewness")}
+            data={generateDataArray(data, "skewness", date)}
             parameter={"skewness"}
           />
         </TabsContent>
         <TabsContent value="kurtosis" className="">
           <OverChart
-            data={generateDataArray(data, "kurtosis")}
+            data={generateDataArray(data, "kurtosis", date)}
             parameter={"kurtosis"}
           />
         </TabsContent>
         <TabsContent value="uniformity" className="">
           <OverChart
-            data={generateDataArray(data, "uniformity")}
+            data={generateDataArray(data, "uniformity", date)}
             parameter={"uniformity"}
           />
         </TabsContent>
         <TabsContent value="relative_smoothness" className="">
           <OverChart
-            data={generateDataArray(data, "relative_smoothness")}
+            data={generateDataArray(data, "relative_smoothness", date)}
             parameter={"relativeSmoothness"}
           />
         </TabsContent>
         <TabsContent value="tamura_contrast" className="">
           <OverChart
-            data={generateDataArray(data, "tamura_contrast")}
+            data={generateDataArray(data, "tamura_contrast", date)}
             parameter={"tamuraContrast"}
           />
         </TabsContent>

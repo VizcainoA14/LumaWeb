@@ -51,7 +51,7 @@ export function DetailsPanel(props) {
       </div>
       <div className="w-full">
         <div className="w-full h-max">
-          {buttonActive === "over" ? <DataOverview data={data} /> : <h1>Details</h1>}
+          {buttonActive === "over" ? <DataOverview data={data} date={props.date}/> : <h1>Details</h1>}
         </div>
       </div>
     </div>
