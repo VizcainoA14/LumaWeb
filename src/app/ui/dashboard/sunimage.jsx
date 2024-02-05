@@ -9,6 +9,7 @@ import { InfoCircledIcon } from "@radix-ui/react-icons";
 // SunImage component
 export default function SunImage(props) {
 
+  console.log(props.image)
   // Determine the color & description of the dot based on the table prop
   let dotColor;
 

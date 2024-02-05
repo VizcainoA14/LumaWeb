@@ -9,6 +9,8 @@ const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [data, setData] = useState(null);
   const t = useTranslations("OneDate");
+  let url171, url195, url284, url304, urlhmiigr, urlhmimag;
+
   // Defining a date handler
   const handleDateChange = date => {
     setSelectedDate(date);
@@ -31,6 +33,7 @@ const Page = () => {
   // Fixing the date to be used in the API
   let fixedDate = selectedDate ? fixDate(selectedDate) : null;
 
+  // Defining function tu get the data from API
   const getData = () => {
     fetch(`/api/get-data?date=${fixedDate}`)
       .then(res => res.json())
@@ -41,12 +44,34 @@ const Page = () => {
       .finally(() => {});
   };
 
+  // Getting the data from the API
   useEffect(
     () => {
       getData();
     },
     [selectedDate]
   );
+
+  // Defining the function to get the url of the image
+  const getImage = (table, date) => {
+    for (let i = 0; i < table.rows.length; i++) {
+      let dateObj = table.rows[i].date.split(" ")[0];
+      if(dateObj === date) {
+        return table.rows[i].url;
+      }
+    }
+    return "";
+  }
+
+  // Getting the urls of the images
+  if(data) {
+    url171 = getImage(data.data171, fixedDate);
+    url195 = getImage(data.data195, fixedDate);
+    url284 = getImage(data.data284, fixedDate);
+    url304 = getImage(data.data304, fixedDate);
+    urlhmiigr = getImage(data.datahmiigr, fixedDate);
+    urlhmimag = getImage(data.datahmimag, fixedDate);
+  }
 
   return (
     <div className="w-full h-fit flex flex-col md:p-2">
@@ -69,14 +94,14 @@ const Page = () => {
       {/* Sun images here */}
       <div id="sunImagesContainer" className="scrollable w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll 2xl:overflow-hidden">
         <div id="eitContainer" className="flex gap-4 xl:gap-2">
-          <SunImage table="eit171" image={data?.data171?.rows[0]?.url} description={t('description171')}/>
-          <SunImage table="eit195" image={data?.data195?.rows[0]?.url} description={t('description195')}/>
-          <SunImage table="eit284" image={data?.data284?.rows[0]?.url} description={t('description284')}/>
-          <SunImage table="eit304" image={data?.data304?.rows[0]?.url} description={t('description304')}/>
+          <SunImage table="eit171" image={url171} description={t('description171')}/>
+          <SunImage table="eit195" image={url195} description={t('description195')}/>
+          <SunImage table="eit284" image={url284} description={t('description284')}/>
+          <SunImage table="eit304" image={url304} description={t('description304')}/>
         </div>
         <div id="hmiContainer" className="flex gap-4 xl:gap-2">
-          <SunImage table="hmiigr" image={data?.datahmiigr?.rows[0]?.url} description={t('descriptionIgr')}/>
-          <SunImage table="hmimag" image={data?.datahmimag?.rows[0]?.url} description={t('descriptionMag')}/>
+          <SunImage table="hmiigr" image={urlhmiigr} description={t('descriptionIgr')}/>
+          <SunImage table="hmimag" image={urlhmimag} description={t('descriptionMag')}/>
         </div>
       </div>
 
