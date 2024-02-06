@@ -26,11 +26,44 @@ function generateDataArray(data, parameter, date) {
   return [{ name: parameter, ...paramValues }];
 }
 
+//Function to get the data needed for the analytics
+const generateDataAnalytics = (data, parameter) => {
+  if(!data){
+    return {};
+  }
+
+  //Defining the analytics object
+  let analytics = [];
+
+  //Iterating over the data
+  for (let key in data) {
+    if(data.hasOwnProperty(key)){
+      data[key].rows.forEach(row => {
+        if (row.hasOwnProperty(parameter)) {
+          analytics.push(row[parameter]);
+        }
+      })
+    }
+  }
+
+  let minimun = Math.min(...analytics);
+  let maximun = Math.max(...analytics);
+  let average = analytics.reduce((a, b) => a + b, 0) / analytics.length;
+
+  return {
+    min: minimun,
+    max: maximun,
+    avg: average
+  }
+}
 
 export default function DataOverview(props) {
   const t = useTranslations("OverviewChart");
   let data = props.data;
   let date = props.date;
+  console.log(data);
+  let statistics = generateDataAnalytics(data, "entropy");
+  console.log(statistics);
 
   return (
     <div className="w-full">
@@ -69,7 +102,7 @@ export default function DataOverview(props) {
             </TabsTrigger>
           </TabsList>
         </div>
-        <TabsContent value="entropy" className="">
+        <TabsContent value="entropy" className="flex">
           <OverChart
             data={generateDataArray(data, "entropy", date)}
             parameter={"entropy"}
@@ -86,6 +119,7 @@ export default function DataOverview(props) {
             data={generateDataArray(data, "standard_deviation", date)}
             parameter={"standardDeviation"}
           />
+
         </TabsContent>
         <TabsContent value="fractal_dimension" className="">
           <OverChart
