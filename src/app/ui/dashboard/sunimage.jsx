@@ -8,8 +8,6 @@ import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 // SunImage component
 export default function SunImage(props) {
-
-  console.log(props.image)
   // Determine the color & description of the dot based on the table prop
   let dotColor;
 
@@ -49,7 +47,7 @@ export default function SunImage(props) {
               alt="Sun image"
               width={256}
               height={256}
-              className="w-44 h-44 2xl:w-64 2xl:h-64 rounded-md dark:border-2 border-surface-dark"
+              className="w-44 h-44 2xl:w-64 2xl:h-64 rounded-md dark:border-2 dark:border-surface-dark/50"
             />
           <div
           id="idDot"
@@ -63,7 +61,7 @@ export default function SunImage(props) {
       {/* Name container */}
       <div
         id="nameContainer"
-        className="w-full p-2 mt-2 flex items-center justify-between border-2 border-surface dark:border-surface-dark text-secondary dark:text-secondary-dark rounded-md"
+        className="w-full p-2 mt-2 flex items-center justify-between border-2 border-surface dark:border-surface-dark/50 text-secondary dark:text-secondary-dark rounded-md"
       >
         <div className="flex items-center">
           <h4 className="" style={{ fontFamily: "clash" }}>

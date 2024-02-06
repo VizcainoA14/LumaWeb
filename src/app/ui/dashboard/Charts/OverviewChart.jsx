@@ -29,7 +29,7 @@ export default function OverChart(props) {
       </Title>
       <Subtitle
         style={{ fontFamily: "Archivo" }}
-        className="text-on-background/80 dark:text-on-background-dark/80 md:max-w-[60vw]"
+        className="text-on-background/80 dark:text-on-background-dark md:max-w-[60vw]"
       >
         {t(`${props.parameter}Description`)}
       </Subtitle>

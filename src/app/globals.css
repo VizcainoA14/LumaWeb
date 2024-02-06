@@ -34,7 +34,12 @@ button{
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-  @apply bg-surface dark:bg-surface-dark rounded-full;
+  @apply bg-surface dark:bg-surface-dark/40 rounded-full;
+}
+
+/*Analitycs component*/
+.analyticCard {
+  @apply w-1/2 h-full flex flex-col justify-center items-center bg-background dark:bg-background-dark border dark:border-surface-dark/50 rounded-md;
 }
 
 /* Handle */

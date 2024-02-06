@@ -20,11 +20,11 @@ export function DetailsPanel(props) {
   let data = props?.data;
 
   return (
-    <div className="w-full h-full mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface dark:border-surface-dark rounded-md">
+    <div className="w-full h-full mt-4 flex flex-col px-2 pt-4 pb-6 border-2 border-surface dark:border-surface-dark/50 rounded-md">
       <div className="w-full h-fit">
         <div className="h-fit md:h-10 flex flex-col md:flex-row md:items-center">
           <h
-            className="text-xl text-secondary dark:text-secondary-dark"
+            className="text-xl text-secondary dark:text-on-background-dark"
             style={{ fontFamily: "clash" }}
           >
             {t("titleDetails")}
