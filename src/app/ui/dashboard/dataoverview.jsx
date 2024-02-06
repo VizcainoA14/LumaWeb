@@ -106,6 +106,7 @@ export default function DataOverview(props) {
           <OverChart
             data={generateDataArray(data, "entropy", date)}
             parameter={"entropy"}
+            statistics={statistics}
           />
         </TabsContent>
         <TabsContent value="mean_intensity" className="">

@@ -7,9 +7,11 @@ import {
   Subtitle,
   Title
 } from "@tremor/react";
+import OneAnalytics from "../oneanalytics";
 
 export default function OverChart(props) {
   const t = useTranslations("OverviewChart");
+  let statistics = props.statistics;
 
   const colors = ["blue", "green", "yellow", "red", "orange", "gray"];
 
@@ -43,7 +45,7 @@ export default function OverChart(props) {
           yAxisWidth={48}
           enableLegendSlider={true}
         />
-        <div className="w-1/3 border rounded-md bg-surface"> hola</div>
+        <OneAnalytics statistics={statistics}/>
       </div>
     </Card>
   );
