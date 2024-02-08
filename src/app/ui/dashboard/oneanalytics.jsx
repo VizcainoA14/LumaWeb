@@ -1,10 +1,9 @@
 export default function OneAnalytics(props) {
   let statistics = props.statistics;
-  console.log(statistics);
   return (
     <div
       id="oneDateAnalyticsContainer"
-      className="w-1/3 flex flex-col border rounded-md p-2 gap-2 border-surface dark:border-surface-dark border-1"
+      className="md:w-1/3 flex flex-col border rounded-md p-2 gap-2 border-surface dark:border-surface-dark border-1"
     >
       <div className="w-full h-1/2 flex flex-row gap-2">
         <div

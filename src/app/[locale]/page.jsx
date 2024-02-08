@@ -1,39 +1,47 @@
 import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
+import Image from "next/image";
+import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 
 export default function Index() {
   const t = useTranslations("Landing");
   return (
     <div className="w-screen h-fit flex">
-      <div id="header" className="w-full h-[100svh] flex-col md:flex-row">
+      <div
+        id="hero"
+        className="relative w-[100svw] h-[100svh] bg-background-dark overflow-hidden"
+      >
+        <Image
+          src="/images/bgSvg.svg"
+          layout="fill"
+          alt="Luma"
+        />
         <div
-          id="Hero"
-          className="w-full md:h-3/5 relative flex md:items-center p-2 md:p-14  flex-col md:flex-row"
+          id="titlesContainer"
+          className="absolute min-w-[60vw] flex flex-col items-center text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          <div
-            className="md:w-2/3 md:h-full flex flex-col "
+          <h1
+            className="text-6xl text-on-background-dark font-semibold"
             style={{ fontFamily: "Clash" }}
           >
-            <h1 className=" self-center text-1xl md:text-5xl p-1">{t("title")}</h1>
-            <button className="bg-on-background text-background mt-4">
-              Get started
-            </button>
-          </div>
-          <div
-            className="md:w-1/3 md:h-full flex items-start  p-3 md:p-1 text-1xl md:items-start "
+            {t("title")}
+          </h1>
+          <h2
+            className="text-2xl text-on-background-dark max-w-[40vw] mt-5"
             style={{ fontFamily: "Archivo" }}
           >
-            <ul className="self-center text-on-background/60">
-              <li>Easy to use</li>
-              <li>Powerfull</li>
-              <li>Open to Everybody</li>
-            </ul>
+            Luma has arrived to be the most, powerfull, easy to use app to
+            analisys what is happening in the sun.
+          </h2>
+          <div
+            className="bg-white text-background-dark flex items-center justify-between h-10 rounded-full w-fit mt-5 p-1"
+            style={{ fontFamily: "Archivo" }}
+          >
+            <Link href="/dashboard" className="pl-2 pr-6">Get Started</Link>
+            <div className="w-9 h-9 grid content-center bg-background-dark rounded-full pl-4">
+              <ArrowTopRightIcon className="text-white"/>
+            </div>
           </div>
-        </div>
-
-        <div className="w-full h-2/5 bg-secondary grid grid-cols-3 gap-4">
-          <div className="bg-gray-300 p-4 bg-primary-dark">Columna 1</div>
-          <div className="bg-gray-300 p-4 bg-primary-container">Columna 2</div>
-          <div className="bg-gray-300 p-4">Columna 3</div>
         </div>
       </div>
     </div>
