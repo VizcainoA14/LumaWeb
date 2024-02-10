@@ -10,6 +10,7 @@ const Page = () => {
   const [data, setData] = useState(null);
   const t = useTranslations("OneDate");
   let url171, url195, url284, url304, urlhmiigr, urlhmimag;
+  
 
   // Defining a date handler
   const handleDateChange = date => {
@@ -92,7 +93,7 @@ const Page = () => {
       </div>
 
       {/* Sun images here */}
-      <div id="sunImagesContainer" className="scrollable w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t-2 border-outline overflow-x-scroll 2xl:overflow-hidden">
+      <div id="sunImagesContainer" className="scrollable w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden">
         <div id="eitContainer" className="flex gap-4 xl:gap-2">
           <SunImage table="eit171" image={url171} description={t('description171')}/>
           <SunImage table="eit195" image={url195} description={t('description195')}/>

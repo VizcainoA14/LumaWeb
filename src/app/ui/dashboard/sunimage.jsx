@@ -7,7 +7,7 @@ import {
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 // SunImage component
-export default function SunImage(props) {
+export default function SunImage(props) {;
   // Determine the color & description of the dot based on the table prop
   let dotColor;
 
@@ -36,18 +36,18 @@ export default function SunImage(props) {
   }
 
   return (
-    <div className="relative w-44 h-64 2xl:w-fit 2xl:h-fit">
+    <div className="relative bg-secondary-container/40 dark:bg-secondary-container-dark/40 w-44 h-fit 2xl:w-fit 2xl:h-fit rounded-xl hover:rounded-2xl transition-all">
       {/* Image container */}
       <div id="imageContainer" className="w-fit h-fit">
-        {props.image == null
-          ? <div className="w-44 h-44 2xl:w-64 2xl:h-64 relative animate-pulse rounded-lg bg-secondary-container dark:bg-secondary-container-dark" />
+        {props.image == ""
+          ? <div className="w-44 h-44 2xl:w-64 2xl:h-64 relative animate-pulse rounded-lg bg-secondary-container dark:bg-secondary-container-dark transition-all" />
           : <>
           <Image
               src={props.image}
               alt="Sun image"
               width={256}
               height={256}
-              className="w-44 h-44 2xl:w-64 2xl:h-64 rounded-md dark:border-2 dark:border-surface-dark/50"
+              className="w-44 h-44 2xl:w-64 2xl:h-64 rounded-xl dark:border-2 dark:border-secondary-container-dark/50"
             />
           <div
           id="idDot"
@@ -61,7 +61,7 @@ export default function SunImage(props) {
       {/* Name container */}
       <div
         id="nameContainer"
-        className="w-full p-2 mt-2 flex items-center justify-between border-2 border-surface dark:border-surface-dark/50 text-secondary dark:text-secondary-dark rounded-md"
+        className="w-full px-4 my-2 flex items-center justify-between text-on-secondary-container dark:text-secondary-dark"
       >
         <div className="flex items-center">
           <h4 className="" style={{ fontFamily: "clash" }}>

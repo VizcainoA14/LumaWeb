@@ -61,9 +61,7 @@ export default function DataOverview(props) {
   const t = useTranslations("OverviewChart");
   let data = props.data;
   let date = props.date;
-  console.log(data);
   let statistics = generateDataAnalytics(data, "entropy");
-  console.log(statistics);
 
   return (
     <div className="w-full">

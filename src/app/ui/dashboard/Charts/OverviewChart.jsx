@@ -23,7 +23,7 @@ export default function OverChart(props) {
   let categories = Object.keys(props.data[0]).filter(key => key !== "name");
 
   return (
-    <Card className="w-full h-fit rounded-sm bg-background dark:bg-background-dark p-2">
+    <Card className="w-full h-fit rounded-xl bg-background dark:bg-background-dark p-4">
       <Title style={{ fontFamily: "Clash" }}>
         {t(`${props.parameter}Title`)}
       </Title>
@@ -35,7 +35,7 @@ export default function OverChart(props) {
       </Subtitle>
       <div className="flex flex-col md:flex-row w-full h-full pt-6 gap-2">
         <BarChart
-          className="w-full md:w-2/3 border border-surface dark:border-surface-dark rounded-md"
+          className="w-full md:w-2/3 border border-surface dark:border-surface-dark rounded-xl"
           data={props.data}
           index="name"
           categories={categories}
