@@ -23,7 +23,7 @@ export default function OverChart(props) {
   let categories = Object.keys(props.data[0]).filter(key => key !== "name");
 
   return (
-    <Card className="w-full h-fit rounded-xl bg-background dark:bg-background-dark p-4">
+    <Card className="w-full h-fit rounded-2xl border-none bg-background dark:bg-surface-dark p-4">
       <Title style={{ fontFamily: "Clash" }}>
         {t(`${props.parameter}Title`)}
       </Title>

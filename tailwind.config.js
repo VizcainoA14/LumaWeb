@@ -68,8 +68,8 @@ module.exports = {
           dark: "#e1e2e5"
         },
         surface: {
-          DEFAULT: "#dce3e9",
-          dark: "#40484c"
+          DEFAULT: "#EEF4F8",
+          dark: "#1E2629"
         },
         "on-surface": {
           DEFAULT: "#40484c",

@@ -33,15 +33,17 @@ export default function Index() {
             Luma has arrived to be the most, powerfull, easy to use app to
             analisys what is happening in the sun.
           </h2>
+          <Link href="/dashboard">
           <div
             className="bg-white text-background-dark flex items-center justify-between h-10 rounded-full w-fit mt-5 p-1"
             style={{ fontFamily: "Archivo" }}
           >
-            <Link href="/dashboard" className="pl-2 pr-6">Get Started</Link>
-            <div className="w-9 h-9 grid content-center bg-background-dark rounded-full pl-4">
+            <a className="pl-2 pr-6">Get Started</a>
+            <div className="w-9 h-9 grid content-center bg-background-dark rounded-full">
               <ArrowTopRightIcon className="text-white"/>
             </div>
           </div>
+          </Link>
         </div>
       </div>
     </div>

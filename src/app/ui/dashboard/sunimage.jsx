@@ -36,7 +36,7 @@ export default function SunImage(props) {;
   }
 
   return (
-    <div className="relative bg-surface/25 dark:bg-secondary-container-dark/40 w-44 h-fit 2xl:w-fit 2xl:h-fit rounded-xl hover:rounded-2xl transition-all">
+    <div className="relative bg-surface dark:bg-secondary-container-dark/40 w-44 h-fit 2xl:w-fit 2xl:h-fit rounded-xl hover:rounded-2xl transition-all">
       {/* Image container */}
       <div id="imageContainer" className="w-fit h-fit">
         {props.image == ""

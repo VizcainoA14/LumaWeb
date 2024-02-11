@@ -68,7 +68,7 @@ export default function DataOverview(props) {
       <Tabs defaultValue="entropy" className="w-full mt-4">
         <div className="scrollable w-full overflow-x-scroll 2xl:overflow-hidden">
           <TabsList
-            className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
+            className="text-secondary dark:text-secondary-dark border-surface dark:border-surface-dark"
             style={{ fontFamily: "clash" }}
           >
             <TabsTrigger value="entropy">
