@@ -15,10 +15,10 @@ export default function OverChart(props) {
 
   const colors = ["blue", "green", "yellow", "red", "orange", "gray"];
 
-  if (!props.data || props.data.length === 0 || !props.data[0]) {
+  if (!props.data || props.data.length === 0 || !props.data[0] || (Object.keys(props.data[0]).length === 1 && props.data[0].hasOwnProperty('name'))) {
     // Manejar el caso en que los datos no estén disponibles
-    return null;
-  }
+    return <div className="w-full h-96 p-4 bg-surface animate-pulse"></div>;
+  };
 
   let categories = Object.keys(props.data[0]).filter(key => key !== "name");
 
