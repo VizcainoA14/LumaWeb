@@ -4,6 +4,9 @@ import { DatePicker } from "@/app/ui/dashboard/datepicker";
 import { DetailsPanel } from "@/app/ui/dashboard/detailspanel";
 import SunImage from "@/app/ui/dashboard/sunimage";
 import { useState, useEffect} from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 
 const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -11,7 +14,6 @@ const Page = () => {
   const t = useTranslations("OneDate");
   let url171, url195, url284, url304, urlhmiigr, urlhmimag;
   
-
   // Defining a date handler
   const handleDateChange = date => {
     setSelectedDate(date);
@@ -74,6 +76,16 @@ const Page = () => {
     urlhmimag = getImage(data.datahmimag, fixedDate);
   }
 
+  useGSAP(() => {
+    let tl = gsap.timeline();
+    tl.to(".eit171", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
+      .to(".eit195", {y: 0, duration: 0.7 ,ease: "power1out(1.7t)"})
+      .to(".eit284", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
+      .to(".eit304", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
+      .to(".eithmiigr", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
+      .to(".hmimag", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
+  })
+
   return (
     <div className="w-full h-fit flex flex-col md:p-2">
       {/* Header here */}
@@ -93,16 +105,16 @@ const Page = () => {
       </div>
 
       {/* Sun images here */}
-      <div id="sunImagesContainer" className="scrollable w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden">
+      <div id="sunImagesContainer" className="scrollable relative w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden overflow-y-hidden">
         <div id="eitContainer" className="flex gap-4 xl:gap-2">
-          <SunImage table="eit171" image={url171} description={t('description171')}/>
-          <SunImage table="eit195" image={url195} description={t('description195')}/>
-          <SunImage table="eit284" image={url284} description={t('description284')}/>
-          <SunImage table="eit304" image={url304} description={t('description304')}/>
+          <SunImage csun="eit171" table="eit171" image={url171} description={t('description171')}/>
+          <SunImage csun="eit195" table="eit195" image={url195} description={t('description195')}/>
+          <SunImage csun="eit284" table="eit284" image={url284} description={t('description284')}/>
+          <SunImage csun="eit304" table="eit304" image={url304} description={t('description304')}/>
         </div>
         <div id="hmiContainer" className="flex gap-4 xl:gap-2">
-          <SunImage table="hmiigr" image={urlhmiigr} description={t('descriptionIgr')}/>
-          <SunImage table="hmimag" image={urlhmimag} description={t('descriptionMag')}/>
+          <SunImage csun="eithmiigr" table="hmiigr" image={urlhmiigr} description={t('descriptionIgr')}/>
+          <SunImage csun="hmimag" table="hmimag" image={urlhmimag} description={t('descriptionMag')}/>
         </div>
       </div>
 

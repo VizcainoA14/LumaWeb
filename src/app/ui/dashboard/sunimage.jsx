@@ -36,9 +36,9 @@ export default function SunImage(props) {;
   }
 
   return (
-    <div className="relative bg-surface dark:bg-secondary-container-dark/40 w-44 h-fit 2xl:w-fit 2xl:h-fit rounded-xl hover:rounded-2xl transition-all">
+    <div className={`${props.csun} bg-surface dark:bg-secondary-container-dark/40 w-44 h-fit 2xl:w-fit 2xl:h-fit rounded-xl hover:rounded-2xl translate-y-72`}>
       {/* Image container */}
-      <div id="imageContainer" className="w-fit h-fit">
+      <div id="imageContainer" className="w-fit h-fit relative">
         {props.image == ""
           ? <div className="w-44 h-44 2xl:w-64 2xl:h-64 relative animate-pulse rounded-t-xl bg-surface dark:bg-surface-dark transition-all" />
           : <>
