@@ -6,7 +6,8 @@ import SunImage from "@/app/ui/dashboard/sunimage";
 import { useState, useEffect} from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
+import { TextPlugin } from "gsap/TextPlugin";
+gsap.registerPlugin(TextPlugin)
 
 const Page = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -77,13 +78,25 @@ const Page = () => {
   }
 
   useGSAP(() => {
+    // Crearing the timeline
     let tl = gsap.timeline();
-    tl.to(".eit171", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
-      .to(".eit195", {y: 0, duration: 0.7 ,ease: "power1out(1.7t)"})
-      .to(".eit284", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
-      .to(".eit304", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
-      .to(".eithmiigr", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
-      .to(".hmimag", {y: 0, duration: 0.7 ,ease: "power1.out(1.7)"})
+
+    //Crearing the timeline for images
+    let tlImages = gsap.timeline();
+
+    // Animating the title and datepicker
+    tl.to("#titleOneDate", {text: t('title'), duration: 0.6})
+      .to("#oneDatePicker", {x: 0, opacity: 100, duration: 0.5, ease: "expo.out"})
+
+    //Animating the sun images
+    gsap.to(".eit171", {y: 0, duration: 0.5, ease: "back.inOut(1.7)"})
+    gsap.to(".eit195", {y: 0, duration: 0.6 ,ease: "back.inOut(1.7)"})
+    gsap.to(".eit284", {y: 0, duration: 0.7 ,ease: "back.inOut(1.7)"})
+    gsap.to(".eit304", {y: 0, duration: 0.8 ,ease: "back.inOut(1.7)"})
+    gsap.to(".eithmiigr", {y: 0, duration: 0.9 ,ease: "back.inOut(1.7)"})
+    gsap.to(".hmimag", {y: 0, duration: 1 ,ease: "back.inOut(1.7)"})
+
+    
   })
 
   return (
@@ -97,7 +110,7 @@ const Page = () => {
           <h1
             id="titleOneDate"
             className="text-3xl text-on-background dark:text-on-background-dark"
-          >{t('title')}</h1>
+          ></h1>
         </div>
         <div id="dateContainer" className="flex mt-2 md:mt-0">
           <DatePicker onDateChange={handleDateChange} />
