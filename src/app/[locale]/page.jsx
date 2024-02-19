@@ -30,6 +30,7 @@ export default function Index() {
           width={1729}
           height={1117}
           className="absolute w-full h-full object-cover z-0 select-none"
+          alt="Luma Multiple Color Sun Background"
         />
         <div
           id="heroTitles"
