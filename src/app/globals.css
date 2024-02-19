@@ -5,6 +5,13 @@
 @font-face {
   font-family: "clash";
   src: url("./fonts/ClashDisplay-Semibold.woff2");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "clash";
+  src: url("./fonts/ClashDisplay-Bold.woff2");
+  font-weight: 700;
 }
 
 @font-face {
@@ -19,6 +26,8 @@ chip {
 button{
   @apply h-10 rounded-full px-6 w-fit
 }
+
+
 
 /* Dashboard */
 #dashboard::-webkit-scrollbar {

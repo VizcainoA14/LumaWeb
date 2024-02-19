@@ -81,9 +81,6 @@ const Page = () => {
     // Crearing the timeline
     let tl = gsap.timeline();
 
-    //Crearing the timeline for images
-    let tlImages = gsap.timeline();
-
     // Animating the title and datepicker
     tl.to("#titleOneDate", {text: t('title'), duration: 0.6})
       .to("#oneDatePicker", {x: 0, opacity: 100, duration: 0.5, ease: "expo.out"})
