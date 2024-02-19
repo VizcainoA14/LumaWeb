@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom styles */
+@font-face {
+  font-family: "clash";
+  src: url("./fonts/ClashDisplay-Regular.woff2");
+  font-weight: 400;
+}
+
 @font-face {
   font-family: "clash";
   src: url("./fonts/ClashDisplay-Semibold.woff2");
