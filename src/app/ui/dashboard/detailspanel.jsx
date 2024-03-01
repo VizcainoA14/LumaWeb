@@ -29,24 +29,6 @@ export function DetailsPanel(props) {
           >
             {t("titleDetails")}
           </h>
-          <div className="pt-2 md:pl-4 flex gap-2" style={{ fontFamily: "clash" }}>
-            <chip
-              className={
-                buttonActive === "over" ? "buttonActive" : "buttonData"
-              }
-              onClick={handleButtonOver}
-            >
-              {t("buttonOverview")}
-            </chip>
-            <chip
-              className={
-                buttonActive === "deta" ? "buttonActive" : "buttonData"
-              }
-              onClick={handleButtonInactive}
-            >
-              {t("buttonDetails")}
-            </chip>
-          </div>
         </div>
       </div>
       <div className="w-full">
