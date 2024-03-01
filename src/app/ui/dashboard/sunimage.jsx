@@ -45,8 +45,8 @@ export default function SunImage(props) {;
               <Image
                   src={props.image}
                   alt="Sun image"
-                  width={256}
-                  height={256}
+                  width={512}
+                  height={512}
                   className="w-44 h-44 2xl:w-64 2xl:h-64 rounded-t-xl dark:border-2 dark:border-secondary-container-dark/50"
                 />
               <div
