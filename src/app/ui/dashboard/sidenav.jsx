@@ -11,7 +11,7 @@ export default function SideNav() {
       <div className="">
         <h2 className="text-2xl text-on-background-dark hover:text-white transition-all"><Link href="/">Luma</Link></h2>
         <div className="w-40 md:w-full text-white flex flex-row md:flex-col">
-          <h6 className="text-outline-dark text-sm my-2">Mode</h6>
+          <p className="text-outline-dark text-sm my-2">Mode</p>
           <NavLinks />
         </div>
       </div>

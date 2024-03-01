@@ -84,7 +84,7 @@ export default function DataOverview(props) {
               {t("fractalDimensionTitle")}
             </TabsTrigger>
             <TabsTrigger value="skewness">
-              {t("skewness")}
+              {t("skewnessTitle")}
             </TabsTrigger>
             <TabsTrigger value="kurtosis">
               {t("kurtosisTitle")}

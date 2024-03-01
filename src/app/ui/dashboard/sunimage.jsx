@@ -64,9 +64,9 @@ export default function SunImage(props) {;
         className="w-full px-4 my-2 flex items-center justify-between text-on-surface dark:text-on-surface-dark"
       >
         <div className="flex items-center">
-          <h4 className="" style={{ fontFamily: "clash" }}>
+          <p style={{ fontFamily: "clash" }}>
             {props.table.toUpperCase()}
-          </h4> 
+          </p> 
         </div>
         {/* Hover card for additional information */}
         <HoverCard className="cursor-pointer">
