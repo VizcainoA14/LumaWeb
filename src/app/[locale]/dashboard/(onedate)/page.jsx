@@ -101,7 +101,7 @@ const Page = () => {
       {/* Header here */}
       <div
         id="nav"
-        className="w-full h-fit flex flex-col mb-4 md:flex-row md:justify-between md:items-center"
+        className="w-full h-fit font-semibold flex flex-col mb-4 md:flex-row md:justify-between md:items-center"
       >
         <div id="titleContainer">
           <h1

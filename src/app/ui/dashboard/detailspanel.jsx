@@ -9,14 +9,6 @@ export function DetailsPanel(props) {
 
   const [buttonActive, setButtonActive] = useState("over");
 
-  const handleButtonOver = () => {
-    setButtonActive("over");
-  };
-
-  const handleButtonInactive = () => {
-    setButtonActive("deta");
-  };
-
   let data = props?.data;
 
   return (
@@ -24,7 +16,7 @@ export function DetailsPanel(props) {
       <div className="w-full h-fit">
         <div className="h-fit md:h-10 flex flex-col md:flex-row md:items-center">
           <h
-            className="text-xl text-on-background dark:text-on-background-dark"
+            className="text-xl font-semibold text-on-background dark:text-on-background-dark"
             style={{ fontFamily: "clash" }}
           >
             {t("titleDetails")}
@@ -33,7 +25,7 @@ export function DetailsPanel(props) {
       </div>
       <div className="w-full">
         <div className="w-full h-max">
-          {buttonActive === "over" ? <DataOverview data={data} date={props.date}/> : <h1>Details</h1>}
+          <DataOverview data={data} date={props.date}/>
         </div>
       </div>
     </div>

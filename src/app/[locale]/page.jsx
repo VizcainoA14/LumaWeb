@@ -30,7 +30,7 @@ export default function Index() {
       >
         {/* Sun image in the background of hero */}
         <Image
-          src="/images/bgSunHero.png"
+          src="/images/bgSunHero.webp"
           width={1729}
           height={1117}
           className="absolute w-full h-full object-cover z-0 select-none"
