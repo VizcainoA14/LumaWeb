@@ -12,14 +12,14 @@ export default function OneAnalytics(props) {
         >
           <div
             id="monthAverage"
-            className="text-xl dark:text-on-background-dark"
+            className="text-3xl dark:text-on-background-dark"
             style={{ fontFamily: "Clash" }}
           >
             {statistics?.avg?.toFixed(2)}
           </div>
           <div
             id="monthAverageLabel"
-            className="text-sm dark:text-on-background-dark/60"
+            className="text-md dark:text-on-background-dark/60"
             style={{ fontFamily: "Archivo" }}
           >
             Month Average
@@ -31,14 +31,14 @@ export default function OneAnalytics(props) {
         <div id="monthMaximum" className="analyticCard" >
           <div
             id="monthMax"
-            className="text-xl dark:text-on-background-dark"
+            className="text-3xl dark:text-on-background-dark"
             style={{ fontFamily: "Clash" }}
           >
             {statistics?.max?.toFixed(2)}
           </div>
           <div
             id="monthMaxLabel"
-            className="text-sm dark:text-on-background-dark/60"
+            className="text-md dark:text-on-background-dark/60"
             style={{ fontFamily: "Archivo" }}
           >
             Month Maximum
@@ -47,14 +47,14 @@ export default function OneAnalytics(props) {
         <div className="analyticCard" >
           <div
             id="monthMinimum"
-            className="text-xl dark:text-on-background-dark"
+            className="text-3xl dark:text-on-background-dark"
             style={{ fontFamily: "Clash" }}
           >
             {statistics?.min?.toFixed(2)}
           </div>
           <div
             id="monthMinimumLabel"
-            className="text-sm dark:text-on-background-dark/60"
+            className="text-md dark:text-on-background-dark/60"
             style={{ fontFamily: "Archivo" }}
           >
             Month Minimum
