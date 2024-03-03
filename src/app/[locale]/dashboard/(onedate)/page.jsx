@@ -44,7 +44,7 @@ const Page = () => {
             const parsedData = JSON.parse(cachedData);
             const cachedDate = new Date(parsedData.date);
             const currentDate = new Date(selectedDate);
-            if (currentDate.getMonth() === cachedDate.getMonth()) {
+            if (currentDate.getMonth() === cachedDate.getMonth() && currentDate.getFullYear() === cachedDate.getFullYear()){
               setData(parsedData.data);
               return;
             }
