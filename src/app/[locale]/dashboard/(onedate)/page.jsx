@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
@@ -33,14 +33,28 @@ const Page = () => {
   const handleDateChange = (date) => setSelectedDate(date);
   const fixDate = (date) => date && `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
-  // Fetch data from API
+  // Fetch data from API or cache
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (selectedDate) {
+          const cachedData = localStorage.getItem('cachedData');
+          if (cachedData) {
+            const parsedData = JSON.parse(cachedData);
+            const cachedDate = new Date(parsedData.date);
+            const currentDate = new Date(selectedDate);
+            if (currentDate.getMonth() === cachedDate.getMonth()) {
+              setData(parsedData.data);
+              return;
+            }
+          }
+
           const response = await fetch(`/api/get-data?date=${fixDate(selectedDate)}`);
           const result = await response.json();
           setData(result);
+
+          // Cache the data for this month
+          localStorage.setItem('cachedData', JSON.stringify({ date: selectedDate, data: result }));
         }
       } catch (error) {
         console.error("Error fetching data:", error);
