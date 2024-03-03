@@ -12,7 +12,8 @@ import { TextPlugin } from "gsap/TextPlugin";
 gsap.registerPlugin(TextPlugin);
 
 const Page = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const defaultDate = new Date('2023-01-25T05:00:00.000Z');
+  const [selectedDate, setSelectedDate] = useState(defaultDate);
   const [data, setData] = useState(null);
   const t = useTranslations("OneDate");
 

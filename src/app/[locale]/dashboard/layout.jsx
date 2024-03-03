@@ -1,5 +1,6 @@
 import SideNav from "@/app/ui/dashboard/sidenav";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import {Suspense} from "react";
 
 export default function Layout({ children }) {
   return (

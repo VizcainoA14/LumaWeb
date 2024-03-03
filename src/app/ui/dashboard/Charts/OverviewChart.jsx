@@ -24,7 +24,7 @@ export default function OverChart(props) {
 
   return (
     <Card className="w-full h-fit rounded-2xl border-none bg-background dark:bg-surface-dark p-4">
-      <Title style={{ fontFamily: "Clash" }}>
+      <Title className="font-semibold" style={{ fontFamily: "Clash, open sans" }}>
         {t(`${props.parameter}Title`)}
       </Title>
       <Subtitle
