@@ -23,13 +23,13 @@ export default function OverChart(props) {
   let categories = Object.keys(props.data[0]).filter(key => key !== "name");
 
   return (
-    <Card className="w-full h-fit rounded-2xl border-none bg-background dark:bg-surface-dark p-4">
-      <Title className="font-semibold" style={{ fontFamily: "Clash, open sans" }}>
+    <Card className="w-full h-fit rounded-2xl border border-surface bg-background dark:bg-background-dark dark:border-surface-dark p-4">
+      <Title className="font-semibold text-xl" style={{ fontFamily: "Clash, open sans" }}>
         {t(`${props.parameter}Title`)}
       </Title>
       <Subtitle
         style={{ fontFamily: "Archivo" }}
-        className="text-on-background/80 dark:text-on-background-dark md:max-w-[60vw]"
+        className="text-lg text-on-background/80 dark:text-on-background-dark md:max-w-[60vw]"
       >
         {t(`${props.parameter}Description`)}
       </Subtitle>

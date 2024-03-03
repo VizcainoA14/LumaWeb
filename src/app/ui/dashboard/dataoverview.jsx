@@ -28,40 +28,44 @@ function generateDataArray(data, parameter, date) {
 
 //Function to get the data needed for the analytics
 const generateDataAnalytics = (data, parameter) => {
-  if(!data){
+  if (!data) {
     return {};
   }
 
-  //Defining the analytics object
+  // Defining the analytics object
   let analytics = [];
 
-  //Iterating over the data
+  // Iterating over the data
   for (let key in data) {
-    if(data.hasOwnProperty(key)){
+    if (data.hasOwnProperty(key)) {
       data[key].rows.forEach(row => {
         if (row.hasOwnProperty(parameter)) {
           analytics.push(row[parameter]);
         }
-      })
+      });
     }
   }
 
-  let minimun = Math.min(...analytics);
-  let maximun = Math.max(...analytics);
+  let minimum = Math.min(...analytics);
+  let maximum = Math.max(...analytics);
   let average = analytics.reduce((a, b) => a + b, 0) / analytics.length;
 
+  // Calculating standard deviation
+  let variance = analytics.reduce((acc, val) => acc + (val - average) ** 2, 0) / analytics.length;
+  let standardDeviation = Math.sqrt(variance);
+
   return {
-    min: minimun,
-    max: maximun,
-    avg: average
-  }
-}
+    min: minimum,
+    max: maximum,
+    avg: average,
+    stdDev: standardDeviation
+  };
+};
 
 export default function DataOverview(props) {
   const t = useTranslations("OverviewChart");
   let data = props.data;
   let date = props.date;
-  let statistics = generateDataAnalytics(data, "entropy");
 
   return (
     <div className="w-full">
@@ -104,19 +108,21 @@ export default function DataOverview(props) {
           <OverChart
             data={generateDataArray(data, "entropy", date)}
             parameter={"entropy"}
-            statistics={statistics}
+            statistics={generateDataAnalytics(data, "entropy")}
           />
         </TabsContent>
         <TabsContent value="mean_intensity" className="">
           <OverChart
             data={generateDataArray(data, "mean_intensity", date)}
             parameter={"meanIntensity"}
+            statistics={generateDataAnalytics(data, "mean_intensity")}
           />
         </TabsContent>
         <TabsContent value="standard_deviation" className="">
           <OverChart
             data={generateDataArray(data, "standard_deviation", date)}
             parameter={"standardDeviation"}
+            statistics={generateDataAnalytics(data, "standard_deviation")}
           />
 
         </TabsContent>
@@ -124,36 +130,42 @@ export default function DataOverview(props) {
           <OverChart
             data={generateDataArray(data, "fractal_dimension", date)}
             parameter={"fractalDimension"}
+            statistics={generateDataAnalytics(data, "fractal_dimension")}
           />
         </TabsContent>
         <TabsContent value="skewness" className="">
           <OverChart
             data={generateDataArray(data, "skewness", date)}
             parameter={"skewness"}
+            statistics={generateDataAnalytics(data, "skewness")}
           />
         </TabsContent>
         <TabsContent value="kurtosis" className="">
           <OverChart
             data={generateDataArray(data, "kurtosis", date)}
             parameter={"kurtosis"}
+            statistics={generateDataAnalytics(data, "kurtosis")}
           />
         </TabsContent>
         <TabsContent value="uniformity" className="">
           <OverChart
             data={generateDataArray(data, "uniformity", date)}
             parameter={"uniformity"}
+            statistics={generateDataAnalytics(data, "uniformity")}
           />
         </TabsContent>
         <TabsContent value="relative_smoothness" className="">
           <OverChart
             data={generateDataArray(data, "relative_smoothness", date)}
             parameter={"relativeSmoothness"}
+            statistics={generateDataAnalytics(data, "relative_smoothness")}
           />
         </TabsContent>
         <TabsContent value="tamura_contrast" className="">
           <OverChart
             data={generateDataArray(data, "tamura_contrast", date)}
             parameter={"tamuraContrast"}
+            statistics={generateDataAnalytics(data, "tamura_contrast")}
           />
         </TabsContent>
       </Tabs>

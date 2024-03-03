@@ -55,7 +55,7 @@ button{
 
 /*Analitycs component*/
 .analyticCard {
-  @apply w-1/2 h-full flex flex-col justify-center items-center bg-background dark:bg-background-dark border dark:border-outline-dark/50 rounded-xl;
+  @apply w-1/2 h-full flex flex-col justify-center items-center bg-background dark:bg-background-dark border dark:border-outline-dark/50 rounded-2xl overflow-hidden;
 }
 
 /* Handle */

@@ -16,7 +16,7 @@ export function DetailsPanel(props) {
       <div className="w-full h-fit">
         <div className="h-fit md:h-10 flex flex-col md:flex-row md:items-center">
           <h
-            className="text-xl font-semibold text-on-background dark:text-on-background-dark"
+            className="text-2xl font-semibold text-on-background dark:text-on-background-dark"
             style={{ fontFamily: "clash" }}
           >
             {t("titleDetails")}
