@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useGSAP } from "@gsap/react";
 import { useTranslations } from "next-intl";
 import { DatePicker } from "@/app/ui/dashboard/datepicker";
@@ -8,7 +8,7 @@ import { DetailsPanel } from "@/app/ui/dashboard/detailspanel";
 import SunImage from "@/app/ui/dashboard/sunimage";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
-
+import { toast } from "sonner";
 gsap.registerPlugin(TextPlugin);
 
 const Page = () => {
@@ -52,6 +52,18 @@ const Page = () => {
 
           const response = await fetch(`/api/get-data?date=${fixDate(selectedDate)}`);
           const result = await response.json();
+          let dataFound = false;
+          for (const key in result) {
+            if (result[key].rows.length === 0) {
+              toast("No data available for this date. Please select another date.");
+            } else {
+              dataFound = true;
+            }
+          }
+
+          if (dataFound) {
+            toast("Data fetched successfully!");
+          }
           setData(result);
 
           // Cache the data for this month

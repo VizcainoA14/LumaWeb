@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DateProvider } from "@/context/DateContext";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import { Toaster } from "@/components/ui/sonner";
 
 // Can be imported from a shared config
 const locales = ["en", "es"];
@@ -23,6 +24,7 @@ export default function LocaleLayout({ children, params: { locale } }) {
           <DateProvider>
               {children}
             <SpeedInsights />
+            <Toaster />
           </DateProvider>
         </NextIntlClientProvider>
       </body>
