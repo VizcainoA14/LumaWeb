@@ -5,6 +5,7 @@ import { DateProvider } from "@/context/DateContext";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Toaster } from "@/components/ui/sonner";
 
+
 // Can be imported from a shared config
 const locales = ["en", "es"];
 
