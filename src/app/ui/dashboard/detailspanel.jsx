@@ -24,7 +24,7 @@ export function DetailsPanel(props) {
         </div>
       </div>
       <div className="w-full">
-        <div className="w-full h-max">
+        <div className="w-full min-h-80 h-max">
           <DataOverview data={data} date={props.date}/>
         </div>
       </div>

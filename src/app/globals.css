@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* Custom styles */
 @font-face {
   font-family: "clash";
@@ -56,6 +61,11 @@ button{
 /*Analitycs component*/
 .analyticCard {
   @apply w-1/2 h-full flex flex-col justify-center items-center bg-background dark:bg-background-dark border dark:border-outline-dark/50 rounded-2xl overflow-hidden;
+}
+
+/*Analityc label*/
+.analitycLabel {
+  @apply w-full h-1/4 bg-surface flex items-center justify-center md:text-xs xl:text-xs dark:bg-surface-dark dark:text-on-surface-dark;
 }
 
 /* Handle */

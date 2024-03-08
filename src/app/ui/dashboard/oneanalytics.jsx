@@ -3,10 +3,10 @@ export default function OneAnalytics(props) {
   return (
     <div
       id="oneDateAnalyticsContainer"
-      className="md:w-1/3 flex flex-col rounded-md p-2 gap-2"
+      className="xl:w-1/3 flex flex-col md:w-full md:flex-row xl:flex-col rounded-md p-2 gap-2"
     >
       {/*Month Average container */}
-      <div className="w-full h-1/2 flex flex-row gap-2">
+      <div className="w-full h-1/2 md:h-28 lg:h-1/2 flex flex-row gap-2">
         <div
           id="monthAvgContainer"
           className="analyticCard"
@@ -20,7 +20,7 @@ export default function OneAnalytics(props) {
           </div>
           <div
             id="monthAverageLabel"
-            className="w-full h-1/4 bg-surface flex items-center justify-center text-md dark:bg-surface-dark dark:text-on-surface-dark"
+            className="analitycLabel"
             style={{ fontFamily: "Archivo" }}
           >
             Month Average
@@ -39,7 +39,7 @@ export default function OneAnalytics(props) {
           </div>
           <div
             id="monthAverageLabel"
-            className="w-full h-1/4 bg-surface flex items-center justify-center text-md dark:bg-surface-dark dark:text-on-surface-dark"
+            className="analitycLabel"
             style={{ fontFamily: "Archivo" }}
           >
             Month Standart deviation
@@ -48,7 +48,7 @@ export default function OneAnalytics(props) {
       </div>
 
       {/*Month Maximum and Minimum container */}
-      <div className="w-full h-1/2 flex flex-row gap-2">
+      <div className="w-full h-1/2 md:h-28 lg:h-1/2 flex flex-row gap-2">
         <div id="monthMaximum" className="analyticCard" >
           <div
             id="monthMax"
@@ -59,7 +59,7 @@ export default function OneAnalytics(props) {
           </div>
           <div
             id="monthMaxLabel"
-            className="w-full h-1/4 bg-surface flex items-center justify-center text-md dark:bg-surface-dark dark:text-on-surface-dark"
+            className="analitycLabel"
             style={{ fontFamily: "Archivo" }}
           >
             Month Maximum
@@ -75,7 +75,7 @@ export default function OneAnalytics(props) {
           </div>
           <div
             id="monthMinimumLabel"
-            className="w-full h-1/4 bg-surface flex items-center justify-center text-md dark:bg-surface-dark dark:text-on-surface-dark"
+            className="analitycLabel"
             style={{ fontFamily: "Archivo" }}
           >
             Month Minimum

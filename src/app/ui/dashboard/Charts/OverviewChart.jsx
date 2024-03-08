@@ -33,9 +33,9 @@ export default function OverChart(props) {
       >
         {t(`${props.parameter}Description`)}
       </Subtitle>
-      <div className="flex flex-col md:flex-row w-full h-full pt-6 gap-2">
+      <div className="flex flex-col md:flex-col xl:flex-row w-full h-full pt-6 gap-2">
         <BarChart
-          className="w-full md:w-2/3 border border-surface dark:border-surface-dark rounded-xl"
+          className="w-full lg:w-full xl:w-2/3 border border-surface dark:border-surface-dark rounded-xl"
           data={props.data}
           index="name"
           categories={categories}
