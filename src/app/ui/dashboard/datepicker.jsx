@@ -42,7 +42,7 @@ export function DatePicker({onDateChange}) {
           mode="single"
           captionLayout="dropdown-buttons"
           fromYear={2011}
-          toYear={2023}
+          toYear={2024}
           selected={date}
           onSelect={handleDateChange}
           initialFocus
