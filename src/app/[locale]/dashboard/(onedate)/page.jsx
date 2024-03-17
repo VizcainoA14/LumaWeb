@@ -102,7 +102,7 @@ const Page = () => {
       </div>
 
       {/* Sun images */}
-      <div id="sunImagesContainer" className="scrollable relative w-full flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden overflow-y-hidden">
+      <div id="sunImagesContainer" className="scrollable relative w-full h-fit flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden overflow-y-hidden">
         <div id="eitContainer" className="flex gap-4 xl:gap-2">
           {["171", "195", "284", "304"].map((table) => (
             <SunImage key={table} csun={`eit${table}`} table={`eit${table}`} image={data && data[`data${table}`] ? getImage(data[`data${table}`], fixDate(selectedDate)) : ""} description={t(`description${table}`)} />
