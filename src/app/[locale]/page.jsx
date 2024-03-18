@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState} from "react";
+import { useRef, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +18,7 @@ export default function Index() {
 
   const handleBgLoad = () => {
     setIsBgLoaded(true);
-  }
+  };
 
   // Using Gsap
   useGSAP(() => {
@@ -26,28 +27,23 @@ export default function Index() {
       y: 300,
       stagger: 0.1
     });
-
-    //Animating the hero section
-    gsap.utils.toArray("#heroWrapper").forEach((section) => {
-      let htl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => "+=" + section.offsetHeight,
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-        },
-        defaults: { ease: "none" }
-      });
-
-      htl.from(section.querySelector("#heroGray"), { yPercent: 100, y: 0 }, {yPercent: 0})
-          .fromTo(section.querySelector("#heroGray"), {yPercent: -100, y: 0}, {yPercent: 0}, 0);
-    })
   });
 
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
   return (
-    <div className="w-screen h-fit flex flex-col overflow-x-hidden">
+    <div className="w-[100svw] h-fit flex flex-col">
+
+      {/* Hero section */}
       <div id="heroWrapper" className="w-fit h-fit">
         <div
           id="heroColor"
@@ -66,7 +62,7 @@ export default function Index() {
           {/* Hero principal titles */}
           <div
             id="heroTitles"
-            className="absolute text-[16vw] font-bold text-on-background-dark top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="absolute text-[20vw] font-bold text-on-background-dark top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{ fontFamily: "Clash" }}
           >
             <div className="titleWrapper h-fit overflow-hidden">
@@ -94,6 +90,9 @@ export default function Index() {
 
         {/* GrayScale section */}
       </div>
+
+      {/* Main content */}
+      <div className="w-screen h-screen bg-background-dark" />
     </div>
   );
 }
