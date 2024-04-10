@@ -1,5 +1,6 @@
 import { AreaChart, Card, Title } from "@tremor/react"
 import { useTranslations } from "next-intl";
+import moment from 'moment';
 
 export default function RangeChart({ 
     rawData,
@@ -12,8 +13,19 @@ export default function RangeChart({
     // Función to generate fixed data for the chart
     const generateFixedData = () => {
       if (selectedRange && selectedTable && rawData && rawData[selectedTable]?.rows) {
+        const numPoints = Object.keys(rawData[selectedTable]?.rows).length;
+        let dateFormat = 'YYYY-MM-DD HH:mm:ss'; // Formato por defecto
+    
+        if (numPoints > 100) {
+          dateFormat = 'MM-YY'; // Si hay más de 100 puntos, muestra solo la fecha
+        } else if (numPoints > 50) {
+          dateFormat = 'YYYY-MM'; // Si hay más de 50 puntos, muestra solo el mes y el año
+        } else {
+          dateFormat = 'DD-MM-YYYY'; // Si hay menos de 50 puntos, muestra solo el año
+        }
+    
         return Object.keys(rawData[selectedTable]?.rows).map((key) => ({
-            date: rawData[selectedTable]?.rows[key].date,
+            date: moment(rawData[selectedTable]?.rows[key].date).format(dateFormat),
             value: rawData[selectedTable]?.rows[key][parameter],
         }))
       }
