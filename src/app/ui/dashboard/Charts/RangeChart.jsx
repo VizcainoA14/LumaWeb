@@ -17,9 +17,9 @@ export default function RangeChart({
         let dateFormat = 'YYYY-MM-DD HH:mm:ss'; // Formato por defecto
     
         if (numPoints > 100) {
-          dateFormat = 'MM-YY'; // Si hay más de 100 puntos, muestra solo la fecha
+          dateFormat = 'MM-YYYY'; // Si hay más de 100 puntos, muestra solo la fecha
         } else if (numPoints > 50) {
-          dateFormat = 'YYYY-MM'; // Si hay más de 50 puntos, muestra solo el mes y el año
+          dateFormat = 'MM-YYYY'; // Si hay más de 50 puntos, muestra solo el mes y el año
         } else {
           dateFormat = 'DD-MM-YYYY'; // Si hay menos de 50 puntos, muestra solo el año
         }
