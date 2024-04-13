@@ -5,6 +5,7 @@ import { TablePicker } from "@/app/ui/dashboard/tablepicker";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RangeChartFlare } from "@/app/ui/dashboard/Charts/RangeChartFlare";
 
 const Page = () => {
   const t = useTranslations("RangeChart");
@@ -93,7 +94,7 @@ const Page = () => {
           </TabsList>
         </div>
         <TabsContent value="entropy" className="">
-          <RangeChart
+          <RangeChartFlare
             rawData={rawData}
             selectedTable={selectedTable}
             selectedRange={selectedRange}
