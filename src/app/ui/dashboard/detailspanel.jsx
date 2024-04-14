@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -61,6 +61,7 @@ export function DetailsPanel(props) {
 
   const [buttonActive, setButtonActive] = useState("over");
   let data = props?.data;
+  console.log(data)
   let date = props.date;
 
   return (
@@ -79,9 +80,9 @@ export function DetailsPanel(props) {
         <div className="w-full min-h-80 h-max">
           <div className="w-full">
             <Tabs defaultValue="entropy" className="w-full mt-4">
-              <div className="scrollable w-full overflow-x-scroll 2xl:overflow-hidden">
+              <div className="scrollable w-full overflow-x-scroll">
                 <TabsList
-                  className="text-secondary dark:text-secondary-dark border-surface dark:border-surface-dark"
+                  className="text-secondary dark:text-secondary-dark"
                   style={{ fontFamily: "clash" }}
                 >
                   <TabsTrigger value="entropy">
@@ -108,8 +109,11 @@ export function DetailsPanel(props) {
                   <TabsTrigger value="relative_smoothness">
                     {tOverview("relativeSmoothnessTitle")}
                   </TabsTrigger>
-                  <TabsTrigger value="tamura_contrast">
-                    {tOverview("tamuraContrastTitle")}
+                  <TabsTrigger value="taruma_contrast">
+                    {tOverview("tarumaContrastTitle")}
+                  </TabsTrigger>
+                  <TabsTrigger value="taruma_directionality">
+                    {tOverview("tarumaDirectionalityTitle")}
                   </TabsTrigger>
                 </TabsList>
               </div>
@@ -169,11 +173,18 @@ export function DetailsPanel(props) {
                   statistics={generateDataAnalytics(data, "relative_smoothness")}
                 />
               </TabsContent>
-              <TabsContent value="tamura_contrast" className="">
+              <TabsContent value="taruma_contrast" className="">
                 <OverChart
-                  data={generateDataArray(data, "tamura_contrast", date)}
-                  parameter={"tamuraContrast"}
-                  statistics={generateDataAnalytics(data, "tamura_contrast")}
+                  data={generateDataArray(data, "taruma_contrast", date)}
+                  parameter={"tarumaContrast"}
+                  statistics={generateDataAnalytics(data, "taruma_contrast")}
+                />
+              </TabsContent>
+              <TabsContent value="taruma_directionality" className="">
+                <OverChart
+                    data={generateDataArray(data, "taruma_directionality", date)}
+                    parameter={"tarumaDirectionality"}
+                    statistics={generateDataAnalytics(data, "taruma_directionality")}
                 />
               </TabsContent>
             </Tabs>

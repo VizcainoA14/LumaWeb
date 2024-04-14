@@ -55,7 +55,7 @@ button{
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-  @apply bg-surface dark:bg-surface-dark/40 rounded-full;
+  @apply bg-surface dark:bg-outline-dark/30 rounded-full;
 }
 
 /*Analitycs component*/
