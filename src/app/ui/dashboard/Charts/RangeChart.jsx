@@ -1,75 +1,120 @@
-import { AreaChart, Card, Title } from "@tremor/react"
-import { useTranslations } from "next-intl";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    scales,
+} from 'chart.js';
+import {Line} from 'react-chartjs-2';
 import moment from 'moment';
 
-export default function RangeChart({ 
-    rawData,
-    selectedTable,
-    selectedRange,
-    parameter 
-  }) {
-    const t = useTranslations("RangeChart");
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
-    // Función to generate fixed data for the chart
-    const generateFixedData = () => {
-      if (selectedRange && selectedTable && rawData && rawData[selectedTable]?.rows) {
-        const numPoints = Object.keys(rawData[selectedTable]?.rows).length;
-        let dateFormat = 'YYYY-MM-DD HH:mm:ss'; // Formato por defecto
-    
-        if (numPoints > 100) {
-          dateFormat = 'MM-YYYY'; // Si hay más de 100 puntos, muestra solo la fecha
-        } else if (numPoints > 50) {
-          dateFormat = 'MM-YYYY'; // Si hay más de 50 puntos, muestra solo el mes y el año
-        } else {
-          dateFormat = 'DD-MM-YYYY'; // Si hay menos de 50 puntos, muestra solo el año
+export const RangeChart = ({
+        rawData,
+        selectedTable,
+        parameter
+    }) => {
+
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Line Chart'
+            },
+        },
+        scales: {
+            x: {
+                display: true,
+                title: {
+                    display: true,
+                    text: 'Date'
+                },
+
+            },
+            y: {
+                display: true,
+                title: {
+                    display: true,
+                    text: 'Value'
+                },
+                grid: {
+                    display: true,
+                    color: '#8a9297',
+                },
+                ticks: {
+                    color: '#8a9297',
+                }
+
+            }
         }
-    
-        return Object.keys(rawData[selectedTable]?.rows).map((key) => ({
-            date: moment(rawData[selectedTable]?.rows[key].date).format(dateFormat),
-            value: rawData[selectedTable]?.rows[key][parameter],
-        }))
-      }
-      return null;
     }
+
+
+    let dataPoints = [];
+    let labels = [];
 
     // Setting the color of the chart
     const determineChartColor = () => {
-      switch (selectedTable) {
-        case 'data171':
-          return "blue";
-        case 'data195':
-          return "green";
-        case 'data284':
-          return "yellow";
-        case 'data304':
-          return "red";
-        case 'datahmiigr':
-          return "orange";
-        case 'datahmimag':
-          return "gray";
-        default:
-          return null;
-      }
+        switch (selectedTable) {
+            case 'data171':
+                return "blue";
+            case 'data195':
+                return "green";
+            case 'data284':
+                return "yellow";
+            case 'data304':
+                return "red";
+            case 'datahmiigr':
+                return "orange";
+            case 'datahmimag':
+                return "gray";
+            default:
+                return null;
+        }
     }
 
-    let fixedData = generateFixedData();
-    let chartColor = determineChartColor();
+    let graphColor = determineChartColor();
 
-    return(
-        <Card>
-            <Title>{t(`${parameter}Title`)}</Title>
-            <AreaChart
-              className="h-72 mt-4"
-              data={fixedData}
-              index="date"
-              yAxisWidth={65}
-              categories={["value"]}
-              colors={[chartColor]}
-              showAnimation={true}
-              showLegend={false}
-              showGridLines={true}
-              connectNulls={true}
-            />
-        </Card>
+    if (rawData && rawData[selectedTable]) {
+        console.log(rawData[selectedTable].rows.map((element) => element.date));
+        dataPoints = rawData[selectedTable].rows.map((element) => element[parameter]);
+        labels = rawData[selectedTable].rows.map((element) => {
+            let date = moment(element.date);
+            return date.format('DD MM YYYY'); // Formato: Mes Año
+        });
+    }
+
+    const data = {
+        labels,
+        datasets: [{
+            label: parameter,
+            data: dataPoints,
+            fill: false,
+            borderColor: graphColor,
+            tension: 0.1
+        }]
+    }
+
+
+    return (
+        <Line options={options} data={data}/>
+
     )
 }
