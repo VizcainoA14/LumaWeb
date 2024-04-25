@@ -4,24 +4,31 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import OverChart from "./Charts/OverviewChart";
 
-function generateDataArray(data, parameter, date) {
-  if (!data) {
-    return [];
-  }
+ function generateDataArray(data, parameter, date) {
+   if (!data) {
+     return [];
+   }
 
-  let paramValues = {};
+   let paramValues = {};
 
-  Object.keys(data).forEach(key => {
-    if (data[key].rows && data[key].rows.length > 0) {
-      let row = data[key].rows.find(row => row.date.split(" ")[0] === date);
-      if (row) {
-        paramValues[key] = row[parameter];
-      }
-    }
-  });
+   Object.keys(data).forEach(key => {
+     if (data[key].rows && data[key].rows.length > 0) {
+       let rowsWithSameDate = data[key].rows.filter(row => row.date.split(" ")[0] === date);
+       if (rowsWithSameDate.length > 0) {
+         let sum = rowsWithSameDate.reduce((acc, row) => acc + row[parameter], 0);
+         let average = sum / rowsWithSameDate.length;
+         let newKey = key.toUpperCase().replace('DATA', 'EIT');
+         if (newKey.endsWith('HMIIGR') || newKey.endsWith('HMIMAG')) {
+           newKey = newKey.replace('DATA', '');
+         }
+         paramValues[newKey] = average;
+       }
+     }
+   });
 
-  return [{ name: parameter, ...paramValues }];
-}
+   return [{ name: parameter, ...paramValues }];
+ }
+
 
 const generateDataAnalytics = (data, parameter) => {
   if (!data) {
@@ -63,7 +70,7 @@ export function DetailsPanel(props) {
   let data = props?.data;
   console.log(data)
   let date = props.date;
-
+  console.log(generateDataArray(data, "entropy", date))
   return (
     <div className="w-full h-full mt-4 py-2 flex flex-col dark:border-surface-dark/50 rounded-xl">
       <div className="w-full h-fit">
