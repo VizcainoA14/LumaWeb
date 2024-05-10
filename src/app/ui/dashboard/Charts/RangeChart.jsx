@@ -1,26 +1,6 @@
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-    scales,
-} from 'chart.js';
-import {Line} from 'react-chartjs-2';
+
 import moment from 'moment';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-);
 
 export const RangeChart = ({
         rawData,
@@ -114,7 +94,8 @@ export const RangeChart = ({
 
 
     return (
-        <Line options={options} data={data}/>
+        // <Line options={options} data={data}/>
+        <div>En proceso...</div>
 
     )
 }
