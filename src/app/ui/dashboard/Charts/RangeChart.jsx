@@ -1,52 +1,22 @@
 
 import moment from 'moment';
-
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+    ReferenceLine,
+    ResponsiveContainer,
+  } from 'recharts';
 
 export const RangeChart = ({
         rawData,
         selectedTable,
         parameter
     }) => {
-
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Line Chart'
-            },
-        },
-        scales: {
-            x: {
-                display: true,
-                title: {
-                    display: true,
-                    text: 'Date'
-                },
-
-            },
-            y: {
-                display: true,
-                title: {
-                    display: true,
-                    text: 'Value'
-                },
-                grid: {
-                    display: true,
-                    color: '#8a9297',
-                },
-                ticks: {
-                    color: '#8a9297',
-                }
-
-            }
-        }
-    }
-
-
     let dataPoints = [];
     let labels = [];
 
@@ -81,21 +51,36 @@ export const RangeChart = ({
         });
     }
 
+    console.log(dataPoints);
+
     const data = {
-        labels,
-        datasets: [{
-            label: parameter,
-            data: dataPoints,
-            fill: false,
-            borderColor: graphColor,
-            tension: 0.1
-        }]
+        
     }
 
 
     return (
-        // <Line options={options} data={data}/>
-        <div>En proceso...</div>
-
+        <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+                top: 20,
+                right: 50,
+                left: 20,
+                bottom: 5,
+            }}
+            >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <ReferenceLine x="Page C" stroke="red" label="Max PV PAGE" />
+            <ReferenceLine y={9800} label="Max" stroke="red" />
+            <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+            </LineChart>
+      </ResponsiveContainer>
     )
 }
