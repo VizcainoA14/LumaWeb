@@ -1,28 +1,7 @@
 import {useTranslations} from "next-intl";
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-import {Bar} from 'react-chartjs-2';
 import OneAnalytics from "../oneanalytics";
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-);
 
-export const options = {
-    responsive: true,
-};
 
 export default function OverChart(props) {
     const t = useTranslations("OverviewChart");
@@ -71,7 +50,7 @@ export default function OverChart(props) {
             </div>
             <div className="flex flex-col md:flex-col xl:flex-row w-full h-full pt-6 gap-2">
                 <div id={'barChartContainer'} className={'xl:w-2/3 '}>
-                    <Bar options={options} data={data} />
+                    
                 </div>
                 <OneAnalytics statistics={statistics}/>
             </div>
