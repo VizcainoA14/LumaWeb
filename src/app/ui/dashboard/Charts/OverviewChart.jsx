@@ -1,6 +1,6 @@
 import {useTranslations} from "next-intl";
 import OneAnalytics from "../oneanalytics";
-
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 
 
 export default function OverChart(props) {
@@ -20,16 +20,33 @@ export default function OverChart(props) {
         return <div className="w-full h-96 p-4 bg-surface animate-pulse"/>;
     }
     let categories = Object.keys(props.data[0]).filter(key => key !== "name");
-    let labels = ['EIT171', 'EIT195', 'EIT284', 'EIT304', 'HMIIGR', 'HMIMAG']
-    console.log(Object.values(props.data[0]).slice(1))
-    let data = {
-        labels: labels,
-        datasets : [{
-            label: 'Entropy',
-            data: Object.values(props.data[0]).slice(1),
-            backgroundColor: colors,
-        }]
-    }
+
+    let data = [
+        {
+            name: 'EIT171',
+            entropy: Object.values(props.data[0]).slice(1)[0]
+        },
+        {
+            name: 'EIT195',
+            entropy: Object.values(props.data[0]).slice(1)[1]
+        },
+        {
+            name: 'EIT284',
+            entropy: Object.values(props.data[0]).slice(1)[2]
+        },
+        {
+            name: 'EIT304',
+            entropy: Object.values(props.data[0]).slice(1)[3]
+        },
+        {
+            name: 'HMIIGR',
+            entropy: Object.values(props.data[0]).slice(1)[4]
+        },
+        {
+            name: 'HMIMAG',
+            entropy: Object.values(props.data[0]).slice(1)[5]
+        }
+    ]
 
     return (
         <div
@@ -48,9 +65,25 @@ export default function OverChart(props) {
                     {t(`${props.parameter}Description`)}
                 </p>
             </div>
-            <div className="flex flex-col md:flex-col xl:flex-row w-full h-full pt-6 gap-2">
+            <div className="flex flex-col md:flex-col xl:flex-row w-full h-96 pt-6 gap-2">
                 <div id={'barChartContainer'} className={'xl:w-2/3 '}>
-                    
+                <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                    width={500}
+                    height={300}
+                    data={data}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Bar dataKey="entropy" fill="#82ca9d" >
+                            {data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                            ))}
+                        </Bar>
+                    </BarChart>
+                </ResponsiveContainer>
                 </div>
                 <OneAnalytics statistics={statistics}/>
             </div>
