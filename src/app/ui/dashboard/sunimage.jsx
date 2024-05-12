@@ -42,11 +42,11 @@ export default function SunImage(props) {;
         {props.image == "" || props.image == undefined
           ? <div className="w-44 h-44 2xl:w-64 2xl:h-64 relative animate-pulse rounded-t-xl bg-surface dark:bg-surface-dark transition-all" />
           : <>
-              <img
+              <Image
                   src={props.image}
                   alt="Sun image"
-                  width="512"
-                  height="512"
+                  width={512}
+                  height={512}
                   className="w-44 h-44 2xl:w-64 2xl:h-64 rounded-t-xl dark:border-2 dark:border-secondary-container-dark/50"
                 />
               <div
