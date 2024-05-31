@@ -77,7 +77,7 @@ export default function OverChart(props) {
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip />
-                        <Bar dataKey="entropy" fill="#82ca9d" >
+                        <Bar dataKey="entropy" fill="#191c1e" >
                             {data.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                             ))}
