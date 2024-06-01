@@ -36,18 +36,18 @@ export default function SunImage(props) {;
   }
 
   return (
-    <div className={`${props.csun} bg-surface dark:bg-secondary-container-dark/40 w-44 h-fit 2xl:w-fit 2xl:h-fit rounded-xl hover:rounded-2xl translate-y-72`}>
+    <div className={`${props.csun} bg-surface-container dark:bg-secondary-container-dark/40 max-w-36 w-36 h-fit md:w-52 xl:w-48 2xl:w-56 transition-all`}>
       {/* Image container */}
-      <div id="imageContainer" className="w-fit h-fit relative">
+      <div id="imageContainer" className="w-full h-fit relative">
         {props.image == "" || props.image == undefined
-          ? <div className="w-44 h-44 2xl:w-64 2xl:h-64 relative animate-pulse rounded-t-xl bg-surface dark:bg-surface-dark transition-all" />
+          ? <div className="w-36 max-w-36 h-36 max-h-44 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-56 2xl:h-56 2xl:max-h-56 relative animate-pulse bg-surface dark:bg-surface-dark transition-all" />
           : <>
               <Image
                   src={props.image}
                   alt="Sun image"
                   width={512}
                   height={512}
-                  className="w-44 h-44 2xl:w-64 2xl:h-64 rounded-t-xl dark:border-2 dark:border-secondary-container-dark/50"
+                  className="dark:border-secondary-container-dark/50 w-36 max-w-36 h-36 max-h-44 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-56 2xl:h-56 2xl:max-h-56 dark:border-2 transition-all"
                 />
               <div
               id="idDot"
@@ -69,11 +69,11 @@ export default function SunImage(props) {;
           </p> 
         </div>
         {/* Hover card for additional information */}
-        <HoverCard className="cursor-pointer">
+        <HoverCard className="cursor-pointer z-50">
           <HoverCardTrigger>
             <InfoCircledIcon className="w-5 h-5"/>
           </HoverCardTrigger>
-          <HoverCardContent>
+          <HoverCardContent className='z-50'>
             {props.description}
           </HoverCardContent>
         </HoverCard>

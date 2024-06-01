@@ -151,7 +151,7 @@ const Page = () => {
       {/* Sun images */}
       <div
         id="sunImagesContainer"
-        className="scrollable relative w-full h-fit flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden overflow-y-hidden"
+        className="scrollable w-full h-fit flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden z-20"
       >
         <div id="eitContainer" className="flex gap-4 xl:gap-2">
           {["171", "195", "284", "304"].map(table =>
@@ -193,7 +193,7 @@ const Page = () => {
       </div>
 
       {/* Details panel */}
-      <div className="h-fit">
+      <div className="h-fit z-10">
         <DetailsPanel data={data} date={fixDate(selectedDate)} />
       </div>
     </div>
