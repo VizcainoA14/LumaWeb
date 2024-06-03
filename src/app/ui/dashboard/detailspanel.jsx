@@ -1,7 +1,8 @@
  "use client";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TriangleRightIcon } from '@radix-ui/react-icons'
 import OverChart from "./Charts/OverviewChart";
 
  function generateDataArray(data, parameter, date) {
@@ -65,10 +66,61 @@ const generateDataAnalytics = (data, parameter) => {
 export function DetailsPanel(props) {
   const t = useTranslations("OneDate");
   const tOverview = useTranslations("OverviewChart");
-
   const [buttonActive, setButtonActive] = useState("over");
+  const tabList = useRef(null);
+  const scrollToEndButton = useRef(null);
+  const scrollToStartButton = useRef(null);
+
   let data = props?.data;
   let date = props.date;
+
+  const scrollToEnd = () => {
+    if (tabList.current) {
+      tabList.current.scrollTo({
+        left: tabList.current.scrollWidth,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const scrollToStart = () => {
+    if (tabList.current) {
+      tabList.current.scrollTo({
+        left: 0,
+        behavior: "smooth"
+      });
+    }
+  }
+
+  const updateButtonVisibility = () => {
+    if (tabList.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = tabList.current;
+      if (scrollLeft === 0) {
+        scrollToStartButton.current.style.display = 'none';
+      } else {
+        scrollToStartButton.current.style.display = 'flex';
+      }
+      if (scrollLeft + clientWidth >= scrollWidth) {
+        scrollToEndButton.current.style.display = 'none';
+      } else {
+        scrollToEndButton.current.style.display = 'flex';
+      }
+    }
+  };
+
+  useEffect(() => {
+    updateButtonVisibility();
+    if (tabList.current) {
+      tabList.current.addEventListener('scroll', updateButtonVisibility);
+      window.addEventListener('resize', updateButtonVisibility);
+    }
+    return () => {
+      if (tabList.current) {
+        tabList.current.removeEventListener('scroll', updateButtonVisibility);
+        window.removeEventListener('resize', updateButtonVisibility);
+      }
+    };
+  }, []);
   return (
     <div className="w-full h-full mt-4 py-2 flex flex-col dark:border-surface-dark/50 rounded-xl">
       <div className="w-full h-fit">
@@ -85,43 +137,62 @@ export function DetailsPanel(props) {
         <div className="w-full min-h-80 h-max">
           <div className="w-full">
             <Tabs defaultValue="entropy" className="w-full mt-4">
-              <div className="scrollable w-full overflow-x-scroll">
-                <TabsList
-                  className="text-secondary dark:text-secondary-dark"
-                  style={{ fontFamily: "clash" }}
+              <div className="flex relative justify-center items-center">
+                <div className="w-full overflow-x-scroll" ref={tabList}>
+                  <TabsList
+                    style={{ fontFamily: "clash" }}
+                    
+                  >
+                    <TabsTrigger value="entropy">
+                      {tOverview("entropyTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="mean_intensity">
+                      {tOverview("meanIntensityTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="standard_deviation">
+                      {tOverview("standardDeviationTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="fractal_dimension">
+                      {tOverview("fractalDimensionTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="skewness">
+                      {tOverview("skewnessTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="kurtosis">
+                      {tOverview("kurtosisTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="uniformity">
+                      {tOverview("uniformityTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="relative_smoothness">
+                      {tOverview("relativeSmoothnessTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="taruma_contrast">
+                      {tOverview("tarumaContrastTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="taruma_directionality">
+                      {tOverview("tarumaDirectionalityTitle")}
+                    </TabsTrigger>
+                  </TabsList>
+                </div>
+                <div
+                  ref={scrollToEndButton}
+                  id="ScrollToEndButton"
+                  className="cursor-pointer flex justify-center items-center absolute w-10 h-10 right-[0.4rem] bg-surface-container-lowest hover:bg-tertiary-container dark:bg-surface-container-highest-dark dark:hover:bg-tertiary-container-dark rounded-full transition-all"
+                  onClick={scrollToEnd}
                 >
-                  <TabsTrigger value="entropy">
-                    {tOverview("entropyTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="mean_intensity">
-                    {tOverview("meanIntensityTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="standard_deviation">
-                    {tOverview("standardDeviationTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="fractal_dimension">
-                    {tOverview("fractalDimensionTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="skewness">
-                    {tOverview("skewnessTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="kurtosis">
-                    {tOverview("kurtosisTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="uniformity">
-                    {tOverview("uniformityTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="relative_smoothness">
-                    {tOverview("relativeSmoothnessTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="taruma_contrast">
-                    {tOverview("tarumaContrastTitle")}
-                  </TabsTrigger>
-                  <TabsTrigger value="taruma_directionality">
-                    {tOverview("tarumaDirectionalityTitle")}
-                  </TabsTrigger>
-                </TabsList>
+                  <TriangleRightIcon className="h-5 w-5 text-on-tertiary-container dark:text-on-tertiary-container-dark"/>
+                </div>
+                <div
+                  ref={scrollToStartButton}
+                  id="ScrollToStartButton"
+                  className="cursor-pointer flex justify-center items-center absolute w-10 h-10 left-[0.4rem] bg-surface-container-lowest hover:bg-tertiary-container dark:bg-surface-container-highest-dark dark:hover:bg-tertiary-container-dark rounded-full transition-all"
+                  onClick={scrollToStart}
+                >
+                  <TriangleRightIcon className="h-5 w-5 text-on-tertiary-container dark:text-on-tertiary-container-dark rotate-180"/>
+                </div>
               </div>
+              
               <TabsContent value="entropy" className="flex">
                 <OverChart
                   data={generateDataArray(data, "entropy", date)}
