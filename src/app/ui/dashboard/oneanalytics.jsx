@@ -3,10 +3,10 @@ export default function OneAnalytics(props) {
   return (
     <div
       id="oneDateAnalyticsContainer"
-      className="xl:w-1/3 flex flex-col md:w-full md:flex-row xl:flex-col rounded-md p-2 gap-2"
+      className="md:h-36 md:w-full md:flex-row xl:w-1/3 flex flex-col xl:flex-col xl:h-96 rounded-md p-2 gap-2"
     >
       {/*Month Average container */}
-      <div className="w-full h-1/2 md:h-28 lg:h-1/2 flex flex-row gap-2">
+      <div className="w-full h-1/2 md:h-28 lg:h-full flex flex-row gap-2">
         <div
           id="monthAvgContainer"
           className="analyticCard"
@@ -48,7 +48,7 @@ export default function OneAnalytics(props) {
       </div>
 
       {/*Month Maximum and Minimum container */}
-      <div className="w-full h-1/2 md:h-28 lg:h-1/2 flex flex-row gap-2">
+      <div className="w-full h-1/2 md:h-28 lg:h-full flex flex-row gap-2">
         <div id="monthMaximum" className="analyticCard" >
           <div
             id="monthMax"

@@ -193,7 +193,7 @@ const Page = () => {
       </div>
 
       {/* Details panel */}
-      <div className="h-fit z-10">
+      <div className="h-fit">
         <DetailsPanel data={data} date={fixDate(selectedDate)} />
       </div>
     </div>

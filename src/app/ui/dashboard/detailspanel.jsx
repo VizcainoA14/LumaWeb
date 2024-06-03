@@ -68,9 +68,7 @@ export function DetailsPanel(props) {
 
   const [buttonActive, setButtonActive] = useState("over");
   let data = props?.data;
-  console.log(data)
   let date = props.date;
-  console.log(generateDataArray(data, "entropy", date))
   return (
     <div className="w-full h-full mt-4 py-2 flex flex-col dark:border-surface-dark/50 rounded-xl">
       <div className="w-full h-fit">
