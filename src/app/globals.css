@@ -65,7 +65,7 @@ button{
 
 /*Analityc label*/
 .analitycLabel {
-  @apply w-full h-1/4 bg-surface flex items-center justify-center md:text-xs xl:text-xs dark:bg-surface-dark dark:text-on-surface-dark;
+  @apply w-full h-1/4 bg-surface flex items-center justify-center text-center text-sm md:text-xs xl:text-xs dark:bg-surface-dark dark:text-on-surface-dark;
 }
 
 /* Handle */

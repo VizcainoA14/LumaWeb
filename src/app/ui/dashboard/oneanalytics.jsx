@@ -3,7 +3,7 @@ export default function OneAnalytics(props) {
   return (
     <div
       id="oneDateAnalyticsContainer"
-      className="md:h-36 md:w-full md:flex-row xl:w-1/3 flex flex-col xl:flex-col xl:h-96 rounded-md p-2 gap-2"
+      className="h-56 md:h-36 md:w-full md:flex-row xl:w-1/3 flex flex-col xl:flex-col xl:h-96 rounded-md p-2 gap-2"
     >
       {/*Month Average container */}
       <div className="w-full h-1/2 md:h-28 lg:h-full flex flex-row gap-2">
@@ -13,7 +13,7 @@ export default function OneAnalytics(props) {
         >
           <div
             id="monthAverage"
-            className="w-full h-3/4 flex items-center justify-center text-3xl dark:text-on-background-dark"
+            className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
             style={{ fontFamily: "Clash" }}
           >
             {statistics?.avg?.toFixed(2)}
@@ -32,7 +32,7 @@ export default function OneAnalytics(props) {
         >
           <div
             id="monthStd"
-            className="w-full h-3/4 flex items-center justify-center text-3xl dark:text-on-background-dark"
+            className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
             style={{ fontFamily: "Clash" }}
           >
             {statistics?.stdDev?.toFixed(2)}
@@ -52,7 +52,7 @@ export default function OneAnalytics(props) {
         <div id="monthMaximum" className="analyticCard" >
           <div
             id="monthMax"
-            className="w-full h-3/4 flex items-center justify-center text-3xl dark:text-on-background-dark"
+            className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
             style={{ fontFamily: "Clash" }}
           >
             {statistics?.max?.toFixed(2)}
@@ -68,7 +68,7 @@ export default function OneAnalytics(props) {
         <div className="analyticCard" >
           <div
             id="monthMinimum"
-            className="w-full h-3/4 flex items-center justify-center text-3xl dark:text-on-background-dark"
+            className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
             style={{ fontFamily: "Clash" }}
           >
             {statistics?.min?.toFixed(2)}

@@ -92,8 +92,8 @@ export default function OverChart(props) {
           <ResponsiveContainer width="100%" height="100%">
             <BarChart width={500} height={300} data={data}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />md:w-full md:flex-row
-              <YAxis />
+              <XAxis dataKey="name" />
+              <YAxis width={20}/>
               <Tooltip />
               <Bar dataKey="entropy" fill="#191c1e">
                 {data.map((entry, index) =>
