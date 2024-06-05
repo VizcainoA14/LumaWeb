@@ -65,7 +65,7 @@ const generateDataAnalytics = (data, parameter) => {
 
 export function DetailsPanel(props) {
   const t = useTranslations("OneDate");
-  const tOverview = useTranslations("OverviewChart");
+  const tOverview = useTranslations("ChartsParameters");
   const [buttonActive, setButtonActive] = useState("over");
   const tabList = useRef(null);
   const scrollToEndButton = useRef(null);

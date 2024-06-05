@@ -14,7 +14,7 @@ import {
 } from "recharts";
 
 export default function OverChart(props) {
-  const t = useTranslations("OverviewChart");
+  const t = useTranslations("ChartsParameters");
   let statistics = props.statistics;
 
   const colors = [
