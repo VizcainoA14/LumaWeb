@@ -1,43 +1,82 @@
 "use client";
-import {DateRangePicker} from "@/app/ui/dashboard/daterangepicker";
 import {TablePicker} from "@/app/ui/dashboard/tablepicker";
 import {useTranslations} from "next-intl";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import { TriangleRightIcon } from '@radix-ui/react-icons'
 import {RangeChart} from "@/app/ui/dashboard/Charts/RangeChart";
+import DateRangePicker from "@/app/ui/dashboard/daterangepicker";
 
 const Page = () => {
-    const t = useTranslations("RangeChart");
+    const t = useTranslations("DateRange");
+    const tOverview = useTranslations("ChartsParameters");
     const [selectedRange, setSelectedRange] = useState(null);
     const [selectedTable, setSelectedTable] = useState(null);
     const [rawData, setRawData] = useState(null);
+    const tabList = useRef(null);
+    const scrollToEndButton = useRef(null);
+    const scrollToStartButton = useRef(null);
+
+    const scrollToEnd = () => {
+        if (tabList.current) {
+            tabList.current.scrollTo({
+            left: tabList.current.scrollWidth,
+            behavior: "smooth"
+            });
+        }
+    };
+    
+    const scrollToStart = () => {
+        if (tabList.current) {
+            tabList.current.scrollTo({
+            left: 0,
+            behavior: "smooth"
+            });
+        }
+    }
+    
+    const updateButtonVisibility = () => {
+        if (tabList.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = tabList.current;
+            if (scrollLeft === 0) {
+            scrollToStartButton.current.style.display = 'none';
+            } else {
+            scrollToStartButton.current.style.display = 'flex';
+            }
+            if (scrollLeft + clientWidth >= scrollWidth) {
+            scrollToEndButton.current.style.display = 'none';
+            } else {
+            scrollToEndButton.current.style.display = 'flex';
+            }
+        }
+    };
+
+    useEffect(() => {
+    updateButtonVisibility();
+        if (tabList.current) {
+            tabList.current.addEventListener('scroll', updateButtonVisibility);
+            window.addEventListener('resize', updateButtonVisibility);
+        }
+        return () => {
+            if (tabList.current) {
+            tabList.current.removeEventListener('scroll', updateButtonVisibility);
+            window.removeEventListener('resize', updateButtonVisibility);
+            }
+        };
+    }, []);
 
     //Defining date handler
-    const handleRangeChange = date => {
-        setSelectedRange(date);
-    };
+    const handleRangeChange = date => setSelectedRange(date);
+    console.log(selectedRange);
 
     // Defining table handler
     const handleTableChange = table => {
         setSelectedTable(table);
     };
 
-    //Defining range fixer
-    const fixRange = date => {
-        // Verifying if the date is null
-        if (date === null) {
-            return null;
-        }
-
-        return {
-            from: selectedRange.from.toISOString().split("T")[0],
-            to: selectedRange.to.toISOString().split("T")[0]
-        };
-    };
-
     // getting data by range
     const getData = () => {
-        fetch(`/api/get-range?startDate=${fixRange(selectedRange)?.from}&endDate=${fixRange(selectedRange)?.to}`)
+        fetch(`/api/get-range?startDate=${selectedRange?.from}&endDate=${selectedRange?.to}`)
             .then(res => res.json())
             .then(data => {
                 setRawData(data);
@@ -77,85 +116,92 @@ const Page = () => {
 
             {/* Line chart selector and Line chart here */}
             <Tabs defaultValue="entropy" className="w-full mt-4">
-                <div className="scrollable w-full overflow-x-scroll 2xl:overflow-hidden">
-                    <TabsList
-                        className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
-                        style={{fontFamily: "clash"}}
-                    >
-                        <TabsTrigger value="entropy">{t('entropyTitle')}</TabsTrigger>
-                        <TabsTrigger value="mean_intensity">{t('meanIntensityTitle')}</TabsTrigger>
-                        <TabsTrigger value="standard_deviation">{t('standardDeviationTitle')}</TabsTrigger>
-                        <TabsTrigger value="fractal_dimension">{t('fractalDimensionTitle')}</TabsTrigger>
-                        <TabsTrigger value="skewness">{t('skewnessTitle')}</TabsTrigger>
-                        <TabsTrigger value="kurtosis">{t('kurtosisTitle')}</TabsTrigger>
-                        <TabsTrigger value="uniformity">{t('uniformityTitle')}</TabsTrigger>
-                        <TabsTrigger value="relative_smoothness">{t('relativeSmoothnessTitle')}</TabsTrigger>
-                        <TabsTrigger value="tamura_contrast">{t('tamuraContrastTitle')}</TabsTrigger>
-                    </TabsList>
+              <div className="flex relative justify-center items-center">
+                <div className="w-full overflow-x-scroll" ref={tabList}>
+                  <TabsList
+                    style={{ fontFamily: "clash" }}
+                    
+                  >
+                    <TabsTrigger value="entropy">
+                      {tOverview("entropyTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="mean_intensity">
+                      {tOverview("meanIntensityTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="standard_deviation">
+                      {tOverview("standardDeviationTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="fractal_dimension">
+                      {tOverview("fractalDimensionTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="skewness">
+                      {tOverview("skewnessTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="kurtosis">
+                      {tOverview("kurtosisTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="uniformity">
+                      {tOverview("uniformityTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="relative_smoothness">
+                      {tOverview("relativeSmoothnessTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="taruma_contrast">
+                      {tOverview("tarumaContrastTitle")}
+                    </TabsTrigger>
+                    <TabsTrigger value="taruma_directionality">
+                      {tOverview("tarumaDirectionalityTitle")}
+                    </TabsTrigger>
+                  </TabsList>
                 </div>
-                <TabsContent value="entropy" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"entropy"}
-                    />
-                </TabsContent>
-                <TabsContent value="mean_intensity" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"mean_intensity"}
-                    />
-                </TabsContent>
-                <TabsContent value="standard_deviation" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"standard_deviation"}
-                    />
-                </TabsContent>
-                <TabsContent value="fractal_dimension" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"fractal_dimension"}
-                    />
-                </TabsContent>
-                <TabsContent value="skewness" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"skewness"}
-                    />
-                </TabsContent>
-                <TabsContent value="kurtosis" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"kurtosis"}
-                    />
-                </TabsContent>
-                <TabsContent value="uniformity" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"uniformity"}
-                    />
-                </TabsContent>
-                <TabsContent value="relative_smoothness" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"relative_smoothness"}
-                    />
-                </TabsContent>
-                <TabsContent value="tamura_contrast" className="">
-                    <RangeChart
-                        rawData={rawData}
-                        selectedTable={selectedTable}
-                        parameter={"tamura_contrast"}
-                    />
-                </TabsContent>
+                <div
+                  ref={scrollToEndButton}
+                  id="ScrollToEndButton"
+                  className="cursor-pointer flex justify-center items-center absolute w-10 h-10 right-[0.4rem] bg-surface-container-lowest hover:bg-tertiary-container dark:bg-surface-container-highest-dark dark:hover:bg-tertiary-container-dark rounded-full transition-all"
+                  onClick={scrollToEnd}
+                >
+                  <TriangleRightIcon className="h-5 w-5 text-on-tertiary-container dark:text-on-tertiary-container-dark"/>
+                </div>
+                <div
+                  ref={scrollToStartButton}
+                  id="ScrollToStartButton"
+                  className="cursor-pointer flex justify-center items-center absolute w-10 h-10 left-[0.4rem] bg-surface-container-lowest hover:bg-tertiary-container dark:bg-surface-container-highest-dark dark:hover:bg-tertiary-container-dark rounded-full transition-all"
+                  onClick={scrollToStart}
+                >
+                  <TriangleRightIcon className="h-5 w-5 text-on-tertiary-container dark:text-on-tertiary-container-dark rotate-180"/>
+                </div>
+              </div>
+              
+              <TabsContent value="entropy" className="flex">
+                
+              </TabsContent>
+              <TabsContent value="mean_intensity" className="">
+                
+              </TabsContent>
+              <TabsContent value="standard_deviation" className="">
+                
+              </TabsContent>
+              <TabsContent value="fractal_dimension" className="">
+                
+              </TabsContent>
+              <TabsContent value="skewness" className="">
+                
+              </TabsContent>
+              <TabsContent value="kurtosis" className="">
+                
+              </TabsContent>
+              <TabsContent value="uniformity" className="">
+                
+              </TabsContent>
+              <TabsContent value="relative_smoothness" className="">
+                
+              </TabsContent>
+              <TabsContent value="taruma_contrast" className="">
+                
+              </TabsContent>
+              <TabsContent value="taruma_directionality" className="">
+                
+              </TabsContent>
             </Tabs>
 
         </div>
