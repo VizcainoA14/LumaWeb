@@ -19,7 +19,7 @@
   "DateRange": {
     "title": "Analisis para rangos de fechas"
   },
-  "OverviewChart": {
+  "ChartsParameters": {
     "entropyTitle": "Entropia",
     "entropyDescription": "La entropía se calcula típicamente a partir del histograma de la imagen, que es una representación de la distribución de frecuencia de los niveles de intensidad de los píxeles. Cuando una imagen tiene una distribución uniforme de niveles de intensidad, es decir, todos los niveles de intensidad son igualmente probables, la entropía será alta, ya que hay más incertidumbre o desorden en la distribución de los píxeles. Por otro lado, si una imagen tiene una distribución muy sesgada o concentrada de niveles de intensidad, la entropía será baja, ya que hay menos incertidumbre o desorden en la distribución de los píxeles. Cuando una imagen es muy diversa esto implica entropia generalmente baja.",
     "meanIntensityTitle": "Intensidad media",

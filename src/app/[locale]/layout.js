@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import "@/app/globalicons.css"
 import { notFound } from "next/navigation";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DateProvider } from "@/context/DateContext";
