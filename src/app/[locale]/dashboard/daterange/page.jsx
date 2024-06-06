@@ -67,7 +67,6 @@ const Page = () => {
 
     //Defining date handler
     const handleRangeChange = date => setSelectedRange(date);
-    console.log(selectedRange);
 
     // Defining table handler
     const handleTableChange = table => {
@@ -93,6 +92,9 @@ const Page = () => {
         [selectedRange, selectedTable]
     );
 
+    if (rawData && rawData[selectedTable])
+      console.log(rawData[selectedTable]?.rows)
+
     return (
         <div className="w-full h-fit flex flex-col md:p-2">
             {/* Header or Navbar here */}
@@ -100,10 +102,10 @@ const Page = () => {
                 id="nav"
                 className="w-full h-fit flex flex-col mb-4 md:flex-row md:justify-between md:items-center"
             >
-                <div id="titleContainer">
+                <div id="titleContainer" style={{fontFamily: "clash"}}>
                     <h1
-                        id="titleOneDate"
-                        className=" max-w-md text-3xl text-on-background dark:text-on-background-dark"
+                        id="titleRangeDate"
+                        className="max-w-lg text-3xl font-semibold text-on-background dark:text-on-background-dark"
                     >
                         {t("title")}
                     </h1>
@@ -173,7 +175,7 @@ const Page = () => {
               </div>
               
               <TabsContent value="entropy" className="flex">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="entropy"/>
               </TabsContent>
               <TabsContent value="mean_intensity" className="">
                 

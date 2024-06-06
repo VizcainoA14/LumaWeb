@@ -43,7 +43,6 @@ export const RangeChart = ({
     let graphColor = determineChartColor();
 
     if (rawData && rawData[selectedTable]) {
-        console.log(rawData[selectedTable].rows.map((element) => element.date));
         dataPoints = rawData[selectedTable].rows.map((element) => element[parameter]);
         labels = rawData[selectedTable].rows.map((element) => {
             let date = moment(element.date);
@@ -51,36 +50,32 @@ export const RangeChart = ({
         });
     }
 
-    console.log(dataPoints);
-
-    const data = {
-        
-    }
-
-
     return (
-        <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-                top: 20,
-                right: 50,
-                left: 20,
-                bottom: 5,
-            }}
-            >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <ReferenceLine x="Page C" stroke="red" label="Max PV PAGE" />
-            <ReferenceLine y={9800} label="Max" stroke="red" />
-            <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
-      </ResponsiveContainer>
+        <div id='RangeChartContainer' className='w-full h-[50vh]'>
+            {/* <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                width={500}
+                height={300}
+                data={data}
+                margin={{
+                    top: 20,
+                    right: 50,
+                    left: 20,
+                    bottom: 5,
+                }}
+                >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <ReferenceLine x="Page C" stroke="red" label="Max PV PAGE" />
+                <ReferenceLine y={9800} label="Max" stroke="red" />
+                <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                </LineChart>
+            </ResponsiveContainer> */}
+        </div>
+        
     )
 }
