@@ -6,6 +6,7 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import { TriangleRightIcon } from '@radix-ui/react-icons'
 import {RangeChart} from "@/app/ui/dashboard/Charts/RangeChart";
 import DateRangePicker from "@/app/ui/dashboard/daterangepicker";
+import moment from 'moment';
 
 const Page = () => {
     const t = useTranslations("DateRange");
@@ -73,6 +74,9 @@ const Page = () => {
         setSelectedTable(table);
     };
 
+    // if (rawData && rawData[selectedTable])
+    //   console.log(rawData[selectedTable]?.rows)
+
     // getting data by range
     const getData = () => {
         fetch(`/api/get-range?startDate=${selectedRange?.from}&endDate=${selectedRange?.to}`)
@@ -92,8 +96,7 @@ const Page = () => {
         [selectedRange, selectedTable]
     );
 
-    if (rawData && rawData[selectedTable])
-      console.log(rawData[selectedTable]?.rows)
+    
 
     return (
         <div className="w-full h-fit flex flex-col md:p-2">
