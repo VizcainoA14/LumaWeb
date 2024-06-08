@@ -181,31 +181,31 @@ const Page = () => {
                 <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="entropy"/>
               </TabsContent>
               <TabsContent value="mean_intensity" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="mean_intensity"/>
               </TabsContent>
               <TabsContent value="standard_deviation" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="standard_deviation"/>
               </TabsContent>
               <TabsContent value="fractal_dimension" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="fractal_dimension"/>
               </TabsContent>
               <TabsContent value="skewness" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="skewness"/>
               </TabsContent>
               <TabsContent value="kurtosis" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="kurtosis"/>
               </TabsContent>
               <TabsContent value="uniformity" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="uniformity"/>
               </TabsContent>
               <TabsContent value="relative_smoothness" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="relative_smoothness"/>
               </TabsContent>
               <TabsContent value="taruma_contrast" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="taruma_contrast"/>
               </TabsContent>
               <TabsContent value="taruma_directionality" className="">
-                
+                <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="taruma_directionality"/>
               </TabsContent>
             </Tabs>
 
