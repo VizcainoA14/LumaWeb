@@ -33,12 +33,18 @@ export default function Index() {
           >
             {t("title")}
           </h1>
-          <h3 className="mt-2 text-xl text-on-background-dark/95" style={{fontFamily: 'archivo'}}>
+          <h3
+            className="mt-2 text-xl text-on-background-dark/95"
+            style={{ fontFamily: "archivo" }}
+          >
             {t("subtitle")}
           </h3>
           <Link href={"/dashboard"}>
-            <button className="bg-inverse-surface-dark text-inverse-on-surface-dark mt-4">
-              {t('headercta')}
+            <button
+              className="mt-4 font-semibold border-2 border-inverse-surface-dark text-inverse-surface-dark hover:bg-inverse-surface-dark hover:text-inverse-on-surface-dark transition-all"
+              style={{ fontFamily: "clash" }}
+            >
+              {t("headercta")}
             </button>
           </Link>
         </div>
