@@ -25,16 +25,16 @@ export default function Index() {
         {/*Titles*/}
         <div
           id="landingTitlesContainer"
-          className="z-10 flex flex-col text-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          className="z-10 w-full flex flex-col text-center items-center absolute p-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         >
           <h1
-            className="w-[60svw] text-6xl font-bold text-on-background-dark/95"
+            className="w-full md:w-[60svw] text-3xl md:text-6xl font-bold text-on-background-dark/95"
             style={{ fontFamily: "clash" }}
           >
             {t("title")}
           </h1>
           <h3
-            className="mt-2 text-xl text-on-background-dark/95"
+            className="mt-2 text-base md:text-xl text-on-background-dark/95"
             style={{ fontFamily: "archivo" }}
           >
             {t("subtitle")}
