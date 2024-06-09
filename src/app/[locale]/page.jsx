@@ -13,6 +13,7 @@ import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
 import * as reactSpring from "@react-spring/three";
 import * as drei from "@react-three/drei";
 import * as fiber from "@react-three/fiber";
+import { LandingNav } from "../ui/landing/landingnav";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,7 @@ export default function Index() {
 
   return (
     <div className="w-[100svw] h-fit flex flex-col bg-black">
+      <LandingNav />
       <header className="relative w-full h-[100svh] flex">
         {/*Titles*/}
         <div
