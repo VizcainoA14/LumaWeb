@@ -66,7 +66,7 @@ export default function OverChart(props) {
   ];
 
   return (
-    <div className="w-full h-fit rounded-2xl border border-surface bg-background dark:bg-background-dark dark:border-surface-dark p-4 mt-2">
+    <div className="w-full h-fit rounded-2xl border border-surface bg-background dark:bg-background-dark dark:border-surface-dark  mt-2">
       {/* Text for the chart */}
       <div
         id="chartTitlesContainer"
