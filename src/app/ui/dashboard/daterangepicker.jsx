@@ -34,7 +34,7 @@ const DateRangePicker = ({ onRangeChange }) => {
     <div className="w-fit flex gap-4">
       {/* Start date */}
       <div id="startContainer" className="datePickerContainer">
-        <h6 className="dateRangePickerLabel" style={{fontFamily: 'archivo'}}>Start:</h6>
+        <h6 className="dateRangePickerLabel">Start:</h6>
         <Popover>
           <PopoverTrigger asChild>
             <Button
@@ -47,7 +47,7 @@ const DateRangePicker = ({ onRangeChange }) => {
             >
               <CalendarIcon className="mr-2 h-4 w-4 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
               {startDate
-                ? format(startDate, "PPP")
+                ? format(startDate, "dd-mm-yy")
                 : <span
                     className="text-on-tertiary-container dark:text-on-tertiary-container-dark"
                     style={{ fontFamily: "clash" }}
@@ -71,7 +71,7 @@ const DateRangePicker = ({ onRangeChange }) => {
       </div>
       {/* End date */}
       <div id="endContainer" className="datePickerContainer">
-        <h6 className="dateRangePickerLabel" style={{fontFamily: 'archivo'}}>End:</h6>
+        <h6 className="dateRangePickerLabel">End:</h6>
         <Popover>
           <PopoverTrigger asChild>
             <Button
@@ -84,7 +84,7 @@ const DateRangePicker = ({ onRangeChange }) => {
             >
               <CalendarIcon className="mr-2 h-4 w-4 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
               {endDate
-                ? format(endDate, "PPP")
+                ? format(endDate, "dd-mm-yy")
                 : <span
                     className="text-on-tertiary-container dark:text-on-tertiary-container-dark"
                     style={{ fontFamily: "clash" }}

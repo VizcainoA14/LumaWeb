@@ -113,7 +113,7 @@ const Page = () => {
                         {t("title")}
                     </h1>
                 </div>
-                <div id="dateRangeContainer" className="flex mt-2 md:mt-0 gap-4">
+                <div id="dateRangeContainer" className="flex flex-col md:flex-row mt-2 md:mt-0 gap-4">
                     <TablePicker onTableChange={handleTableChange}/>
                     <DateRangePicker onRangeChange={handleRangeChange}/>
                 </div>

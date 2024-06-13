@@ -96,5 +96,6 @@ button{
 }
 
 .dateRangePickerLabel {
-  @apply text-sm text-on-surface-variant dark:text-on-surface-variant-dark
+  @apply text-sm text-on-surface-variant dark:text-on-surface-variant-dark;
+  font-family: 'archivo';
 }

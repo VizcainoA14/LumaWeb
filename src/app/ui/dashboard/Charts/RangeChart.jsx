@@ -1,5 +1,14 @@
 import moment from "moment";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer
+} from "recharts";
 
 export const RangeChart = ({ rawData, selectedTable, parameter }) => {
   let dataPoints = [];
@@ -9,31 +18,32 @@ export const RangeChart = ({ rawData, selectedTable, parameter }) => {
   const determineChartColor = () => {
     switch (selectedTable) {
       case "data171":
-        return "blue";
+        return "#3b82f6";
       case "data195":
-        return "green";
+        return "#22c55e";
       case "data284":
-        return "yellow";
+        return "#eab308";
       case "data304":
-        return "red";
+        return "#ef4444";
       case "datahmiigr":
-        return "orange";
+        return "#f97316";
       case "datahmimag":
-        return "gray";
+        return "#6b7280";
       default:
         return null;
     }
   };
 
   let graphColor = determineChartColor();
+
   const dataFixer = (data, table, parameter) => {
     let fixedData = [];
     if (data && data[table]) {
-      fixedData = data[table].rows.map(element => {
+      fixedData = data[table].rows.map((element) => {
         let date = moment(element.date);
         return {
           date: date.format("DD-MM-YYYY"),
-          [parameter]: element[parameter]
+          [parameter]: element[parameter],
         };
       });
     }
@@ -45,30 +55,32 @@ export const RangeChart = ({ rawData, selectedTable, parameter }) => {
   return (
     <div id="RangeChartContainer" className="w-full h-[50vh]">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={500}
-          height={300}
-          data={fixedData}
-          margin={{
-            top: 20,
-            right: 50,
-            left: 20,
-            bottom: 5,
-          }}
-        >
+        <AreaChart width={500} height={300} data={fixedData}>
+          <defs>
+            <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={graphColor} stopOpacity={0.8} />
+              <stop offset="100%" stopColor={graphColor} stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
-          <YAxis />
+          <YAxis
+            type="number"
+            domain={["auto", "dataMax"]}
+            tickFormatter={(value) => value.toFixed(2)}
+          />
           <Tooltip />
           <Legend />
-          <Line
+          <Area
+            connectNulls
             type="monotone"
             dataKey={parameter}
             stroke={graphColor}
+            fill="url(#colorGradient)"
             strokeWidth={2}
             dot={false}
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );

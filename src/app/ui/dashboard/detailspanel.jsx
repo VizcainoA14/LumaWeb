@@ -125,12 +125,12 @@ export function DetailsPanel(props) {
     <div className="w-full h-full mt-4 py-2 flex flex-col dark:border-surface-dark/50 rounded-xl">
       <div className="w-full h-fit">
         <div className="h-fit md:h-10 flex flex-col md:flex-row md:items-center">
-          <h
+          <h1
             className="text-2xl font-semibold text-on-background dark:text-on-background-dark"
             style={{ fontFamily: "clash" }}
           >
             {t("titleDetails")}
-          </h>
+          </h1>
         </div>
       </div>
       <div className="w-full">

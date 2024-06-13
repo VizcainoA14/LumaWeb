@@ -65,8 +65,12 @@ export default function OverChart(props) {
     }
   ];
 
+  const defaultYAxisProps = {
+    width: 20
+  };
+
   return (
-    <div className="w-full h-fit rounded-2xl border border-surface bg-background dark:bg-background-dark dark:border-surface-dark  mt-2">
+    <div className="w-full h-fit rounded-2xl border border-surface bg-background dark:bg-background-dark dark:border-surface-dark mt-2">
       {/* Text for the chart */}
       <div
         id="chartTitlesContainer"
@@ -93,7 +97,7 @@ export default function OverChart(props) {
             <BarChart width={500} height={300} data={data}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
-              <YAxis width={20}/>
+              <YAxis {...defaultYAxisProps} />
               <Tooltip />
               <Bar dataKey="entropy" fill="#191c1e">
                 {data.map((entry, index) =>
