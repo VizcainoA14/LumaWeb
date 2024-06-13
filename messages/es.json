@@ -40,9 +40,9 @@
     "relativeSmoothnessDescription": "La suavidad relativa es una medida de la variación en la intensidad de los pixeles de la imagen.",
     "tarumaContrastTitle": "Contraste Tamura",
     "tarumaContrastDescription": "El contraste Tamura es una medida de la diferencia en la intensidad de los pixeles adyacentes en la imagen.",
-    "tarumaDirectionalityTitle": "Direccionalidad de Taruma",
+    "tarumaDirectionalityTitle": "Direccionalidad de Tamura",
     "tarumaDirectionalityDescription": "La Direccionalidad de Tamura es otra característica propuesta por Tamura en 1970 para describir la textura en imágenes. Se refiere a la tendencia de las características de textura a alinearse en ciertas direcciones específicas. Esta característica busca capturar la regularidad direccional de la textura en una imagen. La Direccionalidad de Tamura es útil en el análisis de texturas para identificar patrones o estructuras direccionales en una imagen, como líneas, bordes o fibras. Esta característica puede ser utilizada en aplicaciones de detección de bordes, reconocimiento de patrones, y análisis de imágenes médicas, entre otros.",
-    "tarumaLinelikenessTitle": "Linealidad de Taruma",
+    "tarumaLinelikenessTitle": "Linealidad de Tamura",
     "tarumaLinelikenessDescription": "La linelikeness (linealidad) de Tamura es otra característica propuesta para describir la textura en imágenes. Se refiere a la medida en que una textura exhibe características que se asemejan a líneas o a elementos lineales. La linelikeness de Tamura es útil en el análisis de texturas para identificar la presencia y la orientación de estructuras lineales en una imagen. Por ejemplo, puede ser utilizada en aplicaciones de inspección visual para detectar grietas en materiales o para segmentar objetos alargados en imágenes."
   },
   "RangeChart": {

@@ -31,9 +31,10 @@ const DateRangePicker = ({ onRangeChange }) => {
   }, [startDate, endDate]);
 
   return (
-    <div className="w-fit flex gap-2">
+    <div className="w-fit flex gap-4">
       {/* Start date */}
-      <div className="DatePickerContainer">
+      <div id="startContainer" className="datePickerContainer">
+        <h6 className="dateRangePickerLabel" style={{fontFamily: 'archivo'}}>Start:</h6>
         <Popover>
           <PopoverTrigger asChild>
             <Button
@@ -69,7 +70,8 @@ const DateRangePicker = ({ onRangeChange }) => {
         </Popover>
       </div>
       {/* End date */}
-      <div className="DatePickerContainer">
+      <div id="endContainer" className="datePickerContainer">
+        <h6 className="dateRangePickerLabel" style={{fontFamily: 'archivo'}}>End:</h6>
         <Popover>
           <PopoverTrigger asChild>
             <Button

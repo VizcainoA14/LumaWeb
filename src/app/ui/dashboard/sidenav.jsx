@@ -26,6 +26,7 @@ export default function SideNav() {
             <Link href="/">Luma</Link>
           </h2>
         </div>
+        {/* Navbar content for md+ screens */}
         <div
           id="navLinksContainer"
           className="hidden md:flex flex-row md:flex-col md:w-full text-white"
@@ -35,17 +36,20 @@ export default function SideNav() {
           </p>
           <NavLinks />
         </div>
+        {/* Navbar content for mobile screens */}
         <div id="mobileSheetContainer" className="md:hidden">
           <Sheet>
             <SheetTrigger className="p-0 w-12 h-12">
               <HamburgerMenuIcon className="w-10 h-10" />
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent style={{fontFamily: 'archivo'}}>
               <SheetHeader className={"items-start"}>
                 <SheetTitle>Luma menu</SheetTitle>
                 <SheetDescription className={"items-start text-start"}>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
+                  <ul className="mt-4 text-xl text-on-surface dark:text-on-surface-dark">
+                    <li><Link href="/dashboard">One date</Link></li>
+                    <li><Link href="/dashboard/daterange">Date range</Link></li>
+                  </ul>
                 </SheetDescription>
               </SheetHeader>
             </SheetContent>

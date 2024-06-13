@@ -89,3 +89,12 @@ button{
   background-position: center;
   background-size: cover;
 }
+
+/* Date range section */
+.datePickerContainer {
+  @apply flex flex-row items-center gap-2;
+}
+
+.dateRangePickerLabel {
+  @apply text-sm text-on-surface-variant dark:text-on-surface-variant-dark
+}

@@ -113,7 +113,7 @@ const Page = () => {
                         {t("title")}
                     </h1>
                 </div>
-                <div id="dateRangeContainer" className="flex mt-2 md:mt-0 gap-2">
+                <div id="dateRangeContainer" className="flex mt-2 md:mt-0 gap-4">
                     <TablePicker onTableChange={handleTableChange}/>
                     <DateRangePicker onRangeChange={handleRangeChange}/>
                 </div>
@@ -125,7 +125,6 @@ const Page = () => {
                 <div className="w-full overflow-x-scroll" ref={tabList}>
                   <TabsList
                     style={{ fontFamily: "clash" }}
-                    
                   >
                     <TabsTrigger value="entropy">
                       {tOverview("entropyTitle")}
@@ -176,7 +175,6 @@ const Page = () => {
                   <TriangleRightIcon className="h-5 w-5 text-on-tertiary-container dark:text-on-tertiary-container-dark rotate-180"/>
                 </div>
               </div>
-              
               <TabsContent value="entropy" className="flex">
                 <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="entropy"/>
               </TabsContent>
@@ -208,7 +206,6 @@ const Page = () => {
                 <RangeChart rawData={rawData} selectedTable={selectedTable} parameter="taruma_directionality"/>
               </TabsContent>
             </Tabs>
-
         </div>
     );
 };
