@@ -7,6 +7,7 @@ import { TriangleRightIcon } from "@radix-ui/react-icons";
 import { RangeChart } from "@/components/dashboard/Charts/RangeChart";
 import DateRangePicker from "@/components/dashboard/daterangepicker";
 import moment from "moment";
+import { RangeDetails } from "@/components/dashboard/rangedetails";
 
 const Page = () => {
   const t = useTranslations("DateRange");
@@ -171,12 +172,13 @@ const Page = () => {
             <TriangleRightIcon className="h-5 w-5 text-on-tertiary-container dark:text-on-tertiary-container-dark rotate-180" />
           </div>
         </div>
-        <TabsContent value="entropy" className="flex">
+        <TabsContent value="entropy">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
             parameter="entropy"
           />
+          <RangeDetails parameter="entropy"/>
         </TabsContent>
         <TabsContent value="mean_intensity" className="">
           <RangeChart
@@ -184,6 +186,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="mean_intensity"
           />
+          <RangeDetails parameter="meanIntensity"/>
         </TabsContent>
         <TabsContent value="standard_deviation" className="">
           <RangeChart
@@ -191,6 +194,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="standard_deviation"
           />
+          <RangeDetails parameter="standardDeviation"/>
         </TabsContent>
         <TabsContent value="fractal_dimension" className="">
           <RangeChart
@@ -198,6 +202,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="fractal_dimension"
           />
+          <RangeDetails parameter="fractalDimension"/>
         </TabsContent>
         <TabsContent value="skewness" className="">
           <RangeChart
@@ -205,6 +210,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="skewness"
           />
+          <RangeDetails parameter="skewness"/>
         </TabsContent>
         <TabsContent value="kurtosis" className="">
           <RangeChart
@@ -212,6 +218,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="kurtosis"
           />
+          <RangeDetails parameter="kurtosis"/>
         </TabsContent>
         <TabsContent value="uniformity" className="">
           <RangeChart
@@ -219,6 +226,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="uniformity"
           />
+          <RangeDetails parameter="uniformity"/>
         </TabsContent>
         <TabsContent value="relative_smoothness" className="">
           <RangeChart
@@ -226,6 +234,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="relative_smoothness"
           />
+          <RangeDetails parameter="relativeSmoothness"/>
         </TabsContent>
         <TabsContent value="taruma_contrast" className="">
           <RangeChart
@@ -233,6 +242,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="taruma_contrast"
           />
+          <RangeDetails parameter="tarumaContrast"/>
         </TabsContent>
         <TabsContent value="taruma_directionality" className="">
           <RangeChart
@@ -240,6 +250,7 @@ const Page = () => {
             selectedTable={selectedTable}
             parameter="taruma_directionality"
           />
+          <RangeDetails parameter="tarumaDirectionality"/>
         </TabsContent>
       </Tabs>
     </div>
