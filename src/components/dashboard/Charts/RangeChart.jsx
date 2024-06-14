@@ -53,7 +53,7 @@ export const RangeChart = ({ rawData, selectedTable, parameter }) => {
   let fixedData = dataFixer(rawData, selectedTable, parameter);
 
   return (
-    <div id="RangeChartContainer" className="w-full h-[60svh] md:h-[50vh]">
+    <div id="RangeChartContainer" className="w-full h-[70vh] md:h-[50vh]">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart width={500} height={300} data={fixedData}>
           <defs>
@@ -65,6 +65,7 @@ export const RangeChart = ({ rawData, selectedTable, parameter }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
           <YAxis
+            width={20}
             type="number"
             domain={["auto", "dataMax"]}
             tickFormatter={(value) => value.toFixed(2)}
