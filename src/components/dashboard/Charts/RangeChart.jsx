@@ -6,6 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  ReferenceLine,
   Legend,
   ResponsiveContainer
 } from "recharts";
@@ -39,11 +40,11 @@ export const RangeChart = ({ rawData, selectedTable, parameter }) => {
   const dataFixer = (data, table, parameter) => {
     let fixedData = [];
     if (data && data[table]) {
-      fixedData = data[table].rows.map((element) => {
+      fixedData = data[table].rows.map(element => {
         let date = moment(element.date);
         return {
           date: date.format("DD-MM-YYYY"),
-          [parameter]: element[parameter],
+          [parameter]: element[parameter]
         };
       });
     }
@@ -65,12 +66,13 @@ export const RangeChart = ({ rawData, selectedTable, parameter }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
           <YAxis
-            width={20}
+            
             type="number"
             domain={["auto", "dataMax"]}
-            tickFormatter={(value) => value.toFixed(2)}
+            tickFormatter={value => value.toFixed(2)}
           />
           <Tooltip />
+          <ReferenceLine y={fixedData.reduce((acc, val) => acc + val[parameter], 0) / fixedData.length} stroke="#ba1a1a" label={{ value: "Average", position: "insideTopRight" }} />
           <Legend />
           <Area
             connectNulls
