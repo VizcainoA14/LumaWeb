@@ -14,6 +14,7 @@ gsap.registerPlugin(TextPlugin);
 const Page = () => {
   const defaultDate = new Date("2023-01-25T05:00:00.000Z");
   const [selectedDate, setSelectedDate] = useState(defaultDate);
+  const [fixedDate, setFixedDate] = useState("2023-01-25");
   const [data, setData] = useState(null);
   const t = useTranslations("OneDate");
 
@@ -91,16 +92,17 @@ const Page = () => {
       };
 
       fetchData();
+      setFixedDate(fixDate(selectedDate));
     },
     [selectedDate]
   );
 
   // Animation with GSAP
-  useGSAP(() => {
+  useEffect(() => {
     const tl = gsap.timeline();
     tl
       .to("#titleOneDate", { text: t("title"), duration: 0.6 })
-      .to("#subtitleOneDate", { text: `Estadisticos solares para la fecha: ${fixDate(selectedDate)}`, duration: 0.5 })
+      .to("#subtitleOneDate", { text: `Estadisticos solares para la fecha: ${fixedDate}`, duration: 0.5 })
       .to("#oneDatePicker", {
         x: 0,
         opacity: 100,
@@ -122,7 +124,7 @@ const Page = () => {
         ease: "back.inOut(1.7)"
       });
     });
-  });
+  }, [fixedDate]);
 
   // Rendering components
   return (
