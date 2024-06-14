@@ -12,12 +12,14 @@ import { RangeDetails } from "@/components/dashboard/rangedetails";
 const Page = () => {
   const t = useTranslations("DateRange");
   const tOverview = useTranslations("ChartsParameters");
-  const [selectedRange, setSelectedRange] = useState(null);
-  const [selectedTable, setSelectedTable] = useState(null);
+  const [selectedRange, setSelectedRange] = useState({from: '2024-04-01', to: '2024-05-30'});
+  const [selectedTable, setSelectedTable] = useState('data171');
   const [rawData, setRawData] = useState(null);
   const tabList = useRef(null);
   const scrollToEndButton = useRef(null);
   const scrollToStartButton = useRef(null);
+
+  console.log(selectedRange, selectedTable, rawData);
 
   const scrollToEnd = () => {
     if (tabList.current) {
