@@ -1,5 +1,5 @@
 "use client"
-import SunImage from "@/app/ui/dashboard/sunimage";
+import SunImage from "@/components/dashboard/sunimage";
 import {
   Accordion,
   AccordionContent,

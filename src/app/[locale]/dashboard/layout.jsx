@@ -1,4 +1,4 @@
-import SideNav from "@/app/ui/dashboard/sidenav";
+import SideNav from "@/components/dashboard/sidenav";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import {Suspense} from "react";
 

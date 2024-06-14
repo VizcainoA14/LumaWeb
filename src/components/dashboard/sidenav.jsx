@@ -1,6 +1,6 @@
 import { Link } from "@/navigation";
 import DarkTheme from "./darktheme";
-import NavLinks from "@/app/ui/dashboard/nav-links";
+import NavLinks from "@/components/dashboard/nav-links";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import {
   Sheet,

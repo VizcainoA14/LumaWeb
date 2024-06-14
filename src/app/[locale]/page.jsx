@@ -13,7 +13,7 @@ import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
 import * as reactSpring from "@react-spring/three";
 import * as drei from "@react-three/drei";
 import * as fiber from "@react-three/fiber";
-import { LandingNav } from "../ui/landing/landingnav";
+import { LandingNav } from "../../components/landing/landingnav";
 
 gsap.registerPlugin(ScrollTrigger);
 

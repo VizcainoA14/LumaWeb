@@ -3,9 +3,9 @@
 import { useState, useEffect, Suspense } from "react";
 import { useGSAP } from "@gsap/react";
 import { useTranslations } from "next-intl";
-import { DatePicker } from "@/app/ui/dashboard/datepicker";
-import { DetailsPanel } from "@/app/ui/dashboard/detailspanel";
-import SunImage from "@/app/ui/dashboard/sunimage";
+import { DatePicker } from "@/components/dashboard/datepicker";
+import { DetailsPanel } from "@/components/dashboard/detailspanel";
+import SunImage from "@/components/dashboard/sunimage";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { toast } from "sonner";

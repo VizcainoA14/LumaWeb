@@ -53,7 +53,7 @@ export const RangeChart = ({ rawData, selectedTable, parameter }) => {
   let fixedData = dataFixer(rawData, selectedTable, parameter);
 
   return (
-    <div id="RangeChartContainer" className="w-full h-[50vh]">
+    <div id="RangeChartContainer" className="w-full h-[60svh] md:h-[50svh]">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart width={500} height={300} data={fixedData}>
           <defs>
