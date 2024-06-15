@@ -14,17 +14,49 @@ import * as reactSpring from "@react-spring/three";
 import * as drei from "@react-three/drei";
 import * as fiber from "@react-three/fiber";
 import { LandingNav } from "../../components/landing/landingnav";
+import { LoadingLanding } from "@/components/landing/loadinglanding";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Index() {
   const t = useTranslations("Landing");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLoad = () => {
+      // Establecer un temporizador de 2 segundos antes de permitir que se muestre el contenido
+      const timeoutId = setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    };
+
+    // Verificar si todos los recursos ya han sido cargados
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
+  }, []);
+
+  if (isLoading) {
+    return (
+      <LoadingLanding />
+    );
+  }
 
   return (
-    <div className="w-[100svw] h-fit flex flex-col bg-black">
+    <main className="w-[100svw] h-fit flex flex-col bg-black">
       <LandingNav />
       <header className="relative w-full h-[100svh] flex">
-        {/*Titles*/}
+        {/* Titles */}
         <div
           id="landingTitlesContainer"
           className="z-10 w-full flex flex-col text-center items-center absolute p-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
@@ -50,7 +82,7 @@ export default function Index() {
             </button>
           </Link>
         </div>
-        {/* Gradient component*/}
+        {/* Gradient component */}
         <ShaderGradientCanvas
           importedFiber={{ ...fiber, ...drei, ...reactSpring }}
           className="w-full h-full absolute top-0 left-0 z-0"
@@ -61,6 +93,6 @@ export default function Index() {
           />
         </ShaderGradientCanvas>
       </header>
-    </div>
+    </main>
   );
 }
