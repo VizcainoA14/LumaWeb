@@ -14,14 +14,14 @@ import {
 export default function SideNav() {
   return (
     <div
-      className="flex w-full h-full flex-row md:flex-col px-4 md:p-4 lg:flex-col items-center justify-between bg-surface-container-low dark:bg-surface-container-low-dark"
+      className="flex w-full h-full flex-row px-4 md:p-4 lg:flex-col items-center bg-surface-container-low dark:bg-surface-container-low-dark"
       style={{ fontFamily: "clash" }}
     >
       <div
         id="sideNavContent"
-        className="w-full flex flex-row md:flex-col justify-between items-center"
+        className="w-full h-full flex flex-row items-center justify-between lg:flex-col"
       >
-        <div id="sideBrandContainer" className="md:w-full h-full">
+        <div id="sideBrandContainer" className="w-auto h-fit md:w-full md:h-fit">
           <h2 className="font-semibold text-2xl text-on-surface dark:text-on-surface-dark transition-all">
             <Link href="/">Luma</Link>
           </h2>
@@ -29,26 +29,33 @@ export default function SideNav() {
         {/* Navbar content for md+ screens */}
         <div
           id="navLinksContainer"
-          className="hidden md:flex flex-row md:flex-col md:w-full text-white"
+          className="hidden lg:flex flex-row md:flex-col md:w-full h-full justify-between"
         >
-          <p className="font-semibold text-on-surface-variant-dark text-sm my-2">
-            Mode
-          </p>
-          <NavLinks />
+          <div>
+            <p className="font-semibold text-sm my-2 text-on-surface-variant dark:text-on-surface-variant-dark">
+              Mode
+            </p>
+            <NavLinks />
+          </div>
+          <DarkTheme />
         </div>
         {/* Navbar content for mobile screens */}
-        <div id="mobileSheetContainer" className="md:hidden">
+        <div id="mobileSheetContainer" className="lg:hidden">
           <Sheet>
             <SheetTrigger className="p-0 w-12 h-12">
-              <HamburgerMenuIcon className="w-10 h-10" />
+              <HamburgerMenuIcon className="w-10 h-10 text-on-surface dark:text-on-surface-dark" />
             </SheetTrigger>
-            <SheetContent style={{fontFamily: 'archivo'}}>
+            <SheetContent className="bg-surface-container-low text-on-surface dark:bg-surface-container-low-dark dark:text-on-surface-dark" style={{ fontFamily: "archivo" }}>
               <SheetHeader className={"items-start"}>
                 <SheetTitle>Luma menu</SheetTitle>
                 <SheetDescription className={"items-start text-start"}>
-                  <ul className="mt-4 text-xl text-on-surface dark:text-on-surface-dark">
-                    <li><Link href="/dashboard">One date</Link></li>
-                    <li><Link href="/dashboard/daterange">Date range</Link></li>
+                  <ul className="mt-4 text-3xl leading-loose font-semibold text-on-surface dark:text-on-surface-dark">
+                    <li>
+                      <Link href="/dashboard">One date </Link>
+                    </li>
+                    <li>
+                      <Link href="/dashboard/daterange">Date range</Link>
+                    </li>
                   </ul>
                 </SheetDescription>
               </SheetHeader>

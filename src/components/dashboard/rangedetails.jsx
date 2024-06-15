@@ -7,10 +7,10 @@ export const RangeDetails = props => {
     <div className="w-full h-fit mt-4">
       <div
         id="textDescripcionContainer"
-        className="w-full h-full bg-surface-container p-4 rounded-2xl"
+        className="w-full h-full p-4 rounded-2xl bg-surface-container text-on-surface dark:bg-surface-container-dark dark:text-on-surface-dark"
       >
         <h3
-          className="text-2xl text-on-surface font-semibold"
+          className="text-2xl font-semibold"
           style={{ fontFamily: "clash" }}
         >
           {textDetails(`${props.parameter}Title`)}
