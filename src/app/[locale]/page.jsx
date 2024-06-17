@@ -27,7 +27,7 @@ export default function Index() {
       // Establecer un temporizador de 2 segundos antes de permitir que se muestre el contenido
       const timeoutId = setTimeout(() => {
         setIsLoading(false);
-      }, 600);
+      }, 1000);
 
       return () => {
         clearTimeout(timeoutId);
