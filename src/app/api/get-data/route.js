@@ -1,8 +1,10 @@
-import { db } from "@vercel/postgres";
 import { NextResponse } from "next/server";
+import data from "./pr.js"
+
+const db = data;
+
 
 export async function GET(request) {
-  const client = await db.connect();
   const { searchParams } = new URL(request.url);
   const date = searchParams.get("date");
   let year = date.substring(0, 4);
@@ -15,51 +17,81 @@ export async function GET(request) {
   let datahmimag;
 
   try {
-    data171 = await client.sql`
-    SELECT * 
-    FROM eit171
-    WHERE SUBSTRING(Date, 1, 4) = ${year} AND SUBSTRING(Date, 6, 2) = ${month}
-    `;
+    // Realiza las consultas SQL utilizando Prisma
+    data171 = await db.eit171.findMany({
+      where: {
+        date: {
+          startsWith: `${year}-${month}`,
+        },
+      },
+    });
 
-    data195 = await client.sql`
-    SELECT * 
-    FROM eit195
-    WHERE SUBSTRING(Date, 1, 4) = ${year} AND SUBSTRING(Date, 6, 2) = ${month}
-    `;
+    data195 = await db.eit195.findMany({
+      where: {
+        date: {
+          startsWith: `${year}-${month}`,
+        },
+      },
+    });
 
-    data284 = await client.sql`
-    SELECT * 
-    FROM eit284
-    WHERE SUBSTRING(Date, 1, 4) = ${year} AND SUBSTRING(Date, 6, 2) = ${month}
-    `;
+    data284 = await db.eit284.findMany({
+      where: {
+        date: {
+          startsWith: `${year}-${month}`,
+        },
+      },
+    });
 
-    data304 = await client.sql`
-    SELECT * 
-    FROM eit304
-    WHERE SUBSTRING(Date, 1, 4) = ${year} AND SUBSTRING(Date, 6, 2) = ${month}
-    `;
+    data304 = await db.eit304.findMany({
+      where: {
+        date: {
+          startsWith: `${year}-${month}`,
+        },
+      },
+    });
 
-    datahmiigr = await client.sql`
-    SELECT * 
-    FROM hmiigr
-    WHERE SUBSTRING(Date, 1, 4) = ${year} AND SUBSTRING(Date, 6, 2) = ${month}
-    `;
+    datahmiigr = await db.hmiigr.findMany({
+      where: {
+        date: {
+          startsWith: `${year}-${month}`,
+        },
+      },
+    });
 
-    datahmimag = await client.sql`
-    SELECT * 
-    FROM hmimag
-    WHERE SUBSTRING(Date, 1, 4) = ${year} AND SUBSTRING(Date, 6, 2) = ${month}
-    `;
+    datahmimag = await db.hmimag.findMany({
+      where: {
+        date: {
+          startsWith: `${year}-${month}`,
+        },
+      },
+    });
   } catch (error) {
+    // Manejar errores
     return NextResponse.json({ error });
+  } finally {
+    // Cierra la conexión con la base de datos al finalizar
+    await db.$disconnect();
   }
 
+  // Devuelve los resultados
   return NextResponse.json({
-    data171,
-    data195,
-    data284,
-    data304,
-    datahmiigr,
-    datahmimag
+    data171: {
+      rows: data171,
+    },
+    data195: {
+      rows: data195,
+    },
+    data284: {
+      rows: data284,
+    },
+    data304: {
+      rows: data304,
+    },
+    datahmiigr: {
+      rows: datahmiigr,
+    },
+    datahmimag: {
+      rows: datahmimag,
+    },
   });
 }

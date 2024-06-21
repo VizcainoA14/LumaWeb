@@ -55,7 +55,7 @@ button{
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-  @apply bg-surface dark:bg-surface-dark/40 rounded-full;
+  @apply bg-secondary-container dark:bg-secondary-container-dark rounded-full;
 }
 
 /*Analitycs component*/
@@ -65,7 +65,7 @@ button{
 
 /*Analityc label*/
 .analitycLabel {
-  @apply w-full h-1/4 bg-surface flex items-center justify-center md:text-xs xl:text-xs dark:bg-surface-dark dark:text-on-surface-dark;
+  @apply w-full h-1/4 bg-surface flex items-center justify-center text-center text-sm md:text-xs xl:text-xs dark:bg-surface-dark dark:text-on-surface-dark;
 }
 
 /* Handle */
@@ -88,4 +88,14 @@ button{
 #image {
   background-position: center;
   background-size: cover;
+}
+
+/* Date range section */
+.datePickerContainer {
+  @apply flex flex-col md:flex-row items-start md:items-center gap-0 md:gap-2;
+}
+
+.dateRangePickerLabel {
+  @apply text-sm text-on-surface-variant dark:text-on-surface-variant-dark;
+  font-family: 'archivo';
 }

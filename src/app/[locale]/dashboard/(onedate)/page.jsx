@@ -3,9 +3,9 @@
 import { useState, useEffect, Suspense } from "react";
 import { useGSAP } from "@gsap/react";
 import { useTranslations } from "next-intl";
-import { DatePicker } from "@/app/ui/dashboard/datepicker";
-import { DetailsPanel } from "@/app/ui/dashboard/detailspanel";
-import SunImage from "@/app/ui/dashboard/sunimage";
+import { DatePicker } from "@/components/dashboard/datepicker";
+import { DetailsPanel } from "@/components/dashboard/detailspanel";
+import SunImage from "@/components/dashboard/sunimage";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { toast } from "sonner";
@@ -14,6 +14,7 @@ gsap.registerPlugin(TextPlugin);
 const Page = () => {
   const defaultDate = new Date("2023-01-25T05:00:00.000Z");
   const [selectedDate, setSelectedDate] = useState(defaultDate);
+  const [fixedDate, setFixedDate] = useState("2023-01-25");
   const [data, setData] = useState(null);
   const t = useTranslations("OneDate");
 
@@ -91,16 +92,17 @@ const Page = () => {
       };
 
       fetchData();
+      setFixedDate(fixDate(selectedDate));
     },
     [selectedDate]
   );
 
   // Animation with GSAP
-  useGSAP(() => {
+  useEffect(() => {
     const tl = gsap.timeline();
     tl
       .to("#titleOneDate", { text: t("title"), duration: 0.6 })
-      .to("#subtitleOneDate", { text: `Estadisticos solares para la fecha: ${fixDate(selectedDate)}`, duration: 0.5 })
+      .to("#subtitleOneDate", { text: `Estadisticos solares para la fecha: ${fixedDate}`, duration: 0.5 })
       .to("#oneDatePicker", {
         x: 0,
         opacity: 100,
@@ -122,7 +124,7 @@ const Page = () => {
         ease: "back.inOut(1.7)"
       });
     });
-  });
+  }, [fixedDate]);
 
   // Rendering components
   return (
@@ -151,7 +153,7 @@ const Page = () => {
       {/* Sun images */}
       <div
         id="sunImagesContainer"
-        className="scrollable relative w-full h-fit flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden overflow-y-hidden"
+        className="scrollable w-full h-fit flex gap-4 xl:gap-2 justify-between pt-4 border-t border-outline overflow-x-scroll 2xl:overflow-hidden z-20"
       >
         <div id="eitContainer" className="flex gap-4 xl:gap-2">
           {["171", "195", "284", "304"].map(table =>

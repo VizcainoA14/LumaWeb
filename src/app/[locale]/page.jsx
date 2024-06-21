@@ -9,90 +9,90 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
+import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
+import * as reactSpring from "@react-spring/three";
+import * as drei from "@react-three/drei";
+import * as fiber from "@react-three/fiber";
+import { LandingNav } from "../../components/landing/landingnav";
+import { LoadingLanding } from "@/components/landing/loadinglanding";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Index() {
-  const [isBgLoaded, setIsBgLoaded] = useState(false);
   const t = useTranslations("Landing");
-
-  const handleBgLoad = () => {
-    setIsBgLoaded(true);
-  };
-
-  // Using Gsap
-  useGSAP(() => {
-    //Animating the hero title
-    gsap.from(".tLetter", {
-      y: 300,
-      stagger: 0.1
-    });
-  });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const lenis = new Lenis();
+    const handleLoad = () => {
+      // Establecer un temporizador de 2 segundos antes de permitir que se muestre el contenido
+      const timeoutId = setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    };
+
+    // Verificar si todos los recursos ya han sido cargados
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
     }
 
-    requestAnimationFrame(raf);
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
   }, []);
 
+  if (isLoading) {
+    return (
+      <LoadingLanding />
+    );
+  }
+
   return (
-    <div className="w-[100svw] h-fit flex flex-col">
-
-      {/* Hero section */}
-      <div id="heroWrapper" className="w-fit h-fit">
+    <main className="w-[100svw] h-fit flex flex-col bg-black">
+      <LandingNav />
+      <header className="relative w-full h-[100svh] flex">
+        {/* Titles */}
         <div
-          id="heroColor"
-          className="relative w-[100svw] h-[100svh] flex bg-background-dark select-none"
+          id="landingTitlesContainer"
+          className="z-10 w-full flex flex-col text-center items-center absolute p-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         >
-          {/* Sun image in the background of hero */}
-          <Image
-            src="/images/bgSunHero.webp"
-            width={1280}
-            height={720}
-            className="absolute w-full h-full object-cover z-0 select-none"
-            alt="Luma Multiple ColorSun Background"
-            onLoad={handleBgLoad}
-          />
-
-          {/* Hero principal titles */}
-          <div
-            id="heroTitles"
-            className="absolute text-[20vw] font-bold text-on-background-dark top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ fontFamily: "Clash" }}
+          <h1
+            className="w-full md:w-[60svw] text-3xl md:text-6xl font-bold text-on-background-dark/95"
+            style={{ fontFamily: "clash" }}
           >
-            <div className="titleWrapper h-fit overflow-hidden">
-              <div id="heroTitle" className="flex leading-none">
-                <p className="tLetter">L</p>
-                <p className="tLetter">U</p>
-                <p className="tLetter">M</p>
-                <p className="tLetter">A</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Hero bottom text */}
-          <div id="heroBottomTextWrapper">
-            <p
-              id="heroBottomText"
-              className="absolute bottom-3 left-1/2 -translate-x-1/2 text-2xl font-normal text-center text-on-background-dark"
-              style={{ fontFamily: "Clash" }}
+            {t("title")}
+          </h1>
+          <h3
+            className="mt-2 text-base md:text-xl text-on-background-dark/95"
+            style={{ fontFamily: "archivo" }}
+          >
+            {t("subtitle")}
+          </h3>
+          <Link href={"/dashboard"}>
+            <button
+              className="mt-4 font-semibold border-2 border-inverse-surface-dark text-inverse-surface-dark hover:bg-inverse-surface-dark hover:text-inverse-on-surface-dark transition-all"
+              style={{ fontFamily: "clash" }}
             >
-              Luma has arrived to be the easiest way to <br /> study sun
-              activity
-            </p>
-          </div>
+              {t("headercta")}
+            </button>
+          </Link>
         </div>
-
-        {/* GrayScale section */}
-      </div>
-
-      {/* Main content */}
-      <div className="w-screen h-screen bg-background-dark" />
-    </div>
+        {/* Gradient component */}
+        <ShaderGradientCanvas
+          importedFiber={{ ...fiber, ...drei, ...reactSpring }}
+          className="w-full h-full absolute top-0 left-0 z-0"
+        >
+          <ShaderGradient
+            control="query"
+            urlString="https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=0.8&cAzimuthAngle=270&cDistance=0.5&cPolarAngle=180&cameraZoom=15.1&color1=%23c8c2ea&color2=%23166683&color3=%23d0e6f3&destination=onCanvas&embedMode=off&envPreset=city&fov=30&gizmoHelper=hide&grain=on&lightType=env&pixelDensity=1&positionX=-0.1&positionY=0&positionZ=0&reflection=0.4&rotationX=0&rotationY=130&rotationZ=70&shader=defaults&type=sphere&uAmplitude=3.2&uDensity=0.1&uFrequency=5.5&uSpeed=0.4&uStrength=0.1&uTime=0&wireframe=false&zoomOut=false"
+          />
+        </ShaderGradientCanvas>
+      </header>
+    </main>
   );
 }

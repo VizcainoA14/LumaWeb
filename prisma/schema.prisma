@@ -1,0 +1,140 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./DATA.db"
+}
+
+model eit171 {
+  index                 Int     @id @default(autoincrement())
+  date                  String?
+  url                   String?
+  entropy               Float?
+  mean_intensity        Float?
+  standard_deviation    Float?
+  skewness              Float?
+  kurtosis              Float?
+  relative_smoothness   Float?
+  uniformity            Float?
+  fractal_dimension     Float?
+  taruma_contrast       Float?
+  taruma_directionality Float?
+  taruma_coarseness     Float?
+  taruma_linelikeness   Float?
+  taruma_regularity     Float?
+  taruma_roughness      Float?
+
+  @@index([index], map: "ix_eit171_index")
+}
+
+model eit195 {
+  index                 Int     @id @default(autoincrement())
+  date                  String?
+  url                   String?
+  entropy               Float?
+  mean_intensity        Float?
+  standard_deviation    Float?
+  skewness              Float?
+  kurtosis              Float?
+  relative_smoothness   Float?
+  uniformity            Float?
+  fractal_dimension     Float?
+  taruma_contrast       Float?
+  taruma_directionality Float?
+  taruma_coarseness     Float?
+  taruma_linelikeness   Float?
+  taruma_regularity     Float?
+  taruma_roughness      Float?
+
+  @@index([index], map: "ix_eit195_index")
+}
+
+model eit284 {
+  index                 Int     @id @default(autoincrement())
+  date                  String?
+  url                   String?
+  entropy               Float?
+  mean_intensity        Float?
+  standard_deviation    Float?
+  skewness              Float?
+  kurtosis              Float?
+  relative_smoothness   Float?
+  uniformity            Float?
+  fractal_dimension     Float?
+  taruma_contrast       Float?
+  taruma_directionality Float?
+  taruma_coarseness     Float?
+  taruma_linelikeness   Float?
+  taruma_regularity     Float?
+  taruma_roughness      Float?
+
+  @@index([index], map: "ix_eit284_index")
+}
+
+model eit304 {
+  index                 Int     @id @default(autoincrement())
+  date                  String?
+  url                   String?
+  entropy               Float?
+  mean_intensity        Float?
+  standard_deviation    Float?
+  skewness              Float?
+  kurtosis              Float?
+  relative_smoothness   Float?
+  uniformity            Float?
+  fractal_dimension     Float?
+  taruma_contrast       Float?
+  taruma_directionality Float?
+  taruma_coarseness     Float?
+  taruma_linelikeness   Float?
+  taruma_regularity     Float?
+  taruma_roughness      Float?
+
+  @@index([index], map: "ix_eit304_index")
+}
+
+model hmiigr {
+  index                 Int     @id @default(autoincrement())
+  date                  String?
+  url                   String?
+  entropy               Float?
+  mean_intensity        Float?
+  standard_deviation    Float?
+  skewness              Float?
+  kurtosis              Float?
+  relative_smoothness   Float?
+  uniformity            Float?
+  fractal_dimension     Float?
+  taruma_contrast       Float?
+  taruma_directionality Float?
+  taruma_coarseness     Float?
+  taruma_linelikeness   Float?
+  taruma_regularity     Float?
+  taruma_roughness      Float?
+
+  @@index([index], map: "ix_hmiigr_index")
+}
+
+model hmimag {
+  index                 Int     @id @default(autoincrement())
+  date                  String?
+  url                   String?
+  entropy               Float?
+  mean_intensity        Float?
+  standard_deviation    Float?
+  skewness              Float?
+  kurtosis              Float?
+  relative_smoothness   Float?
+  uniformity            Float?
+  fractal_dimension     Float?
+  taruma_contrast       Float?
+  taruma_directionality Float?
+  taruma_coarseness     Float?
+  taruma_linelikeness   Float?
+  taruma_regularity     Float?
+  taruma_roughness      Float?
+
+  @@index([index], map: "ix_hmimag_index")
+}

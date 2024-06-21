@@ -1,48 +1,91 @@
 "use client";
-import RangeChart from "@/app/ui/dashboard/Charts/RangeChart";
-import { DateRangePicker } from "@/app/ui/dashboard/daterangepicker";
-import { TablePicker } from "@/app/ui/dashboard/tablepicker";
+import { TablePicker } from "@/components/dashboard/tablepicker";
 import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TriangleRightIcon } from "@radix-ui/react-icons";
+import { RangeChart } from "@/components/dashboard/Charts/RangeChart";
+import DateRangePicker from "@/components/dashboard/daterangepicker";
+import moment from "moment";
+import { RangeDetails } from "@/components/dashboard/rangedetails";
 
 const Page = () => {
-  const t = useTranslations("RangeChart");
-  const [selectedRange, setSelectedRange] = useState(null);
-  const [selectedTable, setSelectedTable] = useState(null);
+  const t = useTranslations("DateRange");
+  const tOverview = useTranslations("ChartsParameters");
+  const [selectedRange, setSelectedRange] = useState({from: '2024-04-01', to: '2024-05-30'});
+  const [selectedTable, setSelectedTable] = useState('data171');
   const [rawData, setRawData] = useState(null);
-  
-  //Defining date handler
-  const handleRangeChange = date => {
-    setSelectedRange(date);
+  const tabList = useRef(null);
+  const scrollToEndButton = useRef(null);
+  const scrollToStartButton = useRef(null);
+
+  console.log(selectedRange, selectedTable, rawData);
+
+  const scrollToEnd = () => {
+    if (tabList.current) {
+      tabList.current.scrollTo({
+        left: tabList.current.scrollWidth,
+        behavior: "smooth"
+      });
+    }
   };
+
+  const scrollToStart = () => {
+    if (tabList.current) {
+      tabList.current.scrollTo({
+        left: 0,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const updateButtonVisibility = () => {
+    if (tabList.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = tabList.current;
+      if (scrollLeft === 0) {
+        scrollToStartButton.current.style.display = "none";
+      } else {
+        scrollToStartButton.current.style.display = "flex";
+      }
+      if (scrollLeft + clientWidth >= scrollWidth) {
+        scrollToEndButton.current.style.display = "none";
+      } else {
+        scrollToEndButton.current.style.display = "flex";
+      }
+    }
+  };
+
+  useEffect(() => {
+    updateButtonVisibility();
+    if (tabList.current) {
+      tabList.current.addEventListener("scroll", updateButtonVisibility);
+      window.addEventListener("resize", updateButtonVisibility);
+    }
+    return () => {
+      if (tabList.current) {
+        tabList.current.removeEventListener("scroll", updateButtonVisibility);
+        window.removeEventListener("resize", updateButtonVisibility);
+      }
+    };
+  }, []);
+
+  //Defining date handler
+  const handleRangeChange = date => setSelectedRange(date);
 
   // Defining table handler
   const handleTableChange = table => {
     setSelectedTable(table);
   };
 
-  //Defining range fixer
-  const fixRange = date => {
-    // Verifying if the date is null
-    if (date === null) {
-      return null;
-    }
-
-    return {
-      from: selectedRange.from.toISOString().split("T")[0],
-      to: selectedRange.to.toISOString().split("T")[0]
-    };
-  };
-
-  // getting data by range
+  //getting data by range
   const getData = () => {
-    fetch(`/api/get-range?startDate=${fixRange(selectedRange)?.from}&endDate=${fixRange(selectedRange)?.to}`)
-      .then(res => res.json())
-      .then(data => {
-        setRawData(data);
-      })
-      .finally(() => {});
+      fetch(`/api/get-range?startDate=${selectedRange?.from}&endDate=${selectedRange?.to}`)
+          .then(res => res.json())
+          .then(data => {
+              setRawData(data);
+          })
+          .finally(() => {
+          });
       // .catch(err => console.log(err))
   }
 
@@ -60,112 +103,158 @@ const Page = () => {
         id="nav"
         className="w-full h-fit flex flex-col mb-4 md:flex-row md:justify-between md:items-center"
       >
-        <div id="titleContainer">
+        <div id="titleContainer" style={{ fontFamily: "clash" }}>
           <h1
-            id="titleOneDate"
-            className=" max-w-md text-3xl text-on-background dark:text-on-background-dark"
+            id="titleRangeDate"
+            className="max-w-lg text-3xl font-semibold text-on-background dark:text-on-background-dark"
           >
             {t("title")}
           </h1>
         </div>
-        <div id="dateRangeContainer" className="flex mt-2 md:mt-0 gap-2">
-          <TablePicker onTableChange={handleTableChange}/>
+        <div
+          id="dateRangeContainer"
+          className="flex flex-col md:flex-row mt-2 md:mt-0 gap-4"
+        >
+          <TablePicker onTableChange={handleTableChange} />
           <DateRangePicker onRangeChange={handleRangeChange} />
         </div>
       </div>
 
       {/* Line chart selector and Line chart here */}
       <Tabs defaultValue="entropy" className="w-full mt-4">
-        <div className="scrollable w-full overflow-x-scroll 2xl:overflow-hidden">
-          <TabsList
-            className="text-secondary dark:text-secondary-dark border border-surface dark:border-surface-dark"
-            style={{ fontFamily: "clash" }}
+        <div className="flex relative justify-center items-center">
+          <div className="w-full overflow-x-scroll" ref={tabList}>
+            <TabsList style={{ fontFamily: "clash" }}>
+              <TabsTrigger value="entropy">
+                {tOverview("entropyTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="mean_intensity">
+                {tOverview("meanIntensityTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="standard_deviation">
+                {tOverview("standardDeviationTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="fractal_dimension">
+                {tOverview("fractalDimensionTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="skewness">
+                {tOverview("skewnessTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="kurtosis">
+                {tOverview("kurtosisTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="uniformity">
+                {tOverview("uniformityTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="relative_smoothness">
+                {tOverview("relativeSmoothnessTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="taruma_contrast">
+                {tOverview("tarumaContrastTitle")}
+              </TabsTrigger>
+              <TabsTrigger value="taruma_directionality">
+                {tOverview("tarumaDirectionalityTitle")}
+              </TabsTrigger>
+            </TabsList>
+          </div>
+          <div
+            ref={scrollToEndButton}
+            id="ScrollToEndButton"
+            className="cursor-pointer flex justify-center items-center absolute w-10 h-10 right-[0.4rem] bg-surface-container-lowest hover:bg-tertiary-container dark:bg-surface-container-highest-dark dark:hover:bg-tertiary-container-dark rounded-full transition-all"
+            onClick={scrollToEnd}
           >
-            <TabsTrigger value="entropy">{t('entropyTitle')}</TabsTrigger>
-            <TabsTrigger value="mean_intensity">{t('meanIntensityTitle')}</TabsTrigger>
-            <TabsTrigger value="standard_deviation">{t('standardDeviationTitle')}</TabsTrigger>
-            <TabsTrigger value="fractal_dimension">{t('fractalDimensionTitle')}</TabsTrigger>
-            <TabsTrigger value="skewness">{t('skewnessTitle')}</TabsTrigger>
-            <TabsTrigger value="kurtosis">{t('kurtosisTitle')}</TabsTrigger>
-            <TabsTrigger value="uniformity">{t('uniformityTitle')}</TabsTrigger>
-            <TabsTrigger value="relative_smoothness">{t('relativeSmoothnessTitle')}</TabsTrigger>
-            <TabsTrigger value="tamura_contrast">{t('tamuraContrastTitle')}</TabsTrigger>
-          </TabsList>
+            <TriangleRightIcon className="h-5 w-5 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
+          </div>
+          <div
+            ref={scrollToStartButton}
+            id="ScrollToStartButton"
+            className="cursor-pointer flex justify-center items-center absolute w-10 h-10 left-[0.4rem] bg-surface-container-lowest hover:bg-tertiary-container dark:bg-surface-container-highest-dark dark:hover:bg-tertiary-container-dark rounded-full transition-all"
+            onClick={scrollToStart}
+          >
+            <TriangleRightIcon className="h-5 w-5 text-on-tertiary-container dark:text-on-tertiary-container-dark rotate-180" />
+          </div>
         </div>
-        <TabsContent value="entropy" className="">
+        <TabsContent value="entropy">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"entropy"}
+            parameter="entropy"
           />
+          <RangeDetails parameter="entropy"/>
         </TabsContent>
         <TabsContent value="mean_intensity" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"mean_intensity"}
+            parameter="mean_intensity"
           />
+          <RangeDetails parameter="meanIntensity"/>
         </TabsContent>
         <TabsContent value="standard_deviation" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"standard_deviation"}
+            parameter="standard_deviation"
           />
+          <RangeDetails parameter="standardDeviation"/>
         </TabsContent>
         <TabsContent value="fractal_dimension" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"fractal_dimension"}
+            parameter="fractal_dimension"
           />
+          <RangeDetails parameter="fractalDimension"/>
         </TabsContent>
         <TabsContent value="skewness" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"skewness"}
+            parameter="skewness"
           />
+          <RangeDetails parameter="skewness"/>
         </TabsContent>
         <TabsContent value="kurtosis" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"kurtosis"}
+            parameter="kurtosis"
           />
+          <RangeDetails parameter="kurtosis"/>
         </TabsContent>
         <TabsContent value="uniformity" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"uniformity"}
+            parameter="uniformity"
           />
+          <RangeDetails parameter="uniformity"/>
         </TabsContent>
         <TabsContent value="relative_smoothness" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"relative_smoothness"}
+            parameter="relative_smoothness"
           />
+          <RangeDetails parameter="relativeSmoothness"/>
         </TabsContent>
-        <TabsContent value="tamura_contrast" className="">
+        <TabsContent value="taruma_contrast" className="">
           <RangeChart
             rawData={rawData}
             selectedTable={selectedTable}
-            selectedRange={selectedRange}
-            parameter={"taruma_contrast"}
+            parameter="taruma_contrast"
           />
+          <RangeDetails parameter="tarumaContrast"/>
+        </TabsContent>
+        <TabsContent value="taruma_directionality" className="">
+          <RangeChart
+            rawData={rawData}
+            selectedTable={selectedTable}
+            parameter="taruma_directionality"
+          />
+          <RangeDetails parameter="tarumaDirectionality"/>
         </TabsContent>
       </Tabs>
-      
     </div>
   );
 };
