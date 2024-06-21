@@ -92,7 +92,7 @@ button{
 
 /* Date range section */
 .datePickerContainer {
-  @apply flex flex-row items-center gap-2;
+  @apply flex flex-col md:flex-row items-start md:items-center gap-0 md:gap-2;
 }
 
 .dateRangePickerLabel {

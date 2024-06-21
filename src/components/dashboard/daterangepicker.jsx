@@ -47,7 +47,7 @@ const DateRangePicker = ({ onRangeChange }) => {
             >
               <CalendarIcon className="mr-2 h-4 w-4 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
               {startDate
-                ? format(startDate, "dd-mm-yy")
+                ? format(startDate, "dd-MM-yy")
                 : <span
                     className="text-on-tertiary-container dark:text-on-tertiary-container-dark"
                     style={{ fontFamily: "clash" }}
@@ -84,7 +84,7 @@ const DateRangePicker = ({ onRangeChange }) => {
             >
               <CalendarIcon className="mr-2 h-4 w-4 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
               {endDate
-                ? format(endDate, "dd-mm-yy")
+                ? format(endDate, "dd-MM-yy")
                 : <span
                     className="text-on-tertiary-container dark:text-on-tertiary-container-dark"
                     style={{ fontFamily: "clash" }}

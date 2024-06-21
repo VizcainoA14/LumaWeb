@@ -12,8 +12,6 @@ import {
 } from "recharts";
 
 export const RangeChart = ({ rawData, selectedTable, parameter }) => {
-  let dataPoints = [];
-  let labels = [];
 
   // Setting the color of the chart
   const determineChartColor = () => {
