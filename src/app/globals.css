@@ -7,30 +7,6 @@ html {
   overflow-x: hidden;
 }
 
-/* Custom styles */
-@font-face {
-  font-family: "clash";
-  src: url("./fonts/ClashDisplay-Regular.woff2");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "clash";
-  src: url("./fonts/ClashDisplay-Semibold.woff2");
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: "clash";
-  src: url("./fonts/ClashDisplay-Bold.woff2");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "archivo";
-  src: url("./fonts/Archivo-Regular.woff2");
-}
-
 chip {
   @apply h-8 rounded-lg flex items-center justify-center px-4 cursor-pointer;
 }

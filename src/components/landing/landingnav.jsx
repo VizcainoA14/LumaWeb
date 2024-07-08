@@ -3,13 +3,17 @@ import Image from "next/image";
 
 export const LandingNav = () => {
   return (
-    <nav className="flex w-full h-16 px-6 z-50 fixed top-0">
-      <div
-        id="brandContainer"
-        className="flex items-center h-full"
-      >
+    <nav className="
+      font-archivo
+      fixed top-6 left-1/2 transform -translate-x-1/2 
+      flex items-center w-fit h-fit px-4 py-3 space-x-6 
+      bg-surface-container-lowest-dark border-2 border-outline-variant-dark
+      rounded-lg"
+    >
+      {/* Luma logo */}
+      <div id="brandContainer" className="flex items-center h-full">
         <svg
-          className="w-10 mt-6 h-auto"
+          className="w-5 h-auto"
           width="190"
           height="236"
           viewBox="0 0 190 236"
@@ -31,7 +35,13 @@ export const LandingNav = () => {
           <rect x="50" y="73" width="89" height="89" rx="6" fill="#dfe3e7" />
         </svg>
       </div>
-      <div id="navLinksContainer" />
+      {[["Home", "/"], ["Dashboard", "/dashboard"]].map(([text, url]) =>
+        <Link href={url} key={url}>
+          <p className="text-on-surface-variant-dark/60 cursor-pointer">
+            {text}
+          </p>
+        </Link>
+      )}
     </nav>
   );
 };

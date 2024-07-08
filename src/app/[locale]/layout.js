@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DateProvider } from "@/context/DateContext";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Toaster } from "@/components/ui/sonner";
+import { clashDisplay, archivo } from "../fonts";
 
 
 // Can be imported from a shared config
@@ -20,7 +21,7 @@ export default function LocaleLayout({ children, params: { locale } }) {
   if (!locales.includes(locale)) notFound();
   const messages = useMessages();
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${clashDisplay.variable} ${archivo.variable}`}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <DateProvider>
