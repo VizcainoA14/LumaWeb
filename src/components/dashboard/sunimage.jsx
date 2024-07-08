@@ -39,12 +39,13 @@ export default function SunImage(props) {
   return (
     <div
       className={`
+        relative
         ${props.csun} 
         bg-surface-container 
         dark:bg-secondary-container-dark/40 
-        max-w-56 w-56 h-fit md:w-52 xl:w-48 2xl:w-56 
-        rounded-xl overflow-hidden transition-all
-        transform
+        max-w-56 w-56 h-fit md:w-52 xl:w-48 2xl:w-60 
+        rounded-xl overflow-hidden
+        transform translate-y-60
       `}
     >
       {/* Image container */}
@@ -54,9 +55,9 @@ export default function SunImage(props) {
         style={{ fontFamily: "archivo" }}
       >
         {props.image == undefined
-        ? <div className="w-56 max-w-56 h-56 max-h-56 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-56 2xl:h-56 2xl:max-h-56 relative animate-pulse bg-surface dark:bg-surface-dark transition-all" />
-        : props.image == ''
-        ? <div className="flex flex-col items-center justify-center w-56 max-w-56 h-56 max-h-56 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-56 2xl:h-56 2xl:max-h-56 relative bg-surface-container-low text-on-surface/60 dark:bg-surface-container-low-dark dark:text-on-surface-dark/60 transition-all">
+        ? <div className="w-56 max-w-56 h-56 max-h-56 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-60 2xl:h-60 2xl:max-h-60 relative animate-pulse" />
+        : props.image === ''
+        ? <div className="flex flex-col items-center justify-center w-56 max-w-56 h-56 max-h-56 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-60 2xl:h-60 2xl:max-h-60 relative bg-surface-container-low text-on-surface/60 dark:bg-surface-container-low-dark dark:text-on-surface-dark/60">
             <ImageIcon className="w-10 h-10" />
             <h4>No image for this date</h4>
           </div>
@@ -66,7 +67,7 @@ export default function SunImage(props) {
                 alt="Sun image"
                 width={512}
                 height={512}
-                className="dark:border-secondary-container-dark/50 w-56 max-w-56 h-56 max-h-56 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-56 2xl:h-56 2xl:max-h-56 dark:border-2 transition-all"
+                className="dark:border-secondary-container-dark/50 w-56 max-w-56 h-56 max-h-56 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-60 2xl:h-60 2xl:max-h-60 dark:border-2"
               />
             <div
             id="idDot"

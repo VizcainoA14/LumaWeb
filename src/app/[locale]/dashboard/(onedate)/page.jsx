@@ -121,7 +121,7 @@ const Page = () => {
       gsap.to(`.${csun}`, {
         y: 0,
         duration: 0.5 + index * 0.1,
-        ease: "back.inOut(1.7)"
+        ease: "back.inOut(2)"
       });
     });
   }, [fixedDate]);
