@@ -14,14 +14,12 @@ export default function OneAnalytics(props) {
           <div
             id="monthAverage"
             className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
-            style={{ fontFamily: "Clash" }}
           >
             {statistics?.avg?.toFixed(2)}
           </div>
           <div
             id="monthAverageLabel"
             className="analitycLabel"
-            style={{ fontFamily: "Archivo" }}
           >
             Month Average
           </div>
@@ -33,14 +31,12 @@ export default function OneAnalytics(props) {
           <div
             id="monthStd"
             className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
-            style={{ fontFamily: "Clash" }}
           >
             {statistics?.stdDev?.toFixed(2)}
           </div>
           <div
             id="monthAverageLabel"
             className="analitycLabel"
-            style={{ fontFamily: "Archivo" }}
           >
             Month Standart deviation
           </div>
@@ -60,7 +56,6 @@ export default function OneAnalytics(props) {
           <div
             id="monthMaxLabel"
             className="analitycLabel"
-            style={{ fontFamily: "Archivo" }}
           >
             Month Maximum
           </div>
@@ -69,14 +64,12 @@ export default function OneAnalytics(props) {
           <div
             id="monthMinimum"
             className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
-            style={{ fontFamily: "Clash" }}
           >
             {statistics?.min?.toFixed(2)}
           </div>
           <div
             id="monthMinimumLabel"
             className="analitycLabel"
-            style={{ fontFamily: "Archivo" }}
           >
             Month Minimum
           </div>

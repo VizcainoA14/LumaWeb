@@ -33,7 +33,7 @@ export function DatePicker({onDateChange}) {
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
-          {date ? format(date, "PPP") : <span className="text-on-tertiary-container dark:text-on-tertiary-container-dark" style={{fontFamily: 'clash'}}>Pick a date</span>}
+          {date ? format(date, "PPP") : <span className="font-clash text-on-tertiary-container dark:text-on-tertiary-container-dark">Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0 bg-tertiary-container text-on-tertiary-container dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark mt-1 mx-4 md:mx-10">

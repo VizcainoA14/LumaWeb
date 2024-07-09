@@ -65,10 +65,6 @@ export default function OverChart(props) {
     }
   ];
 
-  const defaultYAxisProps = {
-    width: 20
-  };
-
   return (
     <div className="w-full h-fit rounded-2xl border border-surface bg-background dark:bg-background-dark dark:border-surface-dark mt-2">
       {/* Text for the chart */}
@@ -77,14 +73,12 @@ export default function OverChart(props) {
         className="w-fit min-h-[9vh] overflow-hidden"
       >
         <h2
-          className="font-semibold text-xl text-on-background dark:text-on-background-dark"
-          style={{ fontFamily: "Clash, open sans" }}
+          className="font-clash font-semibold text-xl text-on-background dark:text-on-background-dark"
         >
           {t(`${props.parameter}Title`)}
         </h2>
         <p
-          style={{ fontFamily: "Archivo" }}
-          className="text-base text-on-background/80 dark:text-on-background-dark overflow-hidden"
+          className="font-archivo mt-3 text-base text-on-background/80 dark:text-on-background-dark overflow-hidden"
         >
           {t(`${props.parameter}Description`)}
         </p>
@@ -94,10 +88,10 @@ export default function OverChart(props) {
       <div className="flex flex-col md:flex-col xl:flex-row pt-6 gap-2 w-full h-fit">
         <div id={"barChartContainer"} className={"h-[40svh] md:h-[40svh] lg:min-h-[40svh] xl:w-2/3 xl:h-96 xl:min-h-96"}>
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart width={500} height={300} data={data}>
+            <BarChart width={500} height={300} data={data} className="font-archivo">
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
-              <YAxis {...defaultYAxisProps} />
+              <YAxis/>
               <Tooltip />
               <Bar dataKey="entropy" fill="#191c1e">
                 {data.map((entry, index) =>

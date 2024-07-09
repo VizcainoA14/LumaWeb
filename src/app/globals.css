@@ -16,7 +16,6 @@ button{
 }
 
 
-
 /* Dashboard */
 #dashboard::-webkit-scrollbar {
   @apply w-3;
@@ -49,10 +48,6 @@ button{
   @apply rounded-lg
 }
 
-#titleOneDate {
-  font-family: "clash", sans-serif;
-}
-
 .buttonData {
   @apply text-sm text-secondary/60 dark:text-secondary-dark border border-surface dark:border-surface-dark;
 }
@@ -73,5 +68,4 @@ button{
 
 .dateRangePickerLabel {
   @apply text-sm text-on-surface-variant dark:text-on-surface-variant-dark;
-  font-family: 'archivo';
 }

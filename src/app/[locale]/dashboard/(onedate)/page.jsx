@@ -137,12 +137,11 @@ const Page = () => {
         <div id="titleContainer">
           <h1
             id="titleOneDate"
-            className="text-3xl text-on-background dark:text-on-background-dark"
+            className="font-clash text-3xl text-on-background dark:text-on-background-dark"
           />
           <h2
             id="subtitleOneDate"
-            className="text-base font-normal text-on-background dark:text-on-background-dark"
-            style={{ fontFamily: "Archivo" }}
+            className="font-archivo text-base font-normal text-on-background dark:text-on-background-dark"
           />
         </div>
         <div id="dateContainer" className="flex mt-2 md:mt-0">

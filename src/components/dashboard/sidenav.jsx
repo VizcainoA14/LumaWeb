@@ -15,14 +15,13 @@ export default function SideNav() {
   return (
     <div
       className="flex w-full h-full flex-row px-4 md:p-4 lg:flex-col items-center bg-surface-container-low dark:bg-surface-container-low-dark"
-      style={{ fontFamily: "clash" }}
     >
       <div
         id="sideNavContent"
         className="w-full h-full flex flex-row items-center justify-between lg:flex-col"
       >
         <div id="sideBrandContainer" className="w-auto h-fit md:w-full md:h-fit">
-          <h2 className="font-semibold text-2xl text-on-surface dark:text-on-surface-dark transition-all">
+          <h2 className="font-clash font-semibold text-2xl text-on-surface dark:text-on-surface-dark transition-all">
             <Link href="/">Luma</Link>
           </h2>
         </div>

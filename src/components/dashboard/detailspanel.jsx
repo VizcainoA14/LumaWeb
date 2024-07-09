@@ -126,8 +126,7 @@ export function DetailsPanel(props) {
       <div className="w-full h-fit">
         <div className="h-fit md:h-10 flex flex-col md:flex-row md:items-center">
           <h1
-            className="text-2xl font-semibold text-on-background dark:text-on-background-dark"
-            style={{ fontFamily: "clash" }}
+            className="text-2xl font-clash font-semibold text-on-background dark:text-on-background-dark"
           >
             {t("titleDetails")}
           </h1>
@@ -140,8 +139,7 @@ export function DetailsPanel(props) {
               <div className="flex relative justify-center items-center">
                 <div className="w-full overflow-x-scroll" ref={tabList}>
                   <TabsList
-                    style={{ fontFamily: "clash" }}
-                    
+                    className="font-clash font-semibold"
                   >
                     <TabsTrigger value="entropy">
                       {tOverview("entropyTitle")}

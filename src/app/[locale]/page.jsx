@@ -11,8 +11,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import { LoadingLanding } from "@/components/landing/loadinglanding";
 import { LandingNav } from "@/components/landing/landingnav";
-
 gsap.registerPlugin(ScrollTrigger);
+
+const links = [
+  { name: "Home", href: "/" },
+  { name: "Dashboard", href: "/dashboard" }
+];
 
 export default function Index() {
   const t = useTranslations("Landing");
@@ -47,7 +51,7 @@ export default function Index() {
   }
 
   return (
-    <main className="w-[100svw] h-fit flex flex-col bg-black">
+    <main className="w-screen flex flex-col bg-black">
       <LandingNav />
       <header className="relative w-full h-[100svh] flex">
         {/* Titles */}
@@ -75,6 +79,7 @@ export default function Index() {
           </div>
         </div>
       </header>
+      <div className="h-[200vh]"></div>
     </main>
   );
 }

@@ -52,7 +52,6 @@ export default function SunImage(props) {
       <div
         id="imageContainer"
         className="w-full h-fit relative"
-        style={{ fontFamily: "archivo" }}
       >
         {props.image == undefined
         ? <div className="w-56 max-w-56 h-56 max-h-56 md:w-52 md:h-52 md:max-h-52 xl:w-48 xl:h-48 xl:max-h-48 2xl:w-60 2xl:h-60 2xl:max-h-60 relative animate-pulse" />
@@ -84,7 +83,7 @@ export default function SunImage(props) {
         className="w-full px-4 my-2 flex items-center justify-between text-on-surface dark:text-on-surface-dark"
       >
         <div className="flex items-center">
-          <p style={{ fontFamily: "clash" }}>
+          <p className="font-clash font-semibold">
             {props.table.toUpperCase()}
           </p>
         </div>
