@@ -45,7 +45,7 @@ export default function SunImage(props) {
         dark:bg-secondary-container-dark/40 
         max-w-56 w-56 h-fit md:w-52 xl:w-48 2xl:w-60 
         rounded-xl overflow-hidden
-        transform translate-y-60
+        transform translate-y-80
       `}
     >
       {/* Image container */}

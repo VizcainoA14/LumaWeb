@@ -18,40 +18,46 @@ const DateRangePicker = ({ onRangeChange }) => {
   const rangeGenerator = (startDate, endDate) => {
     if (startDate && endDate) {
       const newRange = {
-        from: `${startDate.getFullYear()}-${String(startDate.getMonth() + 1).padStart(2, "0")}-${String(startDate.getDate()).padStart(2, "0")}`,
-        to: `${endDate.getFullYear()}-${String(endDate.getMonth() + 1).padStart(2, "0")}-${String(endDate.getDate()).padStart(2, "0")}`,
+        from: `${startDate.getFullYear()}-${String(
+          startDate.getMonth() + 1
+        ).padStart(2, "0")}-${String(startDate.getDate()).padStart(2, "0")}`,
+        to: `${endDate.getFullYear()}-${String(endDate.getMonth() + 1).padStart(
+          2,
+          "0"
+        )}-${String(endDate.getDate()).padStart(2, "0")}`
       };
       setSelectedRange(newRange);
       onRangeChange(newRange);
     }
-  }
+  };
 
-  useEffect(() => {
-    rangeGenerator(startDate, endDate);
-  }, [startDate, endDate]);
+  useEffect(
+    () => {
+      rangeGenerator(startDate, endDate);
+    },
+    [startDate, endDate]
+  );
 
   return (
     <div className="w-fit flex gap-4">
       {/* Start date */}
-      <div id="startContainer" className="datePickerContainer">
-        <h6 className="dateRangePickerLabel">Start:</h6>
+      <div id="startContainer" className="flex flex-col md:flex-row items-start md:items-center gap-0 md:gap-2">
+        <h6 className="font-archivo text-sm text-on-surface-variant dark:text-on-surface-variant-dark">
+          Start:
+        </h6>
         <Popover>
           <PopoverTrigger asChild>
             <Button
               id="oneDatePicker"
-              style={{ fontFamily: "clash" }}
               className={cn(
-                "w-fit justify-centert text-left font-semibold bg-tertiary-container hover:bg-tertiary-container text-on-tertiary-container rounded-full dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark hover:dark:bg-tertiary-container-dark hover:dark:text-on-tertiary-container-dark hover:shadow-sm",
+                "w-fit justify-centert text-left font-clash font-semibold bg-tertiary-container hover:bg-tertiary-container text-on-tertiary-container rounded-full dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark hover:dark:bg-tertiary-container-dark hover:dark:text-on-tertiary-container-dark hover:shadow-sm",
                 !startDate && "text-muted-foreground"
               )}
             >
               <CalendarIcon className="mr-2 h-4 w-4 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
               {startDate
                 ? format(startDate, "dd-MM-yy")
-                : <span
-                    className="text-on-tertiary-container dark:text-on-tertiary-container-dark"
-                    style={{ fontFamily: "clash" }}
-                  >
+                : <span className="font-clash font-semibold text-on-tertiary-container dark:text-on-tertiary-container-dark">
                     Start date
                   </span>}
             </Button>
@@ -70,13 +76,14 @@ const DateRangePicker = ({ onRangeChange }) => {
         </Popover>
       </div>
       {/* End date */}
-      <div id="endContainer" className="datePickerContainer">
-        <h6 className="dateRangePickerLabel">End:</h6>
+      <div id="endContainer" className="flex flex-col md:flex-row items-start md:items-center gap-0 md:gap-2">
+        <h6 className="font-archivo text-sm text-on-surface-variant dark:text-on-surface-variant-dark">
+          End:
+        </h6>
         <Popover>
           <PopoverTrigger asChild>
             <Button
               id="oneDatePicker"
-              style={{ fontFamily: "clash" }}
               className={cn(
                 "w-fit justify-centert text-left font-semibold bg-tertiary-container hover:bg-tertiary-container text-on-tertiary-container rounded-full dark:bg-tertiary-container-dark dark:text-on-tertiary-container-dark hover:dark:bg-tertiary-container-dark hover:dark:text-on-tertiary-container-dark hover:shadow-sm",
                 !endDate && "text-muted-foreground"
@@ -85,10 +92,7 @@ const DateRangePicker = ({ onRangeChange }) => {
               <CalendarIcon className="mr-2 h-4 w-4 text-on-tertiary-container dark:text-on-tertiary-container-dark" />
               {endDate
                 ? format(endDate, "dd-MM-yy")
-                : <span
-                    className="text-on-tertiary-container dark:text-on-tertiary-container-dark"
-                    style={{ fontFamily: "clash" }}
-                  >
+                : <span className="font-clash font-semibold text-on-tertiary-container dark:text-on-tertiary-container-dark">
                     End date
                   </span>}
             </Button>

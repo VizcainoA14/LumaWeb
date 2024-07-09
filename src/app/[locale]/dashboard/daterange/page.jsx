@@ -6,8 +6,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TriangleRightIcon } from "@radix-ui/react-icons";
 import { RangeChart } from "@/components/dashboard/Charts/RangeChart";
 import DateRangePicker from "@/components/dashboard/daterangepicker";
-import moment from "moment";
 import { RangeDetails } from "@/components/dashboard/rangedetails";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { TextPlugin } from "gsap/TextPlugin";
+gsap.registerPlugin(TextPlugin, useGSAP);
 
 const Page = () => {
   const t = useTranslations("DateRange");
@@ -18,8 +21,6 @@ const Page = () => {
   const tabList = useRef(null);
   const scrollToEndButton = useRef(null);
   const scrollToStartButton = useRef(null);
-
-  console.log(selectedRange, selectedTable, rawData);
 
   const scrollToEnd = () => {
     if (tabList.current) {
@@ -96,6 +97,13 @@ const Page = () => {
     [selectedRange, selectedTable]
   );
 
+  // Animations
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    tl
+      .to('#titleRangeDate', { text: t("title"), duration: 0.6})
+  })
+
   return (
     <div className="w-full h-fit flex flex-col md:p-2">
       {/* Header or Navbar here */}
@@ -103,13 +111,11 @@ const Page = () => {
         id="nav"
         className="w-full h-fit flex flex-col mb-4 md:flex-row md:justify-between md:items-center"
       >
-        <div id="titleContainer" style={{ fontFamily: "clash" }}>
+        <div id="titleContainer" className="font-clash font-semibold">
           <h1
             id="titleRangeDate"
             className="max-w-lg text-3xl font-semibold text-on-background dark:text-on-background-dark"
-          >
-            {t("title")}
-          </h1>
+          /> 
         </div>
         <div
           id="dateRangeContainer"
@@ -124,7 +130,7 @@ const Page = () => {
       <Tabs defaultValue="entropy" className="w-full mt-4">
         <div className="flex relative justify-center items-center">
           <div className="w-full overflow-x-scroll" ref={tabList}>
-            <TabsList style={{ fontFamily: "clash" }}>
+            <TabsList className='font-clash font-semibold'>
               <TabsTrigger value="entropy">
                 {tOverview("entropyTitle")}
               </TabsTrigger>

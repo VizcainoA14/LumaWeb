@@ -9,35 +9,40 @@ export default function OneAnalytics(props) {
       <div className="w-full h-1/2 md:h-28 lg:h-full flex flex-row gap-2">
         <div
           id="monthAvgContainer"
-          className="analyticCard"
+          className="
+          w-1/2 h-full flex flex-col justify-center items-center 
+          bg-background dark:bg-background-dark border border-outline-variant dark:border-outline-dark/50 
+          rounded-2xl overflow-hidden
+          "
         >
           <div
             id="monthAverage"
-            className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
+            className="w-full h-3/4 flex items-center justify-center font-clash font-semibold text-2xl md:text-3xl dark:text-on-background-dark"
           >
             {statistics?.avg?.toFixed(2)}
           </div>
-          <div
+          <div 
             id="monthAverageLabel"
-            className="analitycLabel"
-          >
+            className="w-full h-1/4 bg-surface flex items-center justify-center font-archivo text-center text-sm md:text-sm xl:text-sm dark:bg-surface-dark dark:text-on-surface-dark">
             Month Average
           </div>
         </div>
         <div
           id="monthStdContainer"
-          className="analyticCard"
+          className="
+          w-1/2 h-full flex flex-col justify-center items-center 
+          bg-background dark:bg-background-dark border border-outline-variant dark:border-outline-dark/50 
+          rounded-2xl overflow-hidden"
         >
           <div
             id="monthStd"
-            className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
+            className="w-full h-3/4 flex items-center justify-center font-clash font-semibold text-2xl md:text-3xl dark:text-on-background-dark"
           >
             {statistics?.stdDev?.toFixed(2)}
           </div>
-          <div
+          <div 
             id="monthAverageLabel"
-            className="analitycLabel"
-          >
+            className="w-full h-1/4 bg-surface flex items-center justify-center font-archivo text-center text-sm md:text-sm xl:text-sm dark:bg-surface-dark dark:text-on-surface-dark">
             Month Standart deviation
           </div>
         </div>
@@ -45,32 +50,36 @@ export default function OneAnalytics(props) {
 
       {/*Month Maximum and Minimum container */}
       <div className="w-full h-1/2 md:h-28 lg:h-full flex flex-row gap-2">
-        <div id="monthMaximum" className="analyticCard" >
+        <div
+          id="monthMaximum"
+          className="w-1/2 h-full flex flex-col justify-center items-center 
+        bg-background dark:bg-background-dark border border-outline-variant dark:border-outline-dark/50 
+        rounded-2xl overflow-hidden"
+        >
           <div
             id="monthMax"
-            className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
-            style={{ fontFamily: "Clash" }}
+            className="w-full h-3/4 flex items-center justify-center font-clash font-semibold text-2xl md:text-3xl dark:text-on-background-dark"
           >
             {statistics?.max?.toFixed(2)}
           </div>
-          <div
+          <div 
             id="monthMaxLabel"
-            className="analitycLabel"
-          >
+            className="w-full h-1/4 bg-surface flex items-center justify-center font-archivo text-center text-sm md:text-sm xl:text-sm dark:bg-surface-dark dark:text-on-surface-dark">
             Month Maximum
           </div>
         </div>
-        <div className="analyticCard" >
+        <div className="w-1/2 h-full flex flex-col justify-center items-center 
+        bg-background dark:bg-background-dark border border-outline-variant dark:border-outline-dark/50 
+        rounded-2xl overflow-hidden">
           <div
             id="monthMinimum"
-            className="w-full h-3/4 flex items-center justify-center text-2xl md:text-3xl dark:text-on-background-dark"
+            className="w-full h-3/4 flex items-center justify-center font-clash font-semibold text-2xl md:text-3xl dark:text-on-background-dark"
           >
             {statistics?.min?.toFixed(2)}
           </div>
-          <div
+          <div 
             id="monthMinimumLabel"
-            className="analitycLabel"
-          >
+            className="w-full h-1/4 bg-surface flex items-center justify-center font-archivo text-center text-sm md:text-sm xl:text-sm dark:bg-surface-dark dark:text-on-surface-dark">
             Month Minimum
           </div>
         </div>
