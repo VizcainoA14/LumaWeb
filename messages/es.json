@@ -3,7 +3,10 @@
     "title": "Una nueva forma de estudiar la actividad solar.",
     "subtitle": "La forma más sencilla de acceder a resultados estadisticos en el analisis de la actividad solar. Todo en una interfaz hecha para todos.",
     "headercta": "Accede a Luma",
-    "navbar": "Luma"
+    "aboutcta": "Conoce más",
+    "navbar": "Luma",
+    "featuresTitle": "Accede a lo mejor sin mayor complicacion.",
+    "featuresSubtitle": "Para conseguir los estadísticos a los que puedes acceder de forma inmediata, hemos usado métodos estadísticos novedosos e imágenes con gran valor cientifico."
   },
   "OneDate": {
     "title": "Parametros para una fecha",

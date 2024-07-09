@@ -23,7 +23,7 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={clsx(
-              "flex h-14 px-4 items-center gap-2 font-semibold text-sm text-on-surface-variant dark:text-on-surface-variant-dark rounded-full transition-all hover:bg-surface-container dark:hover:bg-surface-container-dark",
+              "flex h-14 px-4 items-center gap-2 font-clash font-semibold text-base text-on-surface-variant dark:text-on-surface-variant-dark rounded-full transition-all hover:bg-surface-container dark:hover:bg-surface-container-dark",
               {
                 "bg-secondary-container text-on-secondary-container rounded-full dark:bg-secondary-container-dark dark:text-on-secondary-container-dark dark:hover:bg-surface-container-dark":
                   fixedPathmane === link.href
