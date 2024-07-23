@@ -52,6 +52,15 @@ export default function Index() {
     return <LoadingLanding />;
   }
 
+  // Obtener el texto del título de la función de traducción
+  const featuresTitle = t('featuresTitle');
+  // Separar el texto en palabras
+  const titleWords = featuresTitle.split(' ');
+  // Obtener la última palabra
+  const lastTitleWord = titleWords.pop();
+  // Unir el resto de las palabras
+  const restOfTitleText = titleWords.join(' ');
+
   return (
     <main className="w-screen flex flex-col bg-shadow">
       <LandingNav />
@@ -59,14 +68,14 @@ export default function Index() {
 
       {/* Landing content */}
       <div id="landingContentContainer" className="w-full px-4 xl:px-32">
-        {/* feautures */}
+        {/* features */}
         <section id="landingFeaturesSection" className="h-[100svh] pt-10 xl:pt-20">
           <div
             id="featuresTitlesContainer"
             className="w-full flex flex-col xl:flex-row xl:justify-between xl:items-center"
           >
             <h2 className="text-on-background-dark font-clash font-semibold text-3xl xl:max-w-xl">
-              {t('featuresTitle')}
+              {restOfTitleText} <span className="text-primary-dark">{lastTitleWord}</span>
             </h2>
             <p className="text-on-background-dark/60 font-archivo pt-3 text-lg xl:text-right xl:max-w-2xl">
               {t('featuresSubtitle')}
