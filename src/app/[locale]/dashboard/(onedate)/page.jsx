@@ -30,6 +30,7 @@ const Page = () => {
     }
     return "";
   };
+  
 
   // Date handling functions
   const handleDateChange = date => setSelectedDate(date);
