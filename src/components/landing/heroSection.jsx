@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import '@/components/landing/landingStyles.css'
@@ -7,12 +6,6 @@ const HeroSection = () => {
   const t = useTranslations("Landing");
   return (
     <header className="relative w-full h-[100svh] flex n">
-      {/* Background */}
-      <div id="backgroundContainer" className="relative w-full h-full bg-surface-container-lowest-dark overflow-hidden">
-        <div className="one">jj</div>
-        <div id="two"></div>
-        <div id="three"></div>
-      </div>
       {/* Titles */}
       <div
         id="landingTitlesContainer"
